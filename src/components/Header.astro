@@ -1,0 +1,130 @@
+---
+import { languages, langs, localizePath, type Lang, type Dict } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+}
+const { lang, t } = Astro.props;
+const home = `/${lang}/`;
+const links = [
+  { href: `${home}#expertise`, label: t.nav.expertise },
+  { href: `${home}#case-study`, label: t.nav.caseStudy },
+  { href: `${home}#career`, label: t.nav.career },
+  { href: `${home}#philosophy`, label: t.nav.philosophy },
+  { href: `${home}#gallery`, label: t.nav.gallery },
+  { href: `${home}#contact`, label: t.nav.contact },
+];
+const path = Astro.url.pathname;
+---
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-cream focus:text-ink focus:px-4 focus:py-2">
+  {t.a11y.skip}
+</a>
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 border-b border-transparent"
+>
+  <div class="container-x flex h-16 md:h-20 items-center justify-between gap-6">
+    <a href={home} class="group flex items-baseline gap-3" aria-label={t.hero.name}>
+      <span class="font-display text-2xl text-brass">ĐM</span>
+      <span class="hidden sm:inline text-[0.7rem] tracking-[0.22em] uppercase text-muted group-hover:text-cream transition-colors">
+        {t.hero.name}
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-8">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class="text-[0.78rem] tracking-[0.12em] uppercase text-muted hover:text-cream transition-colors">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <ul class="flex items-center text-[0.72rem] tracking-[0.14em]" aria-label={t.a11y.language}>
+        {langs.map((l, i) => (
+          <li class="flex items-center">
+            {i > 0 && <span class="text-line px-1.5" aria-hidden="true">/</span>}
+            <a
+              href={localizePath(path, l)}
+              hreflang={languages[l].htmlLang}
+              lang={languages[l].htmlLang}
+              aria-current={l === lang ? 'true' : undefined}
+              aria-label={languages[l].name}
+              class:list={[
+                'py-2 px-0.5 transition-colors',
+                l === lang ? 'text-brass' : 'text-muted hover:text-cream',
+              ]}
+            >
+              {languages[l].label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="lg:hidden -mr-2 p-2 text-cream"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-open-label={t.a11y.menu}
+        data-close-label={t.a11y.closeMenu}
+        aria-label={t.a11y.menu}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path class="menu-open" d="M3 7h18M3 12h18M3 17h12" />
+          <path class="menu-close hidden" d="M5 5l14 14M19 5L5 19" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" aria-label="Mobile" class="lg:hidden hidden border-t border-line bg-ink/95 backdrop-blur">
+    <ul class="container-x py-6 flex flex-col">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} class="block py-3 font-display text-3xl text-cream hover:text-brass transition-colors">{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+
+  const onScroll = () => {
+    const scrolled = window.scrollY > 24;
+    header.classList.toggle('bg-ink/85', scrolled);
+    header.classList.toggle('backdrop-blur-md', scrolled);
+    header.classList.toggle('border-line', scrolled);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const setOpen = (open: boolean) => {
+    menu.classList.toggle('hidden', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', (open ? toggle.dataset.closeLabel : toggle.dataset.openLabel) ?? '');
+    toggle.querySelector('.menu-open')!.classList.toggle('hidden', open);
+    toggle.querySelector('.menu-close')!.classList.toggle('hidden', !open);
+    if (open) header.classList.add('bg-ink/85', 'backdrop-blur-md');
+    else onScroll();
+  };
+  toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+</script>

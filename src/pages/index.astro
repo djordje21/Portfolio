@@ -1,0 +1,19 @@
+---
+// Koren sajta. Na Netlify-ju public/_redirects šalje posetioca na jezik pregledača;
+// ova stranica je rezerva za ostale hostove i vodi na engleski.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đorđe Milenković — Executive Chef</title>
+    <meta http-equiv="refresh" content="0; url=/en/" />
+    <link rel="canonical" href={new URL('/en/', Astro.site)} />
+    <meta name="robots" content="noindex" />
+    <style>body{background:#141110;color:#f3ebdf;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#d1b073}</style>
+  </head>
+  <body>
+    <p><a href="/en/">English</a> · <a href="/sr/">Srpski</a> · <a href="/ru/">Русский</a></p>
+  </body>
+</html>

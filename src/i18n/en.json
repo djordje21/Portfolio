@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Đorđe Milenković — Executive Chef · Culinary Operations Leader",
+    "description": "Executive Chef based in Belgrade with 16 years in professional kitchens: hotel pre-openings, multi-concept operations, luxury river cruise and staff training at scale.",
+    "ogAlt": "Portrait of Chef Đorđe Milenković in a white chef jacket"
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
+  },
+  "nav": {
+    "expertise": "Expertise",
+    "caseStudy": "Case study",
+    "career": "Career",
+    "philosophy": "Philosophy",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Belgrade · Serbia",
+    "name": "Đorđe Milenković",
+    "nickname": "“Đole”",
+    "title": "Executive Chef · Culinary Operations Leader",
+    "pitch": "A chef who builds systems. Craft on the plate, and the structure behind it to open and run a kitchen to international standard.",
+    "current": "Currently: Executive Chef, pre-opening of an international hotel in Belgrade [CHECK]",
+    "ctaContact": "Get in touch",
+    "ctaCv": "Download CV",
+    "cvNote": "PDF · English",
+    "scroll": "Scroll",
+    "portraitAlt": "Chef Đorđe Milenković in a white chef jacket, in a professional kitchen"
+  },
+  "numbers": {
+    "label": "Key numbers",
+    "items": [
+      { "value": 16, "suffix": "", "label": "years in professional kitchens [CHECK]" },
+      { "value": 2000, "suffix": "+", "label": "people trained and assessed" },
+      { "value": 8, "suffix": "", "label": "restaurant concepts opened in a single year" },
+      { "value": 3, "suffix": "", "label": "working languages" }
+    ]
+  },
+  "palette": {
+    "eyebrow": "Expertise",
+    "title": "The knowledge palette",
+    "intro": "Six domains, one kitchen. Each colour is a body of work I bring to the pass — select a swatch to see what is behind it.",
+    "hint": "Select a swatch",
+    "chips": [
+      {
+        "id": "craft",
+        "code": "DM-01",
+        "colour": "Copper",
+        "name": "Culinary craft",
+        "summary": "Sixteen years of cooking across fine dining, grill, seafood and banquet — at volume and at detail.",
+        "points": [
+          "Fine dining, Mediterranean and Italian",
+          "Steakhouse & grill, fresh seafood",
+          "Hotel, banquet and event production",
+          "Menu development from concept to plate",
+          "Michelin-starred guest chef events and gourmet festivals hosted on board"
+        ]
+      },
+      {
+        "id": "ops",
+        "code": "DM-02",
+        "colour": "Green",
+        "name": "Operations & cost control",
+        "summary": "Kitchens that make sense on the plate and on the P&L.",
+        "points": [
+          "Menu engineering and recipe costing",
+          "P&L ownership, food cost and labour control",
+          "Procurement and supply chain — including sourcing under import restrictions",
+          "Multi-unit management: 4 concepts and a 25-person brigade at once",
+          "Built and sold a food-delivery business as a profitable going concern"
+        ]
+      },
+      {
+        "id": "safety",
+        "code": "DM-03",
+        "colour": "Blue",
+        "name": "Food safety & HACCP",
+        "summary": "Standards that hold on a busy Saturday, not just on audit day.",
+        "points": [
+          "HACCP certified; HACCP plans built from scratch",
+          "Allergen management and labelling",
+          "Colour-coded systems, logs and daily checks",
+          "Five seasons under luxury cruise-line brand standards",
+          "Audit readiness built into routine, not added before inspection"
+        ]
+      },
+      {
+        "id": "people",
+        "code": "DM-04",
+        "colour": "Purple",
+        "name": "People & training",
+        "summary": "More than 2,000 cooks trained, assessed and placed.",
+        "points": [
+          "Two fleet-wide training cycles a year, 350–400 recruits each",
+          "Competency frameworks and assessment per position",
+          "Staff certification and progression paths",
+          "Calm, clear standard-setting — new methods adopted within days",
+          "Team building in existing brigades, not only new ones"
+        ]
+      },
+      {
+        "id": "preopening",
+        "code": "DM-05",
+        "colour": "Charcoal",
+        "name": "Pre-opening & project leadership",
+        "summary": "From empty kitchen to first service — on schedule.",
+        "points": [
+          "8 restaurant concepts opened in 12 months (Orenburg, Russia)",
+          "New-vessel openings every spring on the cruise fleet",
+          "Resort hotel F&B pre-opening consulting",
+          "Day-by-day training plans and readiness programmes",
+          "Cross-department master planning for a 200+ room hotel"
+        ]
+      },
+      {
+        "id": "languages",
+        "code": "DM-06",
+        "colour": "Gold",
+        "name": "Languages",
+        "summary": "I lead in the language the team thinks in.",
+        "points": [
+          "Serbian — native",
+          "English — fluent, daily working language",
+          "Russian — fluent, years of work in Russia and the CIS market"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "top": "Back to top"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "Đorđe Milenković — Executive Chef · Lider kulinarskih operacija",
+    "description": "Executive Chef iz Beograda sa 16 godina iskustva u profesionalnim kuhinjama: pre-opening hotela, vođenje više koncepata, luksuzni rečni kruzeri i obuka timova u velikom obimu.",
+    "ogAlt": "Portret šefa kuhinje Đorđa Milenkovića u beloj kuvarskoj bluzi"
+  },
+  "a11y": {
+    "skip": "Preskoči na sadržaj",
+    "menu": "Meni",
+    "closeMenu": "Zatvori meni",
+    "language": "Jezik"
+  },
+  "nav": {
+    "expertise": "Ekspertiza",
+    "caseStudy": "Studija slučaja",
+    "career": "Karijera",
+    "philosophy": "Filozofija",
+    "gallery": "Galerija",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Beograd · Srbija",
+    "name": "Đorđe Milenković",
+    "nickname": "„Đole“",
+    "title": "Executive Chef · Lider kulinarskih operacija",
+    "pitch": "Kuvar koji gradi sisteme. Zanat na tanjiru i struktura iza njega, da se kuhinja otvori i vodi po međunarodnim standardima.",
+    "current": "Trenutno: Executive Chef, pre-opening međunarodnog hotela u Beogradu [CHECK]",
+    "ctaContact": "Kontakt",
+    "ctaCv": "Preuzmi CV",
+    "cvNote": "PDF · na engleskom",
+    "scroll": "Skroluj",
+    "portraitAlt": "Šef kuhinje Đorđe Milenković u beloj kuvarskoj bluzi, u profesionalnoj kuhinji"
+  },
+  "numbers": {
+    "label": "Ključni brojevi",
+    "items": [
+      { "value": 16, "suffix": "", "label": "godina u profesionalnim kuhinjama [CHECK]" },
+      { "value": 2000, "suffix": "+", "label": "obučenih i procenjenih ljudi" },
+      { "value": 8, "suffix": "", "label": "restoranskih koncepata otvorenih za godinu dana" },
+      { "value": 3, "suffix": "", "label": "radna jezika" }
+    ]
+  },
+  "palette": {
+    "eyebrow": "Ekspertiza",
+    "title": "Paleta znanja",
+    "intro": "Šest oblasti, jedna kuhinja. Svaka boja je oblast koju donosim na pass. Izaberi boju da vidiš šta stoji iza nje.",
+    "hint": "Izaberi boju",
+    "chips": [
+      {
+        "id": "craft",
+        "code": "DM-01",
+        "colour": "Bakar",
+        "name": "Kulinarski zanat",
+        "summary": "Šesnaest godina kuvanja: fine dining, roštilj, riba i banket. I u velikom obimu i do detalja.",
+        "points": [
+          "Fine dining, mediteranska i italijanska kuhinja",
+          "Steakhouse i roštilj, sveža riba i morski plodovi",
+          "Hotelska, banketna i event produkcija",
+          "Razvoj menija od koncepta do tanjira",
+          "Večeri sa gostujućim šefovima sa Michelin zvezdicama i gurmanski festivali na brodu"
+        ]
+      },
+      {
+        "id": "ops",
+        "code": "DM-02",
+        "colour": "Zelena",
+        "name": "Operacije i kontrola troškova",
+        "summary": "Kuhinja koja ima smisla i na tanjiru i u bilansu.",
+        "points": [
+          "Menu engineering i kalkulacija normativa",
+          "Odgovornost za P&L, food cost i troškove rada",
+          "Nabavka i lanac snabdevanja, uključujući nabavku pod uvoznim ograničenjima",
+          "Vođenje više objekata: 4 koncepta i brigada od 25 ljudi istovremeno",
+          "Osnovao i prodao profitabilan biznis za dostavu hrane"
+        ]
+      },
+      {
+        "id": "safety",
+        "code": "DM-03",
+        "colour": "Plava",
+        "name": "Bezbednost hrane i HACCP",
+        "summary": "Standardi koji drže i u subotu uveče, ne samo na dan inspekcije.",
+        "points": [
+          "HACCP sertifikat; HACCP planovi postavljeni od nule",
+          "Upravljanje alergenima i označavanje",
+          "Sistemi kodirani bojama, evidencije i dnevne provere",
+          "Pet sezona po standardima luksuznih kruzer brendova",
+          "Spremnost za audit kao deo rutine, a ne kao trka pred kontrolu"
+        ]
+      },
+      {
+        "id": "people",
+        "code": "DM-04",
+        "colour": "Ljubičasta",
+        "name": "Ljudi i obuka",
+        "summary": "Više od 2.000 kuvara obučenih, procenjenih i raspoređenih.",
+        "points": [
+          "Dva ciklusa obuke godišnje za celu flotu, 350–400 regruta po ciklusu",
+          "Okvir kompetencija i procena po svakoj poziciji",
+          "Sertifikacija osoblja i putevi napredovanja",
+          "Mirno i jasno postavljanje standarda: nove metode prihvaćene za par dana",
+          "Građenje tima i u postojećim brigadama, ne samo u novim"
+        ]
+      },
+      {
+        "id": "preopening",
+        "code": "DM-05",
+        "colour": "Ugalj",
+        "name": "Pre-opening i vođenje projekata",
+        "summary": "Od prazne kuhinje do prvog servisa, u roku.",
+        "points": [
+          "8 restoranskih koncepata otvoreno za 12 meseci (Orenburg, Rusija)",
+          "Otvaranje novih brodova svakog proleća u floti",
+          "F&B konsalting za pre-opening resort hotela",
+          "Planovi obuke dan po dan i programi spremnosti",
+          "Master plan između departmana za hotel sa 200+ soba"
+        ]
+      },
+      {
+        "id": "languages",
+        "code": "DM-06",
+        "colour": "Zlatna",
+        "name": "Jezici",
+        "summary": "Vodim tim na jeziku na kom tim razmišlja.",
+        "points": [
+          "Srpski: maternji",
+          "Engleski: tečno, svakodnevni radni jezik",
+          "Ruski: tečno, godine rada u Rusiji i na tržištu ZND"
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "rights": "Sva prava zadržana.",
+    "top": "Nazad na vrh"
+  }
+}
