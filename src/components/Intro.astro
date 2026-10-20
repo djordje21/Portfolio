@@ -12,37 +12,37 @@ const i = t.intro;
   Prikazuje se jednom po poseti (sessionStorage), ne prikazuje se bez JS-a ni uz "reduce motion".
 -->
 <div id="intro" class="fixed inset-0 z-[100] overflow-hidden" aria-label={i.ticket}>
-  <div class="intro-curtain intro-top absolute inset-x-0 top-0 h-1/2 bg-ink"></div>
-  <div class="intro-curtain intro-bottom absolute inset-x-0 bottom-0 h-1/2 bg-ink"></div>
+  <div class="intro-curtain intro-top absolute inset-x-0 top-0 h-1/2 bg-bg"></div>
+  <div class="intro-curtain intro-bottom absolute inset-x-0 bottom-0 h-1/2 bg-bg"></div>
 
   <div class="intro-stage absolute inset-0 grid place-items-center grain" aria-hidden="true">
-    <div aria-hidden="true" class="intro-glow absolute top-0 left-1/2 -translate-x-1/2 h-[60vh] w-[60vh] rounded-full bg-copper-deep/30 blur-[120px] opacity-0"></div>
-    <div class="intro-rail absolute top-[18%] left-1/2 -translate-x-1/2 h-[3px] w-[min(26rem,80vw)] origin-center scale-x-0 bg-gradient-to-r from-transparent via-brass to-transparent"></div>
+    <div aria-hidden="true" class="intro-glow absolute top-0 left-1/2 -translate-x-1/2 h-[60vh] w-[60vh] rounded-full bg-accent/15 blur-[120px] opacity-0"></div>
+    <div class="intro-rail absolute top-[18%] left-1/2 -translate-x-1/2 h-[3px] w-[min(26rem,80vw)] origin-center scale-x-0 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
 
-    <div class="intro-ticket relative w-[min(23rem,80vw)] bg-cream text-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,.8)]">
+    <div class="intro-ticket relative w-[min(23rem,80vw)] bg-surface text-fg shadow-[0_30px_60px_-25px_rgba(27,29,32,.35)] ring-1 ring-line">
       <div class="px-6 pt-6 pb-8 md:px-8 md:pt-8 md:pb-10 font-mono text-[0.78rem] md:text-[0.92rem] leading-relaxed">
         <div class="flex justify-between text-[0.7rem] tracking-widest">
           <span>{i.order}</span><span class="intro-clock">--:--</span>
         </div>
         <div class="mt-1 text-[0.7rem] tracking-widest">{i.table}</div>
-        <div class="my-3 border-t border-dashed border-ink/50"></div>
+        <div class="my-3 border-t border-dashed border-fg/30"></div>
         <ul class="space-y-1.5">
           {i.lines.map((l) => <li class="intro-line opacity-0">{l}</li>)}
         </ul>
-        <div class="my-3 border-t border-dashed border-ink/50"></div>
+        <div class="my-3 border-t border-dashed border-fg/30"></div>
         <p class="intro-line opacity-0 text-[0.7rem] italic">{i.note}</p>
       </div>
       <div class="intro-stamp absolute right-4 bottom-10 rotate-[-14deg] border-[3px] border-[#a3361f] px-3 py-1 font-sans font-bold text-2xl tracking-[0.18em] text-[#a3361f] opacity-0">
         {i.fire}
       </div>
-      <div class="ticket-edge absolute -bottom-2 inset-x-0 h-2 bg-cream"></div>
+      <div class="ticket-edge absolute -bottom-2 inset-x-0 h-2 bg-surface"></div>
     </div>
-    <p class="intro-service absolute font-display italic text-[clamp(4rem,16vw,13rem)] text-cream opacity-0">{i.service}</p>
+    <p class="intro-service absolute font-display italic text-[clamp(4rem,16vw,13rem)] text-fg opacity-0">{i.service}</p>
   </div>
 
   <button
     type="button"
-    class="intro-skip absolute bottom-6 right-6 z-10 text-[0.7rem] tracking-[0.25em] uppercase text-muted hover:text-cream transition-colors px-3 py-2"
+    class="intro-skip absolute bottom-6 right-6 z-10 text-[0.7rem] tracking-[0.25em] uppercase text-muted hover:text-fg transition-colors px-3 py-2"
   >
     {i.skip} →
   </button>

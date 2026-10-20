@@ -5,11 +5,12 @@ export interface SparksOptions {
   ambient?: number; // koliko žara stalno lebdi (0 = samo eksplozije)
   colors?: string[];
   mouse?: boolean; // reaguje na miš
+  composite?: GlobalCompositeOperation; // 'lighter' za tamnu pozadinu, 'source-over' za svetlu
 }
 
 export function createSparks(canvas: HTMLCanvasElement, opts: SparksOptions = {}) {
   const ctx = canvas.getContext('2d')!;
-  const colors = opts.colors ?? ['#d08a55', '#d1b073', '#f0c27b', '#b06a3b'];
+  const colors = opts.colors ?? ['#b5683a', '#9b5426', '#d19a5b', '#7d8590', '#1b1d20'];
   const ps: P[] = [];
   let w = 0, h = 0, dpr = 1, raf = 0, running = false, visible = true;
   const mouse = { x: -9999, y: -9999, vx: 0, vy: 0 };
@@ -47,7 +48,7 @@ export function createSparks(canvas: HTMLCanvasElement, opts: SparksOptions = {}
 
   const tick = () => {
     ctx.clearRect(0, 0, w, h);
-    ctx.globalCompositeOperation = 'lighter';
+    ctx.globalCompositeOperation = opts.composite ?? 'source-over';
     const ambient = opts.ambient ?? 0;
     let embers = 0;
     for (let i = ps.length - 1; i >= 0; i--) {

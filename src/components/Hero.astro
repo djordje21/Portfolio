@@ -13,33 +13,36 @@ const h = t.hero;
 ---
 <section id="hero" class="relative grain overflow-hidden pt-24 md:pt-32 pb-16 md:pb-24 min-h-dvh flex items-center" aria-labelledby="hero-title">
   <!-- topli sjaj u pozadini -->
-  <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-10%] h-[42rem] w-[42rem] rounded-full bg-copper-deep/20 blur-[140px]"></div>
-  <!-- žar sa roštilja (canvas) -->
+  <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-10%] h-[42rem] w-[42rem] rounded-full bg-accent/10 blur-[140px]"></div>
+  <!-- precizna mreža; pod mišem se pali bakarni deo mreže -->
+  <div aria-hidden="true" class="precision-grid pointer-events-none absolute inset-0"></div>
+  <div aria-hidden="true" class="precision-spot pointer-events-none absolute inset-0"></div>
+  <!-- iskre na klik (canvas) -->
   <canvas id="hero-embers" aria-hidden="true" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
 
   <div class="container-x relative grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
     <div class="lg:col-span-7 order-2 lg:order-1">
       <p class="eyebrow" data-reveal>{h.eyebrow}</p>
 
-      <h1 id="hero-title" class="mt-6 text-[clamp(3.2rem,9vw,7.5rem)] text-cream" data-split="hero">
+      <h1 id="hero-title" class="mt-6 text-[clamp(3.2rem,9vw,7.5rem)] text-fg" data-split="hero">
         {h.name}
-        <span class="block mt-2 text-[0.42em] italic font-light text-brass">{h.nickname}</span>
+        <span class="block mt-2 text-[0.42em] italic font-light text-accent">{h.nickname}</span>
       </h1>
 
-      <p class="mt-8 text-sm md:text-base tracking-[0.18em] uppercase text-cream/90" data-reveal style="--reveal-delay:260ms">
+      <p class="mt-8 text-sm md:text-base tracking-[0.18em] uppercase text-fg/90" data-reveal style="--reveal-delay:260ms">
         {h.title}
       </p>
 
-      <div class="mt-6 h-px w-20 bg-copper" aria-hidden="true" data-reveal style="--reveal-delay:320ms"></div>
+      <div class="mt-6 h-px w-20 bg-accent" aria-hidden="true" data-reveal style="--reveal-delay:320ms"></div>
 
       <p class="mt-6 max-w-xl text-lg md:text-xl leading-relaxed text-muted" data-reveal style="--reveal-delay:380ms">
         {h.pitch}
       </p>
 
-      <p class="mt-6 flex items-start gap-3 text-sm text-cream/85 max-w-xl" data-reveal style="--reveal-delay:440ms">
+      <p class="mt-6 flex items-start gap-3 text-sm text-fg/85 max-w-xl" data-reveal style="--reveal-delay:440ms">
         <span class="relative mt-1.5 flex h-2 w-2 shrink-0" aria-hidden="true">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-copper opacity-60 motion-safe:animate-ping"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-copper"></span>
+          <span class="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 motion-safe:animate-ping"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
         </span>
         {h.current}
       </p>
@@ -55,8 +58,8 @@ const h = t.hero;
 
     <div class="lg:col-span-5 order-1 lg:order-2">
       <figure id="hero-portrait" class="relative mx-auto max-w-[22rem] sm:max-w-md lg:max-w-none [perspective:1200px]">
-        <div aria-hidden="true" class="portrait-frame absolute -inset-3 md:-inset-4 border border-copper/40 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5"></div>
-        <div class="portrait-card relative overflow-hidden bg-ink-2 [transform-style:preserve-3d]">
+        <div aria-hidden="true" class="portrait-frame absolute -inset-3 md:-inset-4 border border-accent/40 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5"></div>
+        <div class="portrait-card relative overflow-hidden bg-surface [transform-style:preserve-3d]">
           <div class="portrait-img">
             <Image
               src={portrait}
@@ -68,17 +71,17 @@ const h = t.hero;
               class="w-full h-auto aspect-[4/5] object-cover object-top grayscale-[15%] contrast-[1.02] scale-110"
             />
           </div>
-          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+          <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-fg/25 via-transparent to-transparent"></div>
           <div aria-hidden="true" class="portrait-shine absolute inset-0 opacity-0 mix-blend-soft-light"></div>
         </div>
       </figure>
     </div>
   </div>
 
-  <a href="#numbers" class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-[0.65rem] tracking-[0.3em] uppercase text-muted hover:text-cream transition-colors">
+  <a href="#numbers" class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-[0.65rem] tracking-[0.3em] uppercase text-muted hover:text-fg transition-colors">
     {h.scroll}
     <span class="relative block h-10 w-px overflow-hidden bg-line" aria-hidden="true">
-      <span class="scroll-drip absolute inset-x-0 top-0 h-1/2 bg-brass"></span>
+      <span class="scroll-drip absolute inset-x-0 top-0 h-1/2 bg-accent"></span>
     </span>
   </a>
 </section>
@@ -103,12 +106,22 @@ const h = t.hero;
   const canvas = document.getElementById('hero-embers') as HTMLCanvasElement | null;
 
   if (canvas && !reduce) {
-    const sparks = createSparks(canvas, { ambient: window.innerWidth < 768 ? 28 : 60, mouse: fine });
+    const sparks = createSparks(canvas, {});
+    const hero = canvas.parentElement!;
+    const spot = hero.querySelector<HTMLElement>('.precision-spot')!;
+    if (fine) {
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        spot.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        spot.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+      hero.addEventListener('pointerleave', () => spot.style.setProperty('--mx', '-999px'));
+    }
     // klik u heroju = mali pljusak iskri
     canvas.parentElement!.addEventListener('pointerdown', (e) => {
       if ((e.target as HTMLElement).closest('a, button')) return;
       const r = canvas.getBoundingClientRect();
-      sparks.burst(e.clientX - r.left, e.clientY - r.top, 36);
+      sparks.burst(e.clientX - r.left, e.clientY - r.top, 30);
     });
   }
 
