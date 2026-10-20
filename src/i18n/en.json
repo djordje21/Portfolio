@@ -34,10 +34,26 @@
   "numbers": {
     "label": "Key numbers",
     "items": [
-      { "value": 16, "suffix": "", "label": "years in professional kitchens [CHECK]" },
-      { "value": 2000, "suffix": "+", "label": "people trained and assessed" },
-      { "value": 8, "suffix": "", "label": "restaurant concepts opened in a single year" },
-      { "value": 3, "suffix": "", "label": "working languages" }
+      {
+        "value": 16,
+        "suffix": "",
+        "label": "years in professional kitchens [CHECK]"
+      },
+      {
+        "value": 2000,
+        "suffix": "+",
+        "label": "people trained and assessed"
+      },
+      {
+        "value": 8,
+        "suffix": "",
+        "label": "restaurant concepts opened in a single year"
+      },
+      {
+        "value": 3,
+        "suffix": "",
+        "label": "working languages"
+      }
     ]
   },
   "palette": {
@@ -130,6 +146,43 @@
       }
     ]
   },
+  "intro": {
+    "skip": "Skip intro",
+    "ticket": "Order ticket",
+    "order": "ORDER #0001",
+    "table": "TABLE: YOU",
+    "lines": [
+      "1× Executive Chef",
+      "16 yrs in the kitchen",
+      "2,000+ cooks trained",
+      "8 openings in 1 year",
+      "3 languages"
+    ],
+    "note": "NOTE: build the system, then cook",
+    "fire": "FIRE!",
+    "service": "Service."
+  },
+  "game": {
+    "title": "Mise en place",
+    "hintDrag": "Drag a swatch onto the plate — or click it",
+    "hintTap": "Tap a swatch to put it on the plate",
+    "stations": "stations ready",
+    "doneTitle": "Service!",
+    "doneText": "Every station is set. This is the kitchen I build — ready to open.",
+    "cta": "Let’s talk about your kitchen",
+    "reset": "Clear the pass",
+    "soundOn": "Sound on",
+    "soundOff": "Sound off",
+    "plated": "on the plate",
+    "cursor": "Drag"
+  },
+  "marquee": [
+    "Mise en place",
+    "Standards",
+    "People",
+    "Systems",
+    "Service"
+  ],
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

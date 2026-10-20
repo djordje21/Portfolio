@@ -6,56 +6,142 @@ interface Props {
 }
 const { t } = Astro.props;
 const p = t.palette;
+const g = t.game;
 
-// Boja svake "tonske karte" — vrednosti su u global.css (@theme)
+// Boja svake "tonske karte" — iste vrednosti su u global.css (@theme)
 const colours: Record<string, string> = {
-  craft: 'var(--color-chip-copper)',
-  ops: 'var(--color-chip-green)',
-  safety: 'var(--color-chip-blue)',
-  people: 'var(--color-chip-purple)',
-  preopening: 'var(--color-chip-charcoal)',
-  languages: 'var(--color-chip-gold)',
+  craft: '#b5683a',
+  ops: '#4d6a4b',
+  safety: '#2f5b7a',
+  people: '#5d4a80',
+  preopening: '#33302d',
+  languages: '#b8912f',
 };
+
+// Pozicije "mrlja" na tanjiru (6 mesta u krugu)
+const slots = p.chips.map((_, i) => {
+  const a = ((-90 + i * 60) * Math.PI) / 180;
+  const r = 92;
+  return { x: 200 + Math.cos(a) * r, y: 200 + Math.sin(a) * r, rot: -90 + i * 60 + 90 };
+});
 ---
-<section id="expertise" class="section relative" aria-labelledby="palette-title">
+<section id="expertise" class="section relative overflow-hidden" aria-labelledby="palette-title">
   <div class="container-x">
     <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
         <p class="eyebrow" data-reveal>{p.eyebrow}</p>
-        <h2 id="palette-title" class="mt-5 text-5xl md:text-7xl" data-reveal style="--reveal-delay:80ms">{p.title}</h2>
+        <h2 id="palette-title" class="mt-5 text-5xl md:text-7xl" data-split>{p.title}</h2>
       </div>
       <p class="lg:col-span-5 text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:160ms">{p.intro}</p>
     </div>
 
-    <div class="mt-14 md:mt-20" data-palette>
-      <div role="tablist" aria-label={p.title} data-reveal class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
-        {p.chips.map((c, i) => (
-          <button
-            type="button"
-            role="tab"
-            id={`chip-${c.id}`}
-            aria-controls={`panel-${c.id}`}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            tabindex={i === 0 ? 0 : -1}
-            class="chip group relative flex flex-col text-left bg-cream shadow-[0_1px_0_rgba(0,0,0,.4)] transition-transform duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
-            style={`--chip:${colours[c.id]}`}
-          >
-            <span class="block aspect-[3/4] md:aspect-[2/3] bg-[var(--chip)] relative overflow-hidden">
-              <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20"></span>
-              <span aria-hidden="true" class="absolute top-2.5 left-2.5 md:top-3 md:left-3 text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] text-white/80 font-medium">{c.code}</span>
-            </span>
-            <span class="block flex-1 px-2.5 py-3 md:px-3 md:py-4 text-ink">
-              <span class="block text-[0.58rem] md:text-[0.62rem] tracking-[0.18em] uppercase text-ink/65">{c.colour}</span>
-              <span class="block mt-1 font-display text-base md:text-lg leading-tight font-semibold">{c.name}</span>
-            </span>
-            <span aria-hidden="true" class="chip-indicator absolute -bottom-3 left-1/2 -translate-x-1/2 h-1 w-0 bg-[var(--chip)] transition-all duration-500"></span>
-          </button>
-        ))}
+    <div class="relative mt-14 md:mt-20" data-game>
+      <canvas class="game-sparks pointer-events-none absolute inset-0 z-20 h-full w-full" aria-hidden="true"></canvas>
+
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-10 items-center">
+        <!-- Tonske karte -->
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <div role="tablist" aria-label={p.title} data-reveal class="grid grid-cols-3 gap-3 md:gap-5">
+            {p.chips.map((c, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`chip-${c.id}`}
+                aria-controls={`panel-${c.id}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                tabindex={i === 0 ? 0 : -1}
+                data-index={i}
+                data-colour={colours[c.id]}
+                data-cursor={g.cursor}
+                class="chip group relative flex flex-col text-left bg-cream select-none touch-manipulation shadow-[0_1px_0_rgba(0,0,0,.4)] transition-[translate,box-shadow,opacity] duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
+                style={`--chip:${colours[c.id]}`}
+              >
+                <span class="chip-swatch block aspect-[4/3] bg-[var(--chip)] relative overflow-hidden">
+                  <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20"></span>
+                  <span aria-hidden="true" class="absolute top-2.5 left-2.5 md:top-3 md:left-3 text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] text-white/85 font-medium">{c.code}</span>
+                  <span class="chip-check absolute bottom-2 right-2 md:bottom-3 md:right-3 grid h-6 w-6 place-items-center rounded-full bg-cream text-ink text-xs opacity-0 scale-50 transition-all duration-500" aria-hidden="true">✓</span>
+                </span>
+                <span class="block flex-1 px-2.5 py-3 md:px-3 md:py-4 text-ink">
+                  <span class="block text-[0.58rem] md:text-[0.62rem] tracking-[0.18em] uppercase text-ink/65">{c.colour}</span>
+                  <span class="block mt-1 font-display text-base md:text-xl leading-tight font-semibold">{c.name}</span>
+                  <span class="chip-plated sr-only">— {g.plated}</span>
+                </span>
+                <span aria-hidden="true" class="chip-indicator absolute -bottom-3 left-1/2 -translate-x-1/2 h-1 w-0 bg-[var(--chip)] transition-all duration-500"></span>
+              </button>
+            ))}
+          </div>
+          <p class="mt-8 text-xs tracking-[0.2em] uppercase text-muted flex items-center gap-3">
+            <span aria-hidden="true" class="inline-block h-px w-8 bg-brass"></span>
+            <span class="hint-drag hidden">{g.hintDrag}</span>
+            <span class="hint-tap">{g.hintTap}</span>
+          </p>
+        </div>
+
+        <!-- Tanjir -->
+        <div class="lg:col-span-5 order-1 lg:order-2" data-reveal style="--reveal-delay:120ms">
+          <div class="plate-wrap relative mx-auto w-[min(70vw,16rem)] sm:w-[min(100%,20rem)] lg:w-[min(100%,26rem)]">
+            <svg class="plate block w-full h-auto overflow-visible" viewBox="0 0 400 400" role="img" aria-labelledby="plate-title">
+              <title id="plate-title">{g.title}</title>
+              <defs>
+                <radialGradient id="plate-g" cx="45%" cy="40%" r="65%">
+                  <stop offset="0%" stop-color="#fbf7f0" />
+                  <stop offset="70%" stop-color="#ece3d4" />
+                  <stop offset="100%" stop-color="#cfc3b0" />
+                </radialGradient>
+                <radialGradient id="well-g" cx="50%" cy="45%" r="60%">
+                  <stop offset="0%" stop-color="#fdfaf5" />
+                  <stop offset="100%" stop-color="#efe7da" />
+                </radialGradient>
+                <filter id="plate-shadow" x="-20%" y="-20%" width="140%" height="150%">
+                  <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity="0.65" />
+                </filter>
+              </defs>
+              <g class="plate-body">
+                <circle cx="200" cy="200" r="190" fill="url(#plate-g)" filter="url(#plate-shadow)" />
+                <circle cx="200" cy="200" r="142" fill="url(#well-g)" stroke="#d9cfbf" stroke-width="1.5" />
+                <circle class="plate-ring" cx="200" cy="200" r="168" fill="none" stroke="#d1b073" stroke-width="1" stroke-dasharray="2 6" opacity="0.7" />
+                <g class="dabs">
+                  {slots.map((s, i) => (
+                    <g class="dab" data-slot={i} transform={`translate(${s.x} ${s.y}) rotate(${s.rot})`}>
+                      <g class="dab-inner" opacity="0">
+                        <ellipse rx="40" ry="17" fill={colours[p.chips[i].id]} />
+                        <ellipse rx="40" ry="17" fill="url(#well-g)" opacity="0.12" />
+                        <circle cx="34" cy="-20" r="6" fill={colours[p.chips[i].id]} />
+                        <circle cx="46" cy="-12" r="3" fill={colours[p.chips[i].id]} />
+                      </g>
+                    </g>
+                  ))}
+                </g>
+                <g class="plate-center" text-anchor="middle" fill="#141110">
+                  <text class="plate-count" x="200" y="208" font-family="'Cormorant Garamond Variable', Georgia, serif" font-size="56" font-weight="500">0/6</text>
+                  <text class="plate-label" x="200" y="234" font-family="'Inter Variable', system-ui, sans-serif" font-size="10" letter-spacing="3">{g.stations.toUpperCase()}</text>
+                  <text class="plate-done" x="200" y="214" font-family="'Cormorant Garamond Variable', Georgia, serif" font-size="58" font-style="italic" font-weight="500" opacity="0">{g.doneTitle}</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div class="mt-6 flex items-center justify-center gap-6 text-[0.7rem] tracking-[0.2em] uppercase">
+            <button type="button" class="game-sound text-muted hover:text-cream transition-colors py-2" aria-pressed="true" data-on={g.soundOn} data-off={g.soundOff}>
+              ♪ <span>{g.soundOn}</span>
+            </button>
+            <button type="button" class="game-reset text-muted hover:text-cream transition-colors py-2 invisible">↺ {g.reset}</button>
+          </div>
+          <p class="game-status sr-only" aria-live="polite"></p>
+        </div>
       </div>
 
-      <p class="mt-6 text-xs tracking-[0.2em] uppercase text-muted md:hidden" aria-hidden="true">↑ {p.hint}</p>
+      <!-- Završna poruka -->
+      <div class="game-done hidden mt-12 border border-brass/40 bg-gradient-to-r from-copper-deep/20 via-ink-2 to-ink-2 p-8 md:p-10 md:flex items-center justify-between gap-8">
+        <div>
+          <p class="font-display italic text-4xl md:text-5xl text-brass">{g.doneTitle}</p>
+          <p class="mt-3 text-lg text-cream/90 max-w-xl">{g.doneText}</p>
+        </div>
+        <a href="#contact" class="btn btn-primary mt-6 md:mt-0 shrink-0" data-magnetic>{g.cta} →</a>
+      </div>
 
-      <div class="mt-10 md:mt-14">
+      <!-- Detalji izabrane oblasti -->
+      <div class="mt-12 md:mt-16">
         {p.chips.map((c, i) => (
           <div
             role="tabpanel"
@@ -75,7 +161,7 @@ const colours: Record<string, string> = {
             </div>
             <ul class="md:col-span-7 relative grid gap-px bg-line border border-line self-start">
               {c.points.map((pt) => (
-                <li class="bg-ink-2 px-5 py-4 flex gap-4 text-[0.95rem] leading-relaxed text-cream/90">
+                <li class="panel-point bg-ink-2 px-5 py-4 flex gap-4 text-[0.95rem] leading-relaxed text-cream/90">
                   <span aria-hidden="true" class="mt-2.5 h-1.5 w-1.5 shrink-0 bg-[var(--chip)] ring-1 ring-cream/30"></span>
                   {pt}
                 </li>
@@ -91,7 +177,28 @@ const colours: Record<string, string> = {
 <style>
   .chip[aria-selected='true'] .chip-indicator { width: 60%; }
   .chip[aria-selected='true'] { box-shadow: 0 24px 40px -18px var(--chip); }
+  .chip.is-plated .chip-check { opacity: 1; transform: scale(1); }
+  .chip.is-dragging { opacity: 0.35; }
   .panel:not([hidden]) { animation: panel-in 0.6s var(--ease-out-soft); }
+  .plate-wrap.is-over .plate-ring { stroke-width: 3; opacity: 1; }
+  .plate-ring { transition: stroke-width 0.3s, opacity 0.3s; }
+  :global(.drag-ghost) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    pointer-events: none;
+    width: 84px;
+    height: 64px;
+    border-radius: 2px;
+    box-shadow: 0 30px 50px -10px rgba(0, 0, 0, 0.7);
+  }
+  :global(.fly-dot) {
+    position: fixed;
+    z-index: 150;
+    pointer-events: none;
+    border-radius: 9999px;
+  }
   @keyframes panel-in {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: none; }
@@ -99,10 +206,88 @@ const colours: Record<string, string> = {
 </style>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-palette]').forEach((root) => {
+  import { gsap } from 'gsap';
+  import { createSparks } from '../scripts/sparks';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Zvuk: sintetizovano kuhinjsko zvono (bez audio fajlova) ---------- */
+  let audio: AudioContext | null = null;
+  let soundOn = true;
+  try { soundOn = localStorage.getItem('game-sound') !== 'off'; } catch {}
+  const ac = () => (audio ??= new (window.AudioContext || (window as any).webkitAudioContext)());
+
+  function plop(pitch = 1) {
+    if (!soundOn) return;
+    const a = ac(), t = a.currentTime;
+    const o = a.createOscillator(), g = a.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(420 * pitch, t);
+    o.frequency.exponentialRampToValueAtTime(140 * pitch, t + 0.14);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.18, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18);
+    o.connect(g).connect(a.destination);
+    o.start(t);
+    o.stop(t + 0.2);
+  }
+
+  function bell() {
+    if (!soundOn) return;
+    const a = ac(), t = a.currentTime;
+    // zvono za "Service!" — osnovni ton + neharmonijski parcijali
+    [[1568, 0.22], [1568 * 2.76, 0.08], [1568 * 5.4, 0.04], [1568 * 0.5, 0.05]].forEach(([f, v]) => {
+      const o = a.createOscillator(), g = a.createGain();
+      o.type = 'sine';
+      o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(v, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 2.2);
+      o.connect(g).connect(a.destination);
+      o.start(t);
+      o.stop(t + 2.3);
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-game]').forEach((root) => {
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
     const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+    const plateWrap = root.querySelector<HTMLElement>('.plate-wrap')!;
+    const plateBody = root.querySelector<SVGGElement>('.plate-body')!;
+    const dabs = Array.from(root.querySelectorAll<SVGGElement>('.dab'));
+    const count = root.querySelector<SVGTextElement>('.plate-count')!;
+    const label = root.querySelector<SVGTextElement>('.plate-label')!;
+    const doneText = root.querySelector<SVGTextElement>('.plate-done')!;
+    const status = root.querySelector<HTMLElement>('.game-status')!;
+    const done = root.querySelector<HTMLElement>('.game-done')!;
+    const resetBtn = root.querySelector<HTMLButtonElement>('.game-reset')!;
+    const soundBtn = root.querySelector<HTMLButtonElement>('.game-sound')!;
+    const canvas = root.querySelector<HTMLCanvasElement>('.game-sparks')!;
+    const sparks = reduce ? null : createSparks(canvas, {});
+    const plated = new Set<number>();
+    const total = tabs.length;
+    const stationsLabel = label.textContent ?? '';
 
+    if (fine) {
+      root.querySelector('.hint-drag')!.classList.remove('hidden');
+      root.querySelector('.hint-tap')!.classList.add('hidden');
+    }
+
+    /* --- zvuk on/off --- */
+    const renderSound = () => {
+      soundBtn.setAttribute('aria-pressed', String(soundOn));
+      soundBtn.querySelector('span')!.textContent = (soundOn ? soundBtn.dataset.on : soundBtn.dataset.off) ?? '';
+      soundBtn.classList.toggle('line-through', !soundOn);
+    };
+    renderSound();
+    soundBtn.addEventListener('click', () => {
+      soundOn = !soundOn;
+      try { localStorage.setItem('game-sound', soundOn ? 'on' : 'off'); } catch {}
+      renderSound();
+    });
+
+    /* --- tabovi (detalji oblasti) --- */
     const select = (idx: number, focus = false) => {
       tabs.forEach((tab, i) => {
         const on = i === idx;
@@ -111,17 +296,111 @@ const colours: Record<string, string> = {
         panels[i].hidden = !on;
       });
       if (focus) tabs[idx].focus();
+      if (!reduce) gsap.fromTo(panels[idx].querySelectorAll('.panel-point'), { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: 0.05, duration: 0.5, ease: 'power3.out', overwrite: true });
     };
 
+    /* --- stavljanje boje na tanjir --- */
+    const plateRect = () => plateWrap.getBoundingClientRect();
+
+    const updateCount = () => {
+      count.textContent = `${plated.size}/${total}`;
+      status.textContent = `${plated.size}/${total} ${stationsLabel.toLowerCase()}`;
+      resetBtn.classList.toggle('invisible', plated.size === 0);
+    };
+
+    const showDab = (i: number) => {
+      const inner = dabs[i].querySelector<SVGGElement>('.dab-inner')!;
+      if (reduce) return inner.setAttribute('opacity', '1');
+      gsap.fromTo(inner, { opacity: 0, scale: 0.2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.8, ease: 'elastic.out(1, 0.45)' });
+      gsap.fromTo(plateBody, { scale: 1 }, { scale: 1.025, duration: 0.12, yoyo: true, repeat: 1, transformOrigin: '50% 50%', ease: 'power2.out' });
+    };
+
+    const complete = () => {
+      const r = plateRect(), c = canvas.getBoundingClientRect();
+      count.setAttribute('opacity', '0');
+      label.setAttribute('opacity', '0');
+      bell();
+      done.classList.remove('hidden');
+      if (reduce) {
+        doneText.setAttribute('opacity', '1');
+      } else {
+        gsap.fromTo(doneText, { opacity: 0, scale: 0.6, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.9, ease: 'elastic.out(1, 0.5)' });
+        gsap.to(root.querySelector('.dabs'), { rotate: 360, duration: 2.4, ease: 'expo.inOut', svgOrigin: '200 200' });
+        gsap.from(done, { opacity: 0, y: 30, duration: 0.9, ease: 'expo.out', delay: 0.3 });
+        const colours = tabs.map((t) => t.dataset.colour!).concat(['#f3ebdf', '#d1b073']);
+        const cx = r.left - c.left + r.width / 2, cy = r.top - c.top + r.height / 2;
+        sparks?.burst(cx, cy, 140, colours);
+        setTimeout(() => sparks?.burst(cx - r.width * 0.3, cy - r.height * 0.2, 60, colours), 250);
+        setTimeout(() => sparks?.burst(cx + r.width * 0.3, cy - r.height * 0.1, 60, colours), 450);
+      }
+      status.textContent = done.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+    };
+
+    const plate = (i: number, from?: { x: number; y: number }) => {
+      if (plated.has(i)) return;
+      plated.add(i);
+      tabs[i].classList.add('is-plated');
+      plop(0.8 + plated.size * 0.12);
+
+      // centar "mrlje" u koordinatama ekrana
+      const m = dabs[i].getScreenCTM();
+      const target = m ? new DOMPoint(0, 0).matrixTransform(m) : { x: 0, y: 0 };
+
+      if (reduce) {
+        showDab(i);
+      } else {
+        // obojena kap "leti" od karte do tanjira
+        const sw = tabs[i].querySelector('.chip-swatch')!.getBoundingClientRect();
+        const start = from ?? { x: sw.left + sw.width / 2, y: sw.top + sw.height / 2 };
+        const dot = document.createElement('div');
+        dot.className = 'fly-dot';
+        dot.style.background = tabs[i].dataset.colour!;
+        dot.style.width = dot.style.height = '28px';
+        dot.style.left = `${start.x - 14}px`;
+        dot.style.top = `${start.y - 14}px`;
+        document.body.append(dot);
+        const dx = target.x - start.x, dy = target.y - start.y;
+        gsap.timeline({ onComplete: () => { dot.remove(); showDab(i); } })
+          .to(dot, { x: dx, duration: 0.6, ease: 'power2.inOut' }, 0)
+          .to(dot, { y: Math.min(dy, 0) - 80, duration: 0.3, ease: 'power2.out' }, 0)
+          .to(dot, { y: dy, duration: 0.3, ease: 'power2.in' }, 0.3)
+          .to(dot, { scale: 0.6, duration: 0.6 }, 0);
+      }
+
+      updateCount();
+      if (plated.size === total) setTimeout(complete, reduce ? 0 : 750);
+    };
+
+    const reset = () => {
+      plated.clear();
+      tabs.forEach((t) => t.classList.remove('is-plated'));
+      dabs.forEach((d) => d.querySelector('.dab-inner')!.setAttribute('opacity', '0'));
+      gsap.set(root.querySelector('.dabs'), { rotate: 0, svgOrigin: '200 200' });
+      count.setAttribute('opacity', '1');
+      label.setAttribute('opacity', '1');
+      doneText.setAttribute('opacity', '0');
+      done.classList.add('hidden');
+      updateCount();
+      tabs[0].focus();
+    };
+    resetBtn.addEventListener('click', reset);
+
+    /* --- klik / tastatura --- */
+    let suppressClick = false;
     tabs.forEach((tab, i) => {
-      tab.addEventListener('click', () => select(i));
+      tab.addEventListener('click', () => {
+        if (suppressClick) return void (suppressClick = false);
+        select(i);
+        plate(i);
+      });
       tab.addEventListener('keydown', (e) => {
         const n = tabs.length;
+        const cols = 3;
         const map: Record<string, number> = {
           ArrowRight: (i + 1) % n,
-          ArrowDown: (i + 1) % n,
           ArrowLeft: (i - 1 + n) % n,
-          ArrowUp: (i - 1 + n) % n,
+          ArrowDown: (i + cols) % n,
+          ArrowUp: (i - cols + n) % n,
           Home: 0,
           End: n - 1,
         };
@@ -132,16 +411,56 @@ const colours: Record<string, string> = {
       });
     });
 
-    // Na desktopu (miš) hover takođe otvara detalje, uz malu pauzu da ne treperi
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      let timer: number | undefined;
+    /* --- prevlačenje (samo miš/trackpad) --- */
+    if (fine) {
       tabs.forEach((tab, i) => {
-        tab.addEventListener('mouseenter', () => {
-          clearTimeout(timer);
-          timer = window.setTimeout(() => select(i), 180);
+        tab.addEventListener('pointerdown', (e) => {
+          if (e.button !== 0) return;
+          const sx = e.clientX, sy = e.clientY;
+          let ghost: HTMLDivElement | null = null;
+          let over = false;
+
+          const move = (ev: PointerEvent) => {
+            if (!ghost) {
+              if (Math.hypot(ev.clientX - sx, ev.clientY - sy) < 8) return;
+              ghost = document.createElement('div');
+              ghost.className = 'drag-ghost';
+              ghost.style.background = tab.dataset.colour!;
+              document.body.append(ghost);
+              tab.classList.add('is-dragging');
+              select(i);
+            }
+            gsap.set(ghost, { x: ev.clientX - 42, y: ev.clientY - 32, rotate: gsap.utils.clamp(-18, 18, (ev.movementX || 0) * 1.5) });
+            const r = plateRect();
+            const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+            over = Math.hypot(ev.clientX - cx, ev.clientY - cy) < r.width / 2;
+            plateWrap.classList.toggle('is-over', over);
+          };
+
+          const up = (ev: PointerEvent) => {
+            window.removeEventListener('pointermove', move);
+            window.removeEventListener('pointerup', up);
+            plateWrap.classList.remove('is-over');
+            tab.classList.remove('is-dragging');
+            if (!ghost) return; // običan klik — rešava ga 'click'
+            suppressClick = true;
+            setTimeout(() => (suppressClick = false), 0);
+            const g = ghost;
+            if (over) {
+              g.remove();
+              plate(i, { x: ev.clientX, y: ev.clientY });
+            } else {
+              const sw = tab.querySelector('.chip-swatch')!.getBoundingClientRect();
+              gsap.to(g, { x: sw.left + sw.width / 2 - 42, y: sw.top + sw.height / 2 - 32, rotate: 0, duration: 0.5, ease: 'back.out(1.4)', onComplete: () => g.remove() });
+            }
+          };
+
+          window.addEventListener('pointermove', move);
+          window.addEventListener('pointerup', up);
         });
-        tab.addEventListener('mouseleave', () => clearTimeout(timer));
       });
     }
+
+    updateCount();
   });
 </script>
