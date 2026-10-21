@@ -9,6 +9,7 @@ const SITE = 'https://djordjemilenkovic.com';
 export default defineConfig({
   site: SITE,
   trailingSlash: 'always',
+  build: { inlineStylesheets: 'always' },
   integrations: [
     sitemap({
       filter: (page) => new URL(page).pathname !== '/',

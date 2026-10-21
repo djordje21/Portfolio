@@ -26,9 +26,9 @@ const path = Astro.url.pathname;
   class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 border-b border-transparent"
 >
   <div class="container-x flex h-16 md:h-20 items-center justify-between gap-6">
-    <a href={home} class="group flex items-baseline gap-3" aria-label={t.hero.name}>
-      <span class="font-display text-2xl text-ice">ĐM</span>
-      <span class="hidden sm:inline text-[0.7rem] tracking-[0.22em] uppercase text-muted group-hover:text-snow transition-colors">
+    <a href={home} class="group flex items-baseline gap-3">
+      <span class="font-display text-2xl text-ice" aria-hidden="true">ĐM</span>
+      <span class="sr-only sm:not-sr-only text-[0.7rem] tracking-[0.22em] uppercase text-muted group-hover:text-snow transition-colors">
         {t.hero.name}
       </span>
     </a>
@@ -55,13 +55,12 @@ const path = Astro.url.pathname;
               hreflang={languages[l].htmlLang}
               lang={languages[l].htmlLang}
               aria-current={l === lang ? 'true' : undefined}
-              aria-label={languages[l].name}
               class:list={[
                 'py-2 px-0.5 transition-colors',
                 l === lang ? 'text-ice' : 'text-muted hover:text-snow',
               ]}
             >
-              {languages[l].label}
+              {languages[l].label}<span class="sr-only"> · {languages[l].name}</span>
             </a>
           </li>
         ))}

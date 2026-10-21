@@ -35,7 +35,8 @@ const f = c.form;
           <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.cvLabel}</dt>
           <dd class="mt-1"><a href={site.cv[lang]} download class="text-lg text-snow hover:text-ice transition-colors" data-cursor="PDF">{c.cvCta} ↓</a></dd>
         </div>
-        <div class="grid grid-cols-2 gap-6 py-5">
+      </dl>
+      <dl class="grid grid-cols-2 gap-6 py-5" data-reveal style="--reveal-delay:220ms">
           <div>
             <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.languagesLabel}</dt>
             <dd class="mt-1 text-snow/90">{c.languages}</dd>
@@ -44,7 +45,6 @@ const f = c.form;
             <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.locationLabel}</dt>
             <dd class="mt-1 text-snow/90">{c.location}</dd>
           </div>
-        </div>
       </dl>
     </div>
 

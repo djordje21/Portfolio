@@ -37,7 +37,7 @@ const i = t.intro;
       </div>
       <div class="ticket-edge absolute -bottom-2 inset-x-0 h-2 bg-snow"></div>
     </div>
-    <p class="intro-service absolute font-display italic text-[clamp(4rem,16vw,13rem)] text-snow opacity-0">{i.service}</p>
+    <p class="intro-service absolute will-change-transform font-display italic text-[clamp(4rem,16vw,13rem)] text-snow opacity-0">{i.service}</p>
   </div>
 
   <button
@@ -102,8 +102,8 @@ const i = t.intro;
       .addLabel('out', '+=0.35')
       .to('.intro-ticket', { y: '-120vh', rotate: -6, duration: 0.8, ease: 'power3.in' }, 'out')
       .to('.intro-rail, .intro-glow', { opacity: 0, duration: 0.4 }, '<0.2')
-      .fromTo('.intro-service', { opacity: 0, scale: 0.92, letterSpacing: '0.2em' }, { opacity: 1, scale: 1, letterSpacing: '0em', duration: 0.9, ease: 'expo.out' }, '-=0.35')
-      .to('.intro-service', { opacity: 0, scale: 1.08, filter: 'blur(8px)', duration: 0.5, ease: 'power2.in' }, '+=0.15')
+      .fromTo('.intro-service', { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.9, ease: 'expo.out' }, '-=0.35')
+      .to('.intro-service', { opacity: 0, scale: 1.08, duration: 0.5, ease: 'power2.in' }, '+=0.15')
       .to('.intro-top', { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '-=0.2')
       .to('.intro-bottom', { yPercent: 100, duration: 1, ease: 'expo.inOut' }, '<')
       .to('.intro-skip', { opacity: 0, duration: 0.3 }, '<')

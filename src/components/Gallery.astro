@@ -45,12 +45,12 @@ const photos = await Promise.all(
           >
             <Image
               src={p.src}
-              alt={p.caption}
+              alt=""
               widths={[400, 700, 1000]}
               sizes="(min-width: 1024px) 26rem, (min-width: 640px) 45vw, 100vw"
               class="block w-full h-auto transition-transform duration-700 ease-[var(--ease-out-soft)] group-hover:scale-[1.04]"
             />
-            <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent px-4 pb-4 pt-12 text-sm leading-snug text-snow opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+            <span aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent px-4 pb-4 pt-12 text-sm leading-snug text-snow opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
               {p.caption}
             </span>
           </button>

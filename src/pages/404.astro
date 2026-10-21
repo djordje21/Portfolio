@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { useTranslations } from '../i18n/utils';
+
+// Jedna 404 stranica za sva tri jezika (Netlify je prikazuje za svaku nepostojeću adresu).
+const t = useTranslations('en');
+const lines = [
+  { lang: 'sr-Latn', href: '/sr/', title: 'Ovaj tanjir nije na meniju.', cta: 'Nazad na početnu' },
+  { lang: 'en', href: '/en/', title: 'This plate is not on the menu.', cta: 'Back to home' },
+  { lang: 'ru', href: '/ru/', title: 'Этого блюда нет в меню.', cta: 'На главную' },
+];
+---
+<Base lang="en" title="404 · Đorđe Milenković" description={t.meta.description}>
+  <main id="main" class="min-h-dvh grid place-items-center px-5 py-24">
+    <div class="w-full max-w-2xl">
+      <h1 class="font-display text-[clamp(6rem,20vw,11rem)] leading-none text-gradient">404</h1>
+      <ul class="mt-10 border-t border-line">
+        {lines.map((l) => (
+          <li lang={l.lang} class="flex flex-col gap-2 border-b border-line py-6 sm:flex-row sm:items-baseline sm:justify-between">
+            <span class="font-display text-2xl md:text-3xl">{l.title}</span>
+            <a href={l.href} class="text-sm tracking-[0.16em] uppercase text-ice hover:text-snow transition-colors">{l.cta} →</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Base>

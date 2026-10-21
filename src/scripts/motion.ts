@@ -29,7 +29,9 @@ if (!reduce) {
 function splitWords(el: HTMLElement) {
   if (el.dataset.splitDone) return;
   el.dataset.splitDone = '1';
-  el.setAttribute('aria-label', el.textContent?.trim() ?? '');
+  const label = document.createElement('span');
+  label.className = 'sr-only';
+  label.textContent = el.textContent?.trim() ?? '';
   const walk = (node: Node) => {
     for (const child of Array.from(node.childNodes)) {
       if (child.nodeType === Node.TEXT_NODE) {
@@ -54,6 +56,7 @@ function splitWords(el: HTMLElement) {
     }
   };
   walk(el);
+  el.prepend(label);
 }
 
 if (!reduce) {
@@ -90,6 +93,7 @@ if (!reduce) {
       trigger: track,
       start: 'top bottom',
       end: 'bottom top',
+      onToggle: (self) => (self.isActive ? loop.resume() : loop.pause()),
       onUpdate: (self) => {
         const v = gsap.utils.clamp(-6, 6, self.getVelocity() / 300);
         gsap.to(loop, { timeScale: v < 0 ? -1 + v : 1 + v, duration: 0.3, overwrite: true });
