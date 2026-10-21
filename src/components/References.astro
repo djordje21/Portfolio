@@ -1,0 +1,41 @@
+---
+import type { Dict } from '../i18n/utils';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const r = t.references;
+---
+<!-- Traka referenci: nazivi ispisani slovima (bez tuđih logotipa) -->
+<section class="relative border-b border-line py-10 md:py-12" aria-labelledby="refs-title">
+  <div class="container-x">
+    <h2 id="refs-title" class="eyebrow text-center !font-sans !text-[0.72rem]" data-reveal>{r.label}</h2>
+  </div>
+  <div class="refs mt-7 overflow-hidden" data-reveal>
+    <ul class="refs-track flex w-max items-center">
+      {[0, 1].map((copy) =>
+        r.names.map((n) => (
+          <li class="flex items-center" aria-hidden={copy === 1 ? 'true' : undefined}>
+            <span class="px-7 md:px-10 font-display text-2xl md:text-3xl whitespace-nowrap text-snow/70 transition-colors hover:text-snow">{n}</span>
+            <span aria-hidden="true" class="h-1 w-1 rounded-full bg-ice/60"></span>
+          </li>
+        ))
+      )}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .refs {
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+  .refs-track { animation: refs-scroll 45s linear infinite; }
+  .refs:hover .refs-track { animation-play-state: paused; }
+  @keyframes refs-scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .refs-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; row-gap: 0.75rem; }
+    .refs-track > li[aria-hidden='true'] { display: none; }
+    .refs { mask-image: none; }
+  }
+</style>

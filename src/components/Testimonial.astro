@@ -1,0 +1,46 @@
+---
+import type { Dict } from '../i18n/utils';
+import { site } from '../site.config';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const q = t.testimonial;
+// U pregledu (PREVIEW_ALL=true) prikazuje se i pre dozvole, da može da se vidi kako izgleda.
+const show = site.showTestimonial || import.meta.env.PREVIEW_ALL === 'true';
+---
+{show && (
+  <section class="section relative border-t border-line" aria-labelledby="testimonial-title">
+    <div class="container-x grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-8">
+        <p id="testimonial-title" class="eyebrow" data-reveal>{q.eyebrow}</p>
+        <figure class="mt-8">
+          <span aria-hidden="true" class="block font-display text-8xl leading-none text-ice/40">“</span>
+          <blockquote lang="en" class="-mt-6">
+            <p class="font-display text-3xl md:text-[2.6rem] leading-[1.25] text-snow" data-reveal>{q.quote}</p>
+          </blockquote>
+          {q.translation && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted" data-reveal>{q.translation}</p>}
+          <figcaption class="mt-8 flex items-center gap-4" data-reveal>
+            <span aria-hidden="true" class="h-px w-10 bg-ice"></span>
+            <span>
+              <span class="block text-snow">{q.author}</span>
+              <span class="block text-sm text-muted">{q.role} · {q.place}</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+      <aside class="lg:col-span-4 self-end" data-reveal>
+        <p class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{q.strengthsLabel}</p>
+        <ul class="mt-4 border-t border-line">
+          {q.strengths.map((s) => (
+            <li class="flex gap-4 border-b border-line py-4 text-snow/90">
+              <span aria-hidden="true" class="mt-[0.75em] h-0.5 w-4 shrink-0 rounded-full bg-ice"></span>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+)}

@@ -533,6 +533,34 @@
       "required": "required"
     }
   },
+  "references": {
+    "label": "Kitchens and brands I have worked with",
+    "names": [
+      "AC Hotels by Marriott",
+      "Grand Hotel Imperiale",
+      "Scenic",
+      "AmaWaterways",
+      "Amadeus River Cruises",
+      "Excellence River Cruises",
+      "Homa",
+      "Toro Latino Gastro Bar"
+    ]
+  },
+  "testimonial": {
+    "eyebrow": "Reference",
+    "translation": "",
+    "strengthsLabel": "Strengths noted",
+    "strengths": [
+      "Clear and effective communication",
+      "Precise and efficient standard setting",
+      "Patience and strong listening skills",
+      "Excellent team-building attitude"
+    ],
+    "quote": "Honestly, I find it difficult to identify any significant weaknesses on his part; on the contrary, I believe that his contribution will leave one of the most positive impressions compared to other colleagues who have held similar roles in the past.",
+    "author": "Massimo Bartolucci",
+    "role": "F&B Manager, Grand Hotel Imperiale 5*",
+    "place": "Forte dei Marmi, Italy"
+  },
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

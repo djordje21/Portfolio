@@ -533,6 +533,34 @@
       "required": "obavezno"
     }
   },
+  "references": {
+    "label": "Iskustvo iz kuhinja i brendova",
+    "names": [
+      "AC Hotels by Marriott",
+      "Grand Hotel Imperiale",
+      "Scenic",
+      "AmaWaterways",
+      "Amadeus River Cruises",
+      "Excellence River Cruises",
+      "Homa",
+      "Toro Latino Gastro Bar"
+    ]
+  },
+  "testimonial": {
+    "eyebrow": "Preporuka",
+    "translation": "„…njegov doprinos ostaviće jedan od najpozitivnijih utisaka u poređenju sa drugim kolegama koji su ranije bili na sličnim pozicijama.“",
+    "strengthsLabel": "Istaknute jake strane",
+    "strengths": [
+      "Jasna i efikasna komunikacija",
+      "Precizno postavljanje standarda",
+      "Strpljenje i umeće slušanja",
+      "Izgradnja tima"
+    ],
+    "quote": "Honestly, I find it difficult to identify any significant weaknesses on his part; on the contrary, I believe that his contribution will leave one of the most positive impressions compared to other colleagues who have held similar roles in the past.",
+    "author": "Massimo Bartolucci",
+    "role": "F&B Manager, Grand Hotel Imperiale 5*",
+    "place": "Forte dei Marmi, Italy"
+  },
   "footer": {
     "rights": "Sva prava zadržana.",
     "top": "Nazad na vrh"
