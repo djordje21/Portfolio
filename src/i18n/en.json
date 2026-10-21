@@ -497,12 +497,12 @@
     "prev": "Previous",
     "next": "Next",
     "items": {
+      "crudo": "Crudo with cream, edible flowers and a clear dressing [CHECK]",
+      "beef-cheek": "Braised beef cheek, mash, truffle and root vegetable crisps [CHECK]",
       "sea-bass": "Sea bass on fine noodles with broccoli and cherry tomatoes [CHECK]",
-      "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce [CHECK]",
+      "hummus-tart": "Hummus tart with fresh herbs and pepper [CHECK]",
       "duck": "Duck leg confit, pulled duck and purée [CHECK]",
-      "steak-board": "Steak board with roasted onion, potatoes and sauces [CHECK]",
-      "sturgeon": "Banquet sturgeon with lemongrass and redcurrants [CHECK]",
-      "skillets": "Mushrooms, crispy chicken and skewers to share [CHECK]"
+      "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce [CHECK]"
     }
   },
   "footer": {

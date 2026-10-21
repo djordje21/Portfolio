@@ -497,12 +497,12 @@
     "prev": "Prethodna",
     "next": "Sledeća",
     "items": {
+      "crudo": "Crudo sa kremom, jestivim cvećem i bistrim sosom [CHECK]",
+      "beef-cheek": "Dinstani juneći obraz, pire, tartuf i čips od korenastog povrća [CHECK]",
       "sea-bass": "Brancin na tankim rezancima sa brokolijem i čeri paradajzom [CHECK]",
-      "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom [CHECK]",
+      "hummus-tart": "Tart sa humusom, svežim začinskim biljem i paprikom [CHECK]",
       "duck": "Pačji batak konfi, čupana pačetina i pire [CHECK]",
-      "steak-board": "Daska sa steakovima, pečenim lukom, krompirom i sosovima [CHECK]",
-      "sturgeon": "Jesetra za banket, sa limunovom travom i ribizlama [CHECK]",
-      "skillets": "Pečurke, hrskava piletina i ražnjići za deljenje [CHECK]"
+      "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom [CHECK]"
     }
   },
   "footer": {
