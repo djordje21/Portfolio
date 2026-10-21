@@ -12,7 +12,7 @@
   },
   "nav": {
     "expertise": "Expertise",
-    "caseStudy": "Case study",
+    "preopening": "Pre-opening",
     "career": "Career",
     "philosophy": "Philosophy",
     "gallery": "Gallery",
@@ -172,138 +172,158 @@
     "Systems",
     "Service"
   ],
-  "caseStudy": {
-    "eyebrow": "Case study",
-    "title": "Pre-opening system",
-    "lead": "How an international hotel kitchen goes from an empty space to its first service, with a team that is ready on day one, not three months later.",
-    "project": "Upscale international hotel · 200+ rooms [CHECK]",
+  "preopening": {
+    "eyebrow": "Pre-opening",
+    "title": "How I open a kitchen",
+    "lead": "14 openings: restaurants, hotels and river cruise ships. Each one is different, but the flow is the same: from concept to a stable service, with a team that is ready on day one.",
     "meta": [
       {
-        "k": "Role",
-        "v": "Executive Chef"
+        "k": "Openings",
+        "v": "14 pre-openings"
       },
       {
-        "k": "Scope",
-        "v": "Kitchen and F&B, linked to every department"
+        "k": "Formats",
+        "v": "Restaurants, hotels and river cruise ships"
       },
       {
-        "k": "Status",
-        "v": "Final pre-opening phase"
+        "k": "Typical lead time",
+        "v": "4–6 months before opening [CHECK]"
       }
     ],
-    "readMore": "Read the full case study",
+    "readMore": "See the full process",
     "back": "Back to home",
-    "ganttTitle": "Pre-opening phases",
+    "ganttTitle": "Pre-opening flow",
     "ganttAxis": "weeks to opening",
     "opening": "Opening",
-    "ganttNote": "Illustrative view of the phases, with no confidential data.",
-    "challengeTitle": "Challenge",
-    "challenge": [
-      "The hotel opens a complete F&B operation at once. Most of the team comes from different kitchens and works to an international brand standard for the first time.",
-      "The goal is not for the team to “find its rhythm” after opening. Every position has to know its job on day one: the same plate, the same standard and the same food safety from the first guest."
-    ],
-    "approachTitle": "Approach",
-    "steps": [
-      {
-        "t": "Define what “ready” means",
-        "d": "A competency framework for every kitchen position: what each cook must know and be able to do, and how it is assessed."
-      },
-      {
-        "t": "Train day by day",
-        "d": "For every day before opening it is clear who learns what, with whom, and how progress is checked."
-      },
-      {
-        "t": "Connect every department",
-        "d": "A master plan that aligns the kitchen with service, stewarding, purchasing, engineering and housekeeping."
-      },
-      {
-        "t": "Test under pressure",
-        "d": "Readiness programmes: mock services and a soft opening with real pace and real mistakes, before real guests."
-      },
-      {
-        "t": "Certify the knowledge",
-        "d": "Staff certification: every team member is formally signed off for their position before opening."
-      }
-    ],
-    "deliverablesTitle": "What was built",
-    "deliverables": [
-      "Competency framework and assessment for every position",
-      "Day-by-day training plans per department",
-      "Cross-department master plan",
-      "Readiness programmes and mock services",
-      "Staff certification system"
-    ],
-    "outcomeTitle": "Outcome",
-    "outcome": "The project is in its final phase. Results from the opening will be added here. [CHECK]",
-    "cta": "Have an opening ahead? Let’s talk.",
-    "pageTitle": "Pre-opening system — case study · Đorđe Milenković",
-    "pageDescription": "How a complete pre-opening system was built for an international hotel kitchen: competencies, day-by-day training, master plan, mock services and certification.",
+    "ganttNote": "A typical flow. Phase length depends on the size and format of the venue.",
+    "phasesTitle": "What happens in each phase",
     "phases": [
       {
-        "id": "recruit",
-        "domain": "people",
-        "start": -16,
-        "end": -8,
-        "label": "Recruitment and onboarding"
+        "id": "concept",
+        "domain": "craft",
+        "start": -20,
+        "end": -14,
+        "label": "Concept and menu",
+        "points": [
+          "Kitchen concept aligned with the venue and its guests",
+          "Menu, recipes and costing: food cost is known from day one",
+          "Menu engineering before the first pan is bought"
+        ]
       },
       {
-        "id": "framework",
+        "id": "kitchen",
         "domain": "preopening",
-        "start": -15,
-        "end": -11,
-        "label": "Competency framework per position"
+        "start": -18,
+        "end": -6,
+        "label": "Kitchen and equipment",
+        "points": [
+          "Workflow: receiving, storage, prep, service and dishwashing",
+          "Equipment specification, from heavy equipment to smallwares",
+          "Tracking delivery and installation with contractors and technicians"
+        ]
+      },
+      {
+        "id": "team",
+        "domain": "people",
+        "start": -14,
+        "end": -6,
+        "label": "Team and organisation",
+        "points": [
+          "Org chart and a job description for every position",
+          "Recruitment and selection",
+          "Shift planning and labour cost plan"
+        ]
       },
       {
         "id": "suppliers",
         "domain": "suppliers",
         "start": -12,
         "end": -2,
-        "label": "Suppliers and opening order"
+        "label": "Suppliers and purchasing",
+        "points": [
+          "Selecting and contracting suppliers for food and equipment",
+          "Product specifications, prices and delivery terms",
+          "Opening order and stock plan"
+        ]
       },
       {
-        "id": "foundation",
+        "id": "standards",
         "domain": "safety",
-        "start": -10,
-        "end": -6,
-        "label": "Foundation training: standards and HACCP"
+        "start": -12,
+        "end": -4,
+        "label": "Standards and systems",
+        "points": [
+          "Standard recipes and plate photos",
+          "Operating procedures and HACCP plan",
+          "Systems for ordering, inventory and cost control"
+        ]
       },
       {
-        "id": "position",
-        "domain": "craft",
-        "start": -8,
-        "end": -1,
-        "label": "Position training, day by day"
-      },
-      {
-        "id": "crossdept",
-        "domain": "ops",
+        "id": "training",
+        "domain": "people",
         "start": -6,
-        "end": 0,
-        "label": "Cross-department master plan and rehearsals"
+        "end": -1,
+        "label": "Training and competencies",
+        "points": [
+          "Competency framework for every position",
+          "Day-by-day training plan",
+          "Assessment and certification before opening"
+        ]
       },
       {
-        "id": "mock",
-        "domain": "craft",
+        "id": "rehearsals",
+        "domain": "ops",
         "start": -3,
         "end": 0,
-        "label": "Mock services and soft opening"
+        "label": "Rehearsals and soft opening",
+        "points": [
+          "Master plan and rehearsals with service, stewarding, purchasing and engineering",
+          "Mock services at real pace",
+          "Soft opening and fixes before the official opening"
+        ]
       },
       {
-        "id": "cert",
-        "domain": "people",
-        "start": -2,
-        "end": 0,
-        "label": "Staff certification"
-      },
-      {
-        "id": "review",
-        "domain": "ops",
+        "id": "stabilise",
+        "domain": "craft",
         "start": 0,
         "end": 4,
-        "label": "Post-opening review"
+        "label": "Stabilisation",
+        "points": [
+          "Tracking food cost, waste and ticket times",
+          "Feedback from guests and the team",
+          "Refining the menu and processes in the first weeks"
+        ]
       }
     ],
-    "projectLabel": "Project"
+    "formatsTitle": "One system, different formats",
+    "formats": [
+      {
+        "t": "Restaurant",
+        "d": "One concept and a shorter cycle. The focus is on the menu, the team and the first weeks of service."
+      },
+      {
+        "t": "Hotel",
+        "d": "Several outlets at once: restaurant, bar, banqueting, room service and staff dining, aligned with every department."
+      },
+      {
+        "t": "River cruise ship",
+        "d": "Limited space, sourcing port by port and the whole team on board from the first day of the season."
+      }
+    ],
+    "deliverablesTitle": "What I build in every project",
+    "deliverables": [
+      "Concept, menu and costing",
+      "Kitchen layout and equipment list",
+      "Supplier network and purchasing plan",
+      "Org chart and job descriptions",
+      "Standard recipes and HACCP plan",
+      "Day-by-day training plans and certification",
+      "Cross-department master plan",
+      "Mock service and soft opening plan"
+    ],
+    "cta": "Have an opening ahead? Let’s talk.",
+    "pageTitle": "Pre-opening process · Đorđe Milenković",
+    "pageDescription": "How Đorđe Milenković opens a kitchen: concept and menu, equipment, team, suppliers, standards, training, mock services and stabilisation. 14 pre-openings of restaurants, hotels and river cruise ships."
   },
   "footer": {
     "rights": "All rights reserved.",

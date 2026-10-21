@@ -7,21 +7,17 @@ interface Props {
   t: Dict;
 }
 const { lang, t } = Astro.props;
-const c = t.caseStudy;
+const c = t.preopening;
 ---
-<section id="case-study" class="section relative border-t border-line" aria-labelledby="case-title">
+<section id="pre-opening" class="section relative border-t border-line" aria-labelledby="preopening-title">
   <div class="container-x">
     <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
       <div class="lg:col-span-7">
         <p class="eyebrow" data-reveal>{c.eyebrow}</p>
-        <h2 id="case-title" class="mt-5 text-5xl md:text-7xl" data-split>{c.title}</h2>
+        <h2 id="preopening-title" class="mt-5 text-5xl md:text-7xl" data-split>{c.title}</h2>
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{c.lead}</p>
       </div>
       <dl class="lg:col-span-5 grid gap-px bg-line border border-line self-end" data-reveal style="--reveal-delay:200ms">
-        <div class="bg-navy-2 px-5 py-4">
-          <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.projectLabel}</dt>
-          <dd class="mt-1 text-snow/90">{c.project}</dd>
-        </div>
         {c.meta.map((m) => (
           <div class="bg-navy-2 px-5 py-4 flex items-baseline justify-between gap-6">
             <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{m.k}</dt>
@@ -36,7 +32,7 @@ const c = t.caseStudy;
     </div>
 
     <div class="mt-10" data-reveal>
-      <a href={`/${lang}/case-study/pre-opening/`} class="btn btn-primary" data-magnetic>{c.readMore} →</a>
+      <a href={`/${lang}/pre-opening/`} class="btn btn-primary" data-magnetic>{c.readMore} →</a>
     </div>
   </div>
 </section>

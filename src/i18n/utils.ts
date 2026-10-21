@@ -28,7 +28,7 @@ export function useTranslations(lang: Lang): Dict {
   return stripCheck(dictionaries[lang] as Dict);
 }
 
-/** Putanja ka istoj stranici na drugom jeziku: /en/case-study/ -> /sr/case-study/ */
+/** Putanja ka istoj stranici na drugom jeziku: /en/pre-opening/ -> /sr/pre-opening/ */
 export function localizePath(path: string, lang: Lang): string {
   const parts = path.split('/').filter(Boolean);
   if (parts.length && langs.includes(parts[0] as Lang)) parts.shift();

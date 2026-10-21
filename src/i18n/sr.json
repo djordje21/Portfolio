@@ -12,7 +12,7 @@
   },
   "nav": {
     "expertise": "Ekspertiza",
-    "caseStudy": "Studija slučaja",
+    "preopening": "Pre-opening",
     "career": "Karijera",
     "philosophy": "Filozofija",
     "gallery": "Galerija",
@@ -172,138 +172,158 @@
     "Sistemi",
     "Servis"
   ],
-  "caseStudy": {
-    "eyebrow": "Studija slučaja",
-    "title": "Pre-opening sistem",
-    "lead": "Kako se kuhinja međunarodnog hotela dovodi od praznog prostora do prvog servisa: sa timom koji je spreman prvog dana, a ne posle tri meseca.",
-    "project": "Međunarodni hotel više kategorije · 200+ soba [CHECK]",
+  "preopening": {
+    "eyebrow": "Pre-opening",
+    "title": "Kako otvaram kuhinju",
+    "lead": "14 otvaranja: restorani, hoteli i rečni kruzeri. Svako je drugačije, ali tok je isti: od koncepta do stabilnog servisa, sa timom koji je spreman prvog dana.",
     "meta": [
       {
-        "k": "Uloga",
-        "v": "Executive Chef"
+        "k": "Otvaranja",
+        "v": "14 pre-openinga"
       },
       {
-        "k": "Obim",
-        "v": "Kuhinja i F&B, sa vezama ka svim departmanima"
+        "k": "Formati",
+        "v": "Restorani, hoteli i rečni kruzeri"
       },
       {
-        "k": "Status",
-        "v": "Završna faza pre-openinga"
+        "k": "Tipično trajanje",
+        "v": "4–6 meseci pre otvaranja [CHECK]"
       }
     ],
-    "readMore": "Pročitaj celu studiju",
+    "readMore": "Pogledaj ceo proces",
     "back": "Nazad na početnu",
-    "ganttTitle": "Faze pre-openinga",
+    "ganttTitle": "Tok pre-openinga",
     "ganttAxis": "nedelje do otvaranja",
     "opening": "Otvaranje",
-    "ganttNote": "Ilustrativan prikaz faza, bez poverljivih podataka.",
-    "challengeTitle": "Izazov",
-    "challenge": [
-      "Hotel otvara kompletnu F&B operaciju odjednom. Većina tima dolazi iz različitih kuhinja i prvi put radi po standardima međunarodnog brenda.",
-      "Cilj nije da tim „uhvati ritam“ posle otvaranja, nego da svaka pozicija zna svoj posao prvog dana: isti tanjir, isti standard i ista bezbednost hrane, od prvog gosta."
-    ],
-    "approachTitle": "Pristup",
-    "steps": [
-      {
-        "t": "Definisati šta znači „spreman“",
-        "d": "Okvir kompetencija za svaku poziciju u kuhinji: šta kuvar mora da zna i ume, i kako se to proverava."
-      },
-      {
-        "t": "Plan obuke dan po dan",
-        "d": "Za svaki dan pre otvaranja tačno je određeno ko šta uči, sa kim i kako se proverava napredak."
-      },
-      {
-        "t": "Povezati sve departmane",
-        "d": "Master plan koji usklađuje kuhinju sa uslugom, stewardingom, nabavkom, tehničkom službom i housekeepingom."
-      },
-      {
-        "t": "Proveriti pod pritiskom",
-        "d": "Programi spremnosti: probni servisi i soft opening, sa pravim tempom i pravim greškama, pre pravih gostiju."
-      },
-      {
-        "t": "Potvrditi znanje",
-        "d": "Sertifikacija: svaki član tima je zvanično potvrđen za svoju poziciju pre otvaranja."
-      }
-    ],
-    "deliverablesTitle": "Šta je napravljeno",
-    "deliverables": [
-      "Okvir kompetencija i procena za svaku poziciju",
-      "Planovi obuke dan po dan, po departmanu",
-      "Master plan između departmana",
-      "Programi spremnosti i probni servisi",
-      "Sistem sertifikacije osoblja"
-    ],
-    "outcomeTitle": "Ishod",
-    "outcome": "Projekat je u završnoj fazi. Rezultati sa otvaranja biće dodati ovde. [CHECK]",
-    "cta": "Imate otvaranje pred sobom? Hajde da razgovaramo.",
-    "pageTitle": "Pre-opening sistem — studija slučaja · Đorđe Milenković",
-    "pageDescription": "Kako je postavljen kompletan pre-opening sistem za kuhinju međunarodnog hotela: kompetencije, obuka dan po dan, master plan, probni servisi i sertifikacija.",
+    "ganttNote": "Tipičan tok. Trajanje faza zavisi od veličine i formata objekta.",
+    "phasesTitle": "Šta se dešava u svakoj fazi",
     "phases": [
       {
-        "id": "recruit",
-        "domain": "people",
-        "start": -16,
-        "end": -8,
-        "label": "Regrutacija i onboarding"
+        "id": "concept",
+        "domain": "craft",
+        "start": -20,
+        "end": -14,
+        "label": "Koncept i meni",
+        "points": [
+          "Koncept kuhinje usklađen sa konceptom objekta i gostom",
+          "Meni, recepture i kalkulacije: food cost je poznat od prvog dana",
+          "Menu engineering pre nego što se kupi prva šerpa"
+        ]
       },
       {
-        "id": "framework",
+        "id": "kitchen",
         "domain": "preopening",
-        "start": -15,
-        "end": -11,
-        "label": "Okvir kompetencija po poziciji"
+        "start": -18,
+        "end": -6,
+        "label": "Kuhinja i oprema",
+        "points": [
+          "Tok rada: prijem, skladištenje, priprema, servis i pranje",
+          "Specifikacija opreme, od teške opreme do sitnog inventara",
+          "Praćenje isporuke i montaže sa izvođačima i serviserima"
+        ]
+      },
+      {
+        "id": "team",
+        "domain": "people",
+        "start": -14,
+        "end": -6,
+        "label": "Tim i organizacija",
+        "points": [
+          "Organizaciona šema i opis posla za svaku poziciju",
+          "Regrutacija i selekcija",
+          "Raspored smena i plan troškova rada"
+        ]
       },
       {
         "id": "suppliers",
         "domain": "suppliers",
         "start": -12,
         "end": -2,
-        "label": "Dobavljači i prva narudžbina"
+        "label": "Dobavljači i nabavka",
+        "points": [
+          "Izbor i ugovaranje dobavljača za namirnice i opremu",
+          "Specifikacije proizvoda, cene i uslovi isporuke",
+          "Prva narudžbina i plan zaliha za otvaranje"
+        ]
       },
       {
-        "id": "foundation",
+        "id": "standards",
         "domain": "safety",
-        "start": -10,
-        "end": -6,
-        "label": "Osnovna obuka: standardi i HACCP"
+        "start": -12,
+        "end": -4,
+        "label": "Standardi i sistemi",
+        "points": [
+          "Standardne recepture i fotografije tanjira",
+          "Radne procedure i HACCP plan",
+          "Sistemi za naručivanje, inventar i kontrolu troškova"
+        ]
       },
       {
-        "id": "position",
-        "domain": "craft",
-        "start": -8,
-        "end": -1,
-        "label": "Obuka po pozicijama, dan po dan"
-      },
-      {
-        "id": "crossdept",
-        "domain": "ops",
+        "id": "training",
+        "domain": "people",
         "start": -6,
-        "end": 0,
-        "label": "Master plan i probe između departmana"
+        "end": -1,
+        "label": "Obuka i kompetencije",
+        "points": [
+          "Okvir kompetencija za svaku poziciju",
+          "Plan obuke dan po dan",
+          "Procena i sertifikacija pre otvaranja"
+        ]
       },
       {
-        "id": "mock",
-        "domain": "craft",
+        "id": "rehearsals",
+        "domain": "ops",
         "start": -3,
         "end": 0,
-        "label": "Probni servisi i soft opening"
+        "label": "Probe i soft opening",
+        "points": [
+          "Master plan i probe sa uslugom, stewardingom, nabavkom i tehničkom službom",
+          "Probni servisi u pravom tempu",
+          "Soft opening i ispravke pre zvaničnog otvaranja"
+        ]
       },
       {
-        "id": "cert",
-        "domain": "people",
-        "start": -2,
-        "end": 0,
-        "label": "Sertifikacija osoblja"
-      },
-      {
-        "id": "review",
-        "domain": "ops",
+        "id": "stabilise",
+        "domain": "craft",
         "start": 0,
         "end": 4,
-        "label": "Analiza posle otvaranja"
+        "label": "Stabilizacija",
+        "points": [
+          "Praćenje food costa, otpada i vremena izlaska tanjira",
+          "Povratne informacije gostiju i tima",
+          "Doterivanje menija i procesa u prvim nedeljama"
+        ]
       }
     ],
-    "projectLabel": "Projekat"
+    "formatsTitle": "Isti sistem, različiti formati",
+    "formats": [
+      {
+        "t": "Restoran",
+        "d": "Jedan koncept i kraći ciklus. Fokus je na meniju, timu i prvim nedeljama servisa."
+      },
+      {
+        "t": "Hotel",
+        "d": "Više outleta odjednom: restoran, bar, banket, room service i ishrana osoblja, usklađeni sa svim departmanima."
+      },
+      {
+        "t": "Rečni kruzer",
+        "d": "Ograničen prostor, nabavka po lukama i ceo tim na brodu od prvog dana sezone."
+      }
+    ],
+    "deliverablesTitle": "Šta pravim u svakom projektu",
+    "deliverables": [
+      "Koncept, meni i kalkulacije",
+      "Projekat kuhinje i lista opreme",
+      "Mreža dobavljača i plan nabavke",
+      "Organizaciona šema i opisi poslova",
+      "Standardne recepture i HACCP plan",
+      "Planovi obuke dan po dan i sertifikacija",
+      "Master plan između departmana",
+      "Plan probnih servisa i soft openinga"
+    ],
+    "cta": "Imate otvaranje pred sobom? Hajde da razgovaramo.",
+    "pageTitle": "Pre-opening proces · Đorđe Milenković",
+    "pageDescription": "Kako Đorđe Milenković otvara kuhinju: koncept i meni, oprema, tim, dobavljači, standardi, obuka, probni servisi i stabilizacija. 14 pre-openinga restorana, hotela i rečnih kruzera."
   },
   "footer": {
     "rights": "Sva prava zadržana.",

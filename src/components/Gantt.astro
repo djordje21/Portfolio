@@ -7,14 +7,14 @@ interface Props {
   compact?: boolean;
 }
 const { t, compact = false } = Astro.props;
-const c = t.caseStudy;
+const c = t.preopening;
 
 // Vremenska osa: nedelje u odnosu na otvaranje (0)
-const FROM = -16;
+const FROM = -20;
 const TO = 4;
 const span = TO - FROM;
 const pos = (w: number) => ((w - FROM) / span) * 100;
-const ticks = [-16, -12, -8, -4, 0, 4];
+const ticks = [-20, -16, -12, -8, -4, 0, 4];
 const fmtWeek = (w: number) => (w > 0 ? `+${w}` : w === 0 ? '0' : `−${Math.abs(w)}`);
 ---
 <figure class="gantt" data-gantt>
