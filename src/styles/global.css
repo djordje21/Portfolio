@@ -1,33 +1,33 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/cormorant-garamond/wght.css';
-@import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+@import '@fontsource-variable/playfair-display/wght.css';
+@import '@fontsource-variable/playfair-display/wght-italic.css';
 @import '@fontsource-variable/inter/wght.css';
 
 /* ---------------------------------------------------------------
    Design tokens — sve boje sajta su ovde.
-   Ideja: porcelan, kuvarska bela, brušeni čelik, bakarni akcenat.
-   Tekst boje su proverene za WCAG AA na --color-bg i --color-surface.
+   Ideja: bela kuvarska bluza + teget kecelja. Pozadina je teget gradijent.
+   Tekst boje su proverene za WCAG AA na najsvetlijem delu pozadine.
 ---------------------------------------------------------------- */
 @theme {
-  --font-serif: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
 
-  --color-bg: #f5f4f0;         /* osnovna pozadina, porcelan */
-  --color-surface: #ffffff;    /* kartice, paneli */
-  --color-surface-2: #ebe8e1;  /* blago zatamnjene površine */
-  --color-line: #dcd8cf;       /* linije i ivice */
-  --color-fg: #1b1d20;         /* glavni tekst, grafit */
-  --color-muted: #5a5f66;      /* sporedni tekst */
-  --color-accent: #9b5426;     /* bakar — tekst, linkovi, akcenti */
-  --color-steel: #7d8590;      /* čelik — samo dekoracija */
+  --color-navy: #0a1628;       /* osnovna pozadina, ponoćno teget */
+  --color-navy-2: #0f1f3a;     /* povišene površine */
+  --color-navy-3: #16294a;     /* kartice */
+  --color-line: #263d63;       /* linije i ivice */
+  --color-snow: #f4f7fb;       /* glavni tekst, bela bluza */
+  --color-muted: #a6b5ca;      /* sporedni tekst */
+  --color-ice: #9fc3ef;        /* akcent za tekst i linkove, ledeno plava */
+  --color-ice-deep: #3f72c4;   /* akcent za površine i odsjaje, kobalt */
 
-  /* Knowledge Palette — boje "tonskih karata" */
-  --color-chip-copper: #b5683a;
-  --color-chip-green: #4d6a4b;
-  --color-chip-blue: #2f5b7a;
-  --color-chip-purple: #5d4a80;
-  --color-chip-charcoal: #33302d;
-  --color-chip-gold: #b8912f;
+  /* Knowledge Palette — tonska karta u nijansama plave */
+  --color-chip-1: #a9c2e4;
+  --color-chip-2: #7fa3d4;
+  --color-chip-3: #5683bf;
+  --color-chip-4: #3a66a6;
+  --color-chip-5: #264b82;
+  --color-chip-6: #183562;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -39,8 +39,14 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: var(--color-bg);
-    color: var(--color-fg);
+    background-color: var(--color-navy);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 88% -5%, rgba(63, 114, 196, 0.35), transparent 65%),
+      radial-gradient(ellipse 60% 50% at -10% 40%, rgba(31, 74, 140, 0.28), transparent 65%),
+      radial-gradient(ellipse 80% 60% at 60% 110%, rgba(40, 88, 160, 0.25), transparent 65%),
+      linear-gradient(180deg, #0a1628 0%, #0d1d38 45%, #0a1628 100%);
+    background-attachment: fixed;
+    color: var(--color-snow);
     font-family: var(--font-sans);
     font-feature-settings: 'ss01', 'cv11';
     -webkit-font-smoothing: antialiased;
@@ -49,15 +55,15 @@
   h1, h2, h3, .font-display {
     font-family: var(--font-serif);
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     line-height: 1.05;
   }
   ::selection {
-    background: var(--color-accent);
-    color: #fff;
+    background: var(--color-ice-deep);
+    color: var(--color-snow);
   }
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-ice);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -78,7 +84,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-ice);
     font-weight: 500;
   }
 
@@ -100,17 +106,17 @@
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
   .btn-primary {
-    background: var(--color-fg);
-    color: #fff;
+    background: var(--color-snow);
+    color: var(--color-navy);
   }
-  .btn-primary:hover { background: var(--color-accent); }
+  .btn-primary:hover { background: var(--color-ice); }
   .btn-ghost {
-    border-color: color-mix(in oklab, var(--color-fg) 30%, transparent);
-    color: var(--color-fg);
+    border-color: color-mix(in oklab, var(--color-snow) 35%, transparent);
+    color: var(--color-snow);
   }
   .btn-ghost:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    border-color: var(--color-ice);
+    color: var(--color-ice);
   }
 
   .grain::after {
@@ -118,7 +124,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.06;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
@@ -171,11 +177,11 @@ html.lenis, html.lenis body { height: auto; }
   border-radius: 9999px;
   translate: -50% -50%;
 }
-.cursor-dot { width: 6px; height: 6px; background: var(--color-accent); }
+.cursor-dot { width: 6px; height: 6px; background: var(--color-ice); }
 .cursor-ring {
   width: 38px;
   height: 38px;
-  border: 1px solid color-mix(in oklab, var(--color-accent) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-ice) 60%, transparent);
   display: grid;
   place-items: center;
   transition: width 0.35s var(--ease-out-soft), height 0.35s var(--ease-out-soft),
@@ -185,34 +191,26 @@ html.lenis, html.lenis body { height: auto; }
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--color-navy);
   opacity: 0;
   transition: opacity 0.2s;
 }
-.cursor-ring.is-hover { width: 64px; height: 64px; background: color-mix(in oklab, var(--color-accent) 10%, transparent); }
-.cursor-ring.has-label { width: 86px; height: 86px; background: var(--color-accent); border-color: var(--color-accent); }
+.cursor-ring.is-hover { width: 64px; height: 64px; background: color-mix(in oklab, var(--color-ice) 12%, transparent); }
+.cursor-ring.has-label { width: 86px; height: 86px; background: var(--color-ice); border-color: var(--color-ice); }
 .cursor-ring.has-label span { opacity: 1; }
 .cursor-ring.is-down { width: 30px; height: 30px; }
 
 /* ---------- Traka (marquee) ---------- */
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in oklab, var(--color-fg) 40%, transparent);
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--color-snow) 45%, transparent);
 }
 
-/* ---------- Precizna mreža (hero) — kao pločice u kuhinji / tehnički crtež ---------- */
-.precision-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--color-fg) 7%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--color-fg) 7%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 75%);
-}
-.precision-spot {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--color-accent) 45%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--color-accent) 45%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(circle 220px at var(--mx, -999px) var(--my, -999px), #000, transparent);
-  transition: opacity 0.4s;
+/* ---------- Tekst u gradijentu (bela → ledeno plava) ---------- */
+.text-gradient,
+.text-gradient .split-word {
+  background-image: linear-gradient(100deg, #f4f7fb 0%, #c9dcf5 45%, #8fb6ea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

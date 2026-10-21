@@ -65,7 +65,7 @@
       {
         "id": "craft",
         "code": "DM-01",
-        "colour": "Copper",
+        "colour": "Porcelain",
         "name": "Culinary craft",
         "summary": "Sixteen years of cooking across fine dining, grill, seafood and banquet — at volume and at detail.",
         "points": [
@@ -79,7 +79,7 @@
       {
         "id": "ops",
         "code": "DM-02",
-        "colour": "Green",
+        "colour": "Mist",
         "name": "Operations & cost control",
         "summary": "Kitchens that make sense on the plate and on the P&L.",
         "points": [
@@ -93,7 +93,7 @@
       {
         "id": "safety",
         "code": "DM-03",
-        "colour": "Blue",
+        "colour": "Sky",
         "name": "Food safety & HACCP",
         "summary": "Standards that hold on a busy Saturday, not just on audit day.",
         "points": [
@@ -107,7 +107,7 @@
       {
         "id": "people",
         "code": "DM-04",
-        "colour": "Purple",
+        "colour": "Cobalt",
         "name": "People & training",
         "summary": "More than 2,000 cooks trained, assessed and placed.",
         "points": [
@@ -121,7 +121,7 @@
       {
         "id": "preopening",
         "code": "DM-05",
-        "colour": "Charcoal",
+        "colour": "Navy",
         "name": "Pre-opening & project leadership",
         "summary": "From empty kitchen to first service — on schedule.",
         "points": [
@@ -135,7 +135,7 @@
       {
         "id": "languages",
         "code": "DM-06",
-        "colour": "Gold",
+        "colour": "Midnight",
         "name": "Languages",
         "summary": "I lead in the language the team thinks in.",
         "points": [

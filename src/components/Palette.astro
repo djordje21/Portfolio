@@ -10,13 +10,15 @@ const g = t.game;
 
 // Boja svake "tonske karte" — iste vrednosti su u global.css (@theme)
 const colours: Record<string, string> = {
-  craft: '#b5683a',
-  ops: '#4d6a4b',
-  safety: '#2f5b7a',
-  people: '#5d4a80',
-  preopening: '#33302d',
-  languages: '#b8912f',
+  craft: '#a9c2e4',
+  ops: '#7fa3d4',
+  safety: '#5683bf',
+  people: '#3a66a6',
+  preopening: '#264b82',
+  languages: '#183562',
 };
+// Svetle karte dobijaju tamna slova, tamne karte bela (kontrast)
+const lightChips = new Set(['craft', 'ops', 'safety']);
 
 // Pozicije "mrlja" na tanjiru (6 mesta u krugu)
 const slots = p.chips.map((_, i) => {
@@ -53,16 +55,16 @@ const slots = p.chips.map((_, i) => {
                 data-index={i}
                 data-colour={colours[c.id]}
                 data-cursor={g.cursor}
-                class="chip group relative flex flex-col text-left bg-surface select-none touch-manipulation ring-1 ring-line shadow-[0_1px_2px_rgba(27,29,32,.06)] transition-[translate,box-shadow,opacity] duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
+                class="chip group relative flex flex-col text-left bg-snow select-none touch-manipulation shadow-[0_1px_0_rgba(0,0,0,.4)] transition-[translate,box-shadow,opacity] duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
                 style={`--chip:${colours[c.id]}`}
               >
                 <span class="chip-swatch block aspect-[4/3] bg-[var(--chip)] relative overflow-hidden">
                   <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20"></span>
-                  <span aria-hidden="true" class="absolute top-2.5 left-2.5 md:top-3 md:left-3 text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] text-white/85 font-medium">{c.code}</span>
-                  <span class="chip-check absolute bottom-2 right-2 md:bottom-3 md:right-3 grid h-6 w-6 place-items-center rounded-full bg-surface text-fg text-xs opacity-0 scale-50 transition-all duration-500" aria-hidden="true">✓</span>
+                  <span aria-hidden="true" class:list={['absolute top-2.5 left-2.5 md:top-3 md:left-3 text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] font-medium', lightChips.has(c.id) ? 'text-navy/80' : 'text-white/85']}>{c.code}</span>
+                  <span class="chip-check absolute bottom-2 right-2 md:bottom-3 md:right-3 grid h-6 w-6 place-items-center rounded-full bg-snow text-navy text-xs opacity-0 scale-50 transition-all duration-500" aria-hidden="true">✓</span>
                 </span>
-                <span class="block flex-1 px-2.5 py-3 md:px-3 md:py-4 text-fg">
-                  <span class="block text-[0.58rem] md:text-[0.62rem] tracking-[0.18em] uppercase text-fg/60">{c.colour}</span>
+                <span class="block flex-1 px-2.5 py-3 md:px-3 md:py-4 text-navy">
+                  <span class="block text-[0.58rem] md:text-[0.62rem] tracking-[0.18em] uppercase text-navy/65">{c.colour}</span>
                   <span class="block mt-1 font-display text-base md:text-xl leading-tight font-semibold">{c.name}</span>
                   <span class="chip-plated sr-only">— {g.plated}</span>
                 </span>
@@ -71,7 +73,7 @@ const slots = p.chips.map((_, i) => {
             ))}
           </div>
           <p class="mt-8 text-xs tracking-[0.2em] uppercase text-muted flex items-center gap-3">
-            <span aria-hidden="true" class="inline-block h-px w-8 bg-accent"></span>
+            <span aria-hidden="true" class="inline-block h-px w-8 bg-ice"></span>
             <span class="hint-drag hidden">{g.hintDrag}</span>
             <span class="hint-tap">{g.hintTap}</span>
           </p>
@@ -85,21 +87,21 @@ const slots = p.chips.map((_, i) => {
               <defs>
                 <radialGradient id="plate-g" cx="45%" cy="40%" r="65%">
                   <stop offset="0%" stop-color="#ffffff" />
-                  <stop offset="75%" stop-color="#f7f6f3" />
-                  <stop offset="100%" stop-color="#e4e1da" />
+                  <stop offset="70%" stop-color="#eef2f7" />
+                  <stop offset="100%" stop-color="#c9d3e0" />
                 </radialGradient>
                 <radialGradient id="well-g" cx="50%" cy="45%" r="60%">
                   <stop offset="0%" stop-color="#ffffff" />
-                  <stop offset="100%" stop-color="#f1efea" />
+                  <stop offset="100%" stop-color="#eef2f8" />
                 </radialGradient>
                 <filter id="plate-shadow" x="-20%" y="-20%" width="140%" height="150%">
-                  <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#1b1d20" flood-opacity="0.14" />
+                  <feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity="0.65" />
                 </filter>
               </defs>
               <g class="plate-body">
-                <circle cx="200" cy="200" r="190" fill="url(#plate-g)" stroke="#dcd8cf" stroke-width="1" filter="url(#plate-shadow)" />
-                <circle cx="200" cy="200" r="142" fill="url(#well-g)" stroke="#e2ded6" stroke-width="1.5" />
-                <circle class="plate-ring" cx="200" cy="200" r="168" fill="none" stroke="#9b5426" stroke-width="1" stroke-dasharray="2 6" opacity="0.45" />
+                <circle cx="200" cy="200" r="190" fill="url(#plate-g)" filter="url(#plate-shadow)" />
+                <circle cx="200" cy="200" r="142" fill="url(#well-g)" stroke="#d5dde8" stroke-width="1.5" />
+                <circle class="plate-ring" cx="200" cy="200" r="168" fill="none" stroke="#3f72c4" stroke-width="1" stroke-dasharray="2 6" opacity="0.7" />
                 <g class="dabs">
                   {slots.map((s, i) => (
                     <g class="dab" data-slot={i} transform={`translate(${s.x} ${s.y}) rotate(${s.rot})`}>
@@ -112,30 +114,30 @@ const slots = p.chips.map((_, i) => {
                     </g>
                   ))}
                 </g>
-                <g class="plate-center" text-anchor="middle" fill="#1b1d20">
-                  <text class="plate-count" x="200" y="208" font-family="'Cormorant Garamond Variable', Georgia, serif" font-size="56" font-weight="500">0/6</text>
+                <g class="plate-center" text-anchor="middle" fill="#0a1628">
+                  <text class="plate-count" x="200" y="208" font-family="'Playfair Display Variable', Georgia, serif" font-size="56" font-weight="500">0/6</text>
                   <text class="plate-label" x="200" y="234" font-family="'Inter Variable', system-ui, sans-serif" font-size="10" letter-spacing="3">{g.stations.toUpperCase()}</text>
-                  <text class="plate-done" x="200" y="214" font-family="'Cormorant Garamond Variable', Georgia, serif" font-size="58" font-style="italic" font-weight="500" opacity="0">{g.doneTitle}</text>
+                  <text class="plate-done" x="200" y="214" font-family="'Playfair Display Variable', Georgia, serif" font-size="58" font-style="italic" font-weight="500" opacity="0">{g.doneTitle}</text>
                 </g>
               </g>
             </svg>
           </div>
 
           <div class="mt-6 flex items-center justify-center gap-6 text-[0.7rem] tracking-[0.2em] uppercase">
-            <button type="button" class="game-sound text-muted hover:text-fg transition-colors py-2" aria-pressed="true" data-on={g.soundOn} data-off={g.soundOff}>
+            <button type="button" class="game-sound text-muted hover:text-snow transition-colors py-2" aria-pressed="true" data-on={g.soundOn} data-off={g.soundOff}>
               ♪ <span>{g.soundOn}</span>
             </button>
-            <button type="button" class="game-reset text-muted hover:text-fg transition-colors py-2 invisible">↺ {g.reset}</button>
+            <button type="button" class="game-reset text-muted hover:text-snow transition-colors py-2 invisible">↺ {g.reset}</button>
           </div>
           <p class="game-status sr-only" aria-live="polite"></p>
         </div>
       </div>
 
       <!-- Završna poruka -->
-      <div class="game-done hidden mt-12 border border-accent/40 bg-gradient-to-r from-accent/5 via-surface to-surface p-8 md:p-10 md:flex items-center justify-between gap-8">
+      <div class="game-done hidden mt-12 border border-ice/40 bg-gradient-to-r from-ice-deep/20 via-navy-2 to-navy-2 p-8 md:p-10 md:flex items-center justify-between gap-8">
         <div>
-          <p class="font-display italic text-4xl md:text-5xl text-accent">{g.doneTitle}</p>
-          <p class="mt-3 text-lg text-fg/90 max-w-xl">{g.doneText}</p>
+          <p class="font-display italic text-4xl md:text-5xl text-ice">{g.doneTitle}</p>
+          <p class="mt-3 text-lg text-snow/90 max-w-xl">{g.doneText}</p>
         </div>
         <a href="#contact" class="btn btn-primary mt-6 md:mt-0 shrink-0" data-magnetic>{g.cta} →</a>
       </div>
@@ -149,7 +151,7 @@ const slots = p.chips.map((_, i) => {
             aria-labelledby={`chip-${c.id}`}
             tabindex="0"
             hidden={i !== 0}
-            class="panel relative grid gap-8 md:grid-cols-12 border border-line bg-surface p-6 md:p-12 overflow-hidden"
+            class="panel relative grid gap-8 md:grid-cols-12 border border-line bg-navy-2 p-6 md:p-12 overflow-hidden"
             style={`--chip:${colours[c.id]}`}
           >
             <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1.5 bg-[var(--chip)]"></span>
@@ -157,12 +159,12 @@ const slots = p.chips.map((_, i) => {
             <div class="md:col-span-5 relative">
               <p class="text-[0.7rem] tracking-[0.22em] uppercase text-muted">{c.code} · {c.colour}</p>
               <h3 class="mt-3 text-4xl md:text-5xl">{c.name}</h3>
-              <p class="mt-5 text-lg leading-relaxed text-fg/85">{c.summary}</p>
+              <p class="mt-5 text-lg leading-relaxed text-snow/85">{c.summary}</p>
             </div>
             <ul class="md:col-span-7 relative grid gap-px bg-line border border-line self-start">
               {c.points.map((pt) => (
-                <li class="panel-point bg-surface px-5 py-4 flex gap-4 text-[0.95rem] leading-relaxed text-fg/90">
-                  <span aria-hidden="true" class="mt-2.5 h-1.5 w-1.5 shrink-0 bg-[var(--chip)] ring-1 ring-fg/15"></span>
+                <li class="panel-point bg-navy-2 px-5 py-4 flex gap-4 text-[0.95rem] leading-relaxed text-snow/90">
+                  <span aria-hidden="true" class="mt-2.5 h-1.5 w-1.5 shrink-0 bg-[var(--chip)] ring-1 ring-snow/30"></span>
                   {pt}
                 </li>
               ))}
@@ -327,7 +329,7 @@ const slots = p.chips.map((_, i) => {
         gsap.fromTo(doneText, { opacity: 0, scale: 0.6, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.9, ease: 'elastic.out(1, 0.5)' });
         gsap.to(root.querySelector('.dabs'), { rotate: 360, duration: 2.4, ease: 'expo.inOut', svgOrigin: '200 200' });
         gsap.from(done, { opacity: 0, y: 30, duration: 0.9, ease: 'expo.out', delay: 0.3 });
-        const colours = tabs.map((t) => t.dataset.colour!).concat(['#9b5426', '#7d8590']);
+        const colours = tabs.map((t) => t.dataset.colour!).concat(['#f4f7fb', '#9fc3ef']);
         const cx = r.left - c.left + r.width / 2, cy = r.top - c.top + r.height / 2;
         sparks?.burst(cx, cy, 140, colours);
         setTimeout(() => sparks?.burst(cx - r.width * 0.3, cy - r.height * 0.2, 60, colours), 250);

@@ -9,7 +9,7 @@ const { lang, t } = Astro.props;
 const locale = languages[lang].htmlLang;
 const fmt = new Intl.NumberFormat(locale);
 ---
-<section id="numbers" class="relative border-y border-line bg-surface" aria-label={t.numbers.label}>
+<section id="numbers" class="relative border-y border-line bg-navy-2/60 backdrop-blur-sm" aria-label={t.numbers.label}>
   <dl class="container-x grid grid-cols-2 lg:grid-cols-4">
     {t.numbers.items.map((n, i) => (
       <div
@@ -23,8 +23,8 @@ const fmt = new Intl.NumberFormat(locale);
         style={`--reveal-delay:${i * 90}ms`}
       >
         <dt class="text-xs md:text-sm leading-snug text-muted max-w-[14rem]">{n.label}</dt>
-        <dd class="font-display text-5xl md:text-7xl text-fg [font-variant-numeric:lining-nums_tabular-nums]">
-          <span data-count={n.value} data-locale={locale}>{fmt.format(n.value)}</span><span class="text-accent">{n.suffix}</span>
+        <dd class="font-display text-5xl md:text-7xl text-snow [font-variant-numeric:lining-nums_tabular-nums]">
+          <span data-count={n.value} data-locale={locale}>{fmt.format(n.value)}</span><span class="text-ice">{n.suffix}</span>
         </dd>
       </div>
     ))}

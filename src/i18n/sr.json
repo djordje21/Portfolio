@@ -65,7 +65,7 @@
       {
         "id": "craft",
         "code": "DM-01",
-        "colour": "Bakar",
+        "colour": "Porcelan",
         "name": "Kulinarski zanat",
         "summary": "Šesnaest godina kuvanja: fine dining, roštilj, riba i banket. I u velikom obimu i do detalja.",
         "points": [
@@ -79,7 +79,7 @@
       {
         "id": "ops",
         "code": "DM-02",
-        "colour": "Zelena",
+        "colour": "Magla",
         "name": "Operacije i kontrola troškova",
         "summary": "Kuhinja koja ima smisla i na tanjiru i u bilansu.",
         "points": [
@@ -93,7 +93,7 @@
       {
         "id": "safety",
         "code": "DM-03",
-        "colour": "Plava",
+        "colour": "Nebo",
         "name": "Bezbednost hrane i HACCP",
         "summary": "Standardi koji drže i u subotu uveče, ne samo na dan inspekcije.",
         "points": [
@@ -107,7 +107,7 @@
       {
         "id": "people",
         "code": "DM-04",
-        "colour": "Ljubičasta",
+        "colour": "Kobalt",
         "name": "Ljudi i obuka",
         "summary": "Više od 2.000 kuvara obučenih, procenjenih i raspoređenih.",
         "points": [
@@ -121,7 +121,7 @@
       {
         "id": "preopening",
         "code": "DM-05",
-        "colour": "Ugalj",
+        "colour": "Teget",
         "name": "Pre-opening i vođenje projekata",
         "summary": "Od prazne kuhinje do prvog servisa, u roku.",
         "points": [
@@ -135,7 +135,7 @@
       {
         "id": "languages",
         "code": "DM-06",
-        "colour": "Zlatna",
+        "colour": "Ponoć",
         "name": "Jezici",
         "summary": "Vodim tim na jeziku na kom tim razmišlja.",
         "points": [
