@@ -183,7 +183,7 @@
       },
       {
         "k": "Tipično trajanje",
-        "v": "4–6 meseci pre otvaranja [CHECK]"
+        "v": "4–6 meseci pre otvaranja"
       }
     ],
     "readMore": "Pogledaj ceo proces",
@@ -498,11 +498,11 @@
     "next": "Sledeća",
     "items": {
       "crudo": "Crudo od brancina sa kremom, jestivim cvećem i bistrim sosom",
-      "beef-cheek": "Dinstani juneći obraz, pire, tartuf i čips od korenastog povrća [CHECK]",
-      "sea-bass": "Brancin na tankim rezancima sa brokolijem i čeri paradajzom [CHECK]",
-      "hummus-tart": "Tart sa humusom, svežim začinskim biljem i paprikom [CHECK]",
-      "duck": "Pačji batak konfi, čupana pačetina i pire [CHECK]",
-      "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom [CHECK]"
+      "beef-cheek": "Dinstani juneći obraz, pire, tartuf i čips od korenastog povrća",
+      "sea-bass": "Brancin na tankim rezancima sa brokolijem i čeri paradajzom",
+      "hummus-tart": "Tart sa humusom, svežim začinskim biljem i paprikom",
+      "duck": "Pačji batak konfi, čupana pačetina i pire",
+      "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom"
     }
   },
   "contact": {
