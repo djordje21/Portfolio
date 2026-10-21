@@ -79,7 +79,7 @@
         "points": [
           "Menu engineering i kalkulacija normativa",
           "Odgovornost za P&L, food cost i troškove rada",
-          "Nabavka i lanac snabdevanja, uključujući nabavku pod uvoznim ograničenjima",
+          "Kontrola zaliha i smanjenje otpada [CHECK]",
           "Vođenje više objekata: 4 koncepta i brigada od 25 ljudi istovremeno",
           "Osnovao i prodao profitabilan biznis za dostavu hrane"
         ]
@@ -121,13 +121,16 @@
         ]
       },
       {
-        "id": "languages",
-        "name": "Jezici",
-        "summary": "Vodim tim na jeziku na kom tim razmišlja.",
+        "id": "suppliers",
+        "name": "Mreža dobavljača",
+        "glyph": "njiva → pass",
+        "summary": "Prava namirnica, po pravoj ceni, na vreme. Na svakom servisu.",
         "points": [
-          "Srpski: maternji",
-          "Engleski: tečno, svakodnevni radni jezik",
-          "Ruski: tečno, godine rada u Rusiji i na tržištu ZND"
+          "Građenje i vođenje mreže dobavljača: lokalni proizvođači, veletrgovci i uvoznici specijaliteta [CHECK]",
+          "Izbor dobavljača, specifikacije proizvoda i pregovori o cenama",
+          "Kontrola kvaliteta pri prijemu robe: hladni lanac, sledljivost i HACCP",
+          "Nabavka pod uvoznim ograničenjima, uključujući sopstvenu farmu za sigurnost snabdevanja [CHECK]",
+          "Sezonska i lokalna nabavka uklopljena u meni"
         ]
       }
     ]

@@ -79,7 +79,7 @@
         "points": [
           "Menu engineering and recipe costing",
           "P&L ownership, food cost and labour control",
-          "Procurement and supply chain — including sourcing under import restrictions",
+          "Inventory control and waste reduction [CHECK]",
           "Multi-unit management: 4 concepts and a 25-person brigade at once",
           "Built and sold a food-delivery business as a profitable going concern"
         ]
@@ -121,13 +121,16 @@
         ]
       },
       {
-        "id": "languages",
-        "name": "Languages",
-        "summary": "I lead in the language the team thinks in.",
+        "id": "suppliers",
+        "name": "Supplier network",
+        "glyph": "farm → pass",
+        "summary": "The right product, at the right price, on time — every single service.",
         "points": [
-          "Serbian — native",
-          "English — fluent, daily working language",
-          "Russian — fluent, years of work in Russia and the CIS market"
+          "Building and managing a supplier network: local producers, wholesalers and specialty importers [CHECK]",
+          "Supplier selection, product specifications and price negotiation",
+          "Quality control on delivery: cold chain, traceability and HACCP compliance",
+          "Sourcing under import restrictions, including an on-site farm for supply resilience [CHECK]",
+          "Seasonal and local sourcing planned into the menu"
         ]
       }
     ]

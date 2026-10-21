@@ -14,7 +14,6 @@ import opsImg from '../assets/images/palette/ops.jpg';
 import safetyImg from '../assets/images/palette/safety.jpg';
 import peopleImg from '../assets/images/palette/people.jpg';
 import preopeningImg from '../assets/images/palette/preopening.jpg';
-import languagesImg from '../assets/images/palette/languages.jpg';
 import serviceImg from '../assets/images/portrait-kitchen.jpg';
 
 // Boja svake karte — tonovi koji klasično idu uz teget
@@ -24,7 +23,7 @@ const colours: Record<string, string> = {
   safety: '#5f80aa', // škriljac
   people: '#7d2f42', // bordo
   preopening: '#c4a27a', // kamel
-  languages: '#2f7479', // petrolej
+  suppliers: '#2f7479', // petrolej
 };
 // Svetle boje dobijaju tamna slova, tamne bela (kontrast)
 const lightChips = new Set(['ops', 'preopening']);
@@ -37,11 +36,7 @@ const photos: Record<string, ImageMetadata | undefined> = {
   safety: safetyImg,
   people: peopleImg,
   preopening: preopeningImg,
-  languages: languagesImg,
-};
-const glyphs: Record<string, string> = {
-  preopening: 'D–1',
-  languages: 'SR · EN · RU',
+  // suppliers: dodaj fotografiju sa licencom (npr. src/assets/images/palette/suppliers.jpg)
 };
 
 // Pozicije "mrlja" na tanjiru (6 mesta u krugu)
@@ -92,7 +87,7 @@ const slots = p.chips.map((_, i) => {
                       class="chip-photo absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <span aria-hidden="true" class:list={['absolute inset-0 grid place-items-center font-display italic text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap', lightChips.has(c.id) ? 'text-navy/80' : 'text-white/90']}>{glyphs[c.id]}</span>
+                    <span aria-hidden="true" class:list={['absolute inset-0 grid place-items-center font-display italic text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap', lightChips.has(c.id) ? 'text-navy/80' : 'text-white/90']}>{'glyph' in c ? c.glyph : ''}</span>
                   )}
                   <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></span>
                   <span class="chip-check absolute bottom-2 right-2 md:bottom-3 md:right-3 grid h-6 w-6 place-items-center rounded-full bg-snow text-navy text-xs opacity-0 scale-50 transition-all duration-500" aria-hidden="true">✓</span>
