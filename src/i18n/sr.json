@@ -57,13 +57,11 @@
   "palette": {
     "eyebrow": "Ekspertiza",
     "title": "Paleta znanja",
-    "intro": "Šest oblasti, jedna kuhinja. Svaka boja je oblast koju donosim na pass. Izaberi boju da vidiš šta stoji iza nje.",
-    "hint": "Izaberi boju",
+    "intro": "Šest oblasti, jedna kuhinja. Izaberi karticu da vidiš šta stoji iza nje ili je prevuci na tanjir.",
+    "hint": "Izaberi karticu",
     "chips": [
       {
         "id": "craft",
-        "code": "DM-01",
-        "colour": "Terakota",
         "name": "Kulinarski zanat",
         "summary": "Šesnaest godina kuvanja: fine dining, roštilj, riba i banket. I u velikom obimu i do detalja.",
         "points": [
@@ -76,8 +74,6 @@
       },
       {
         "id": "ops",
-        "code": "DM-02",
-        "colour": "Žalfija",
         "name": "Operacije i kontrola troškova",
         "summary": "Kuhinja koja ima smisla i na tanjiru i u bilansu.",
         "points": [
@@ -90,8 +86,6 @@
       },
       {
         "id": "safety",
-        "code": "DM-03",
-        "colour": "Škriljac",
         "name": "Bezbednost hrane i HACCP",
         "summary": "Standardi koji drže i u subotu uveče, ne samo na dan inspekcije.",
         "points": [
@@ -104,8 +98,6 @@
       },
       {
         "id": "people",
-        "code": "DM-04",
-        "colour": "Bordo",
         "name": "Ljudi i obuka",
         "summary": "Više od 2.000 kuvara obučenih, procenjenih i raspoređenih.",
         "points": [
@@ -118,8 +110,6 @@
       },
       {
         "id": "preopening",
-        "code": "DM-05",
-        "colour": "Kamel",
         "name": "Pre-opening i vođenje projekata",
         "summary": "Od prazne kuhinje do prvog servisa, u roku.",
         "points": [
@@ -132,8 +122,6 @@
       },
       {
         "id": "languages",
-        "code": "DM-06",
-        "colour": "Petrolej",
         "name": "Jezici",
         "summary": "Vodim tim na jeziku na kom tim razmišlja.",
         "points": [
@@ -162,8 +150,8 @@
   },
   "game": {
     "title": "Mise en place",
-    "hintDrag": "Prevuci boju na tanjir ili samo klikni",
-    "hintTap": "Dodirni boju da je staviš na tanjir",
+    "hintDrag": "Prevuci karticu na tanjir ili samo klikni",
+    "hintTap": "Dodirni karticu da je staviš na tanjir",
     "stations": "stanica spremno",
     "doneTitle": "Servis!",
     "doneText": "Sve stanice su spremne. Ovako izgleda kuhinja koju ja gradim: spremna za otvaranje.",

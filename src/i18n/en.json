@@ -57,13 +57,11 @@
   "palette": {
     "eyebrow": "Expertise",
     "title": "The knowledge palette",
-    "intro": "Six domains, one kitchen. Each colour is a body of work I bring to the pass — select a swatch to see what is behind it.",
-    "hint": "Select a swatch",
+    "intro": "Six domains, one kitchen. Select a card to see what is behind it — or drag it onto the plate.",
+    "hint": "Select a card",
     "chips": [
       {
         "id": "craft",
-        "code": "DM-01",
-        "colour": "Terracotta",
         "name": "Culinary craft",
         "summary": "Sixteen years of cooking across fine dining, grill, seafood and banquet — at volume and at detail.",
         "points": [
@@ -76,8 +74,6 @@
       },
       {
         "id": "ops",
-        "code": "DM-02",
-        "colour": "Sage",
         "name": "Operations & cost control",
         "summary": "Kitchens that make sense on the plate and on the P&L.",
         "points": [
@@ -90,8 +86,6 @@
       },
       {
         "id": "safety",
-        "code": "DM-03",
-        "colour": "Slate",
         "name": "Food safety & HACCP",
         "summary": "Standards that hold on a busy Saturday, not just on audit day.",
         "points": [
@@ -104,8 +98,6 @@
       },
       {
         "id": "people",
-        "code": "DM-04",
-        "colour": "Bordeaux",
         "name": "People & training",
         "summary": "More than 2,000 cooks trained, assessed and placed.",
         "points": [
@@ -118,8 +110,6 @@
       },
       {
         "id": "preopening",
-        "code": "DM-05",
-        "colour": "Camel",
         "name": "Pre-opening & project leadership",
         "summary": "From empty kitchen to first service — on schedule.",
         "points": [
@@ -132,8 +122,6 @@
       },
       {
         "id": "languages",
-        "code": "DM-06",
-        "colour": "Petrol",
         "name": "Languages",
         "summary": "I lead in the language the team thinks in.",
         "points": [
@@ -162,8 +150,8 @@
   },
   "game": {
     "title": "Mise en place",
-    "hintDrag": "Drag a swatch onto the plate — or click it",
-    "hintTap": "Tap a swatch to put it on the plate",
+    "hintDrag": "Drag a card onto the plate — or click it",
+    "hintTap": "Tap a card to put it on the plate",
     "stations": "stations ready",
     "doneTitle": "Service!",
     "doneText": "Every station is set. This is the kitchen I build — ready to open.",
