@@ -321,6 +321,124 @@
     "pageTitle": "Pre-opening process · Đorđe Milenković",
     "pageDescription": "How Đorđe Milenković opens a kitchen: concept and menu, equipment, team, suppliers, standards, training, mock services and stabilisation. Restaurants, hotels and river cruise ships."
   },
+  "career": {
+    "eyebrow": "Career",
+    "title": "From one station to the whole system",
+    "intro": "Sixteen years: from a single kitchen station to systems that run entire hotels, restaurants and ships.",
+    "present": "present",
+    "preopeningTag": "Pre-opening",
+    "items": [
+      {
+        "years": "2026 – present",
+        "role": "Executive Chef",
+        "org": "International hotel",
+        "place": "Belgrade",
+        "tags": [
+          "Hotel",
+          "Pre-opening"
+        ],
+        "points": [
+          "Building the complete kitchen pre-opening system [CHECK]"
+        ]
+      },
+      {
+        "years": "2025 – 2026",
+        "role": "Executive Chef",
+        "org": "Restaurant group",
+        "place": "Belgrade",
+        "tags": [
+          "Restaurants"
+        ],
+        "points": [
+          "Running 4 restaurant concepts at once with a 25-person brigade",
+          "International consulting: menu and standards for Grand Hotel Imperiale 5*, Forte dei Marmi, Italy"
+        ]
+      },
+      {
+        "years": "2025",
+        "role": "Consultant",
+        "org": "Resort hotel",
+        "place": "Deliblato Sands, Serbia",
+        "tags": [
+          "Hotel",
+          "Pre-opening"
+        ],
+        "points": [
+          "Full F&B consulting for the opening: concept, menu engineering, kitchen setup, recruitment and training"
+        ]
+      },
+      {
+        "years": "2023 – 2024",
+        "role": "Founder & Executive Chef",
+        "org": "Healthy food delivery brand",
+        "place": "Belgrade",
+        "tags": [
+          "Startup"
+        ],
+        "points": [
+          "Product, logistics and sales built from zero: Glovo, Wolt, Instagram and subscriptions",
+          "Taken to profitability and sold in 2024"
+        ]
+      },
+      {
+        "years": "2021 – 2023",
+        "role": "Technical Support Specialist",
+        "org": "NCR Corporation",
+        "place": "CIS market",
+        "tags": [
+          "Technology"
+        ],
+        "points": [
+          "Enterprise support in Russian",
+          "IT Academy: JavaScript, Ruby on Rails, Sass. Experience I now use for kitchen systems [CHECK]"
+        ]
+      },
+      {
+        "years": "2016 – 2021",
+        "role": "Executive Chef",
+        "org": "Luxury river cruises: Scenic, Excellence, AmaWaterways, Amadeus",
+        "place": "Europe",
+        "tags": [
+          "Cruise",
+          "Pre-opening"
+        ],
+        "highlight": true,
+        "points": [
+          "Full culinary responsibility on ships with 220+ guests",
+          "Two training cycles a year, 350–400 recruits each: assessment and placement across the fleet",
+          "New-vessel openings every spring",
+          "Michelin-starred guest chef events and gourmet festivals"
+        ]
+      },
+      {
+        "years": "2013 – 2014",
+        "role": "Executive Chef",
+        "org": "Hospitality group",
+        "place": "Orenburg, Russia",
+        "tags": [
+          "Restaurants",
+          "Pre-opening"
+        ],
+        "points": [
+          "Opening and running several restaurant concepts [CHECK]",
+          "Purchasing under import restrictions"
+        ]
+      },
+      {
+        "years": "2011 – 2013",
+        "role": "Chef de partie / Sous Chef",
+        "org": "Homa, Homa Bistrot, Toro Latino Gastro Bar",
+        "place": "Belgrade",
+        "tags": [
+          "Restaurants"
+        ],
+        "points": [
+          "Technical foundation and discipline in upper-mid-market kitchens",
+          "High-volume à la carte service"
+        ]
+      }
+    ]
+  },
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

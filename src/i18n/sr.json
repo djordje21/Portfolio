@@ -321,6 +321,124 @@
     "pageTitle": "Pre-opening proces · Đorđe Milenković",
     "pageDescription": "Kako Đorđe Milenković otvara kuhinju: koncept i meni, oprema, tim, dobavljači, standardi, obuka, probni servisi i stabilizacija. Restorani, hoteli i rečni kruzeri."
   },
+  "career": {
+    "eyebrow": "Karijera",
+    "title": "Od stanice do celog sistema",
+    "intro": "Šesnaest godina: od jedne stanice u kuhinji do sistema koji pokreću cele hotele, restorane i brodove.",
+    "present": "danas",
+    "preopeningTag": "Pre-opening",
+    "items": [
+      {
+        "years": "2026 – danas",
+        "role": "Executive Chef",
+        "org": "Međunarodni hotel",
+        "place": "Beograd",
+        "tags": [
+          "Hotel",
+          "Pre-opening"
+        ],
+        "points": [
+          "Postavljanje kompletnog pre-opening sistema kuhinje [CHECK]"
+        ]
+      },
+      {
+        "years": "2025 – 2026",
+        "role": "Executive Chef",
+        "org": "Grupa restorana",
+        "place": "Beograd",
+        "tags": [
+          "Restorani"
+        ],
+        "points": [
+          "Vođenje 4 restoranska koncepta istovremeno, sa brigadom od 25 ljudi",
+          "Međunarodni konsalting: meni i standardi za Grand Hotel Imperiale 5*, Forte dei Marmi, Italija"
+        ]
+      },
+      {
+        "years": "2025",
+        "role": "Konsultant",
+        "org": "Resort hotel",
+        "place": "Deliblatska peščara",
+        "tags": [
+          "Hotel",
+          "Pre-opening"
+        ],
+        "points": [
+          "Kompletan F&B konsalting za otvaranje: koncept, menu engineering, opremanje kuhinje, regrutacija i obuka tima"
+        ]
+      },
+      {
+        "years": "2023 – 2024",
+        "role": "Osnivač i Executive Chef",
+        "org": "Brend zdrave hrane za dostavu",
+        "place": "Beograd",
+        "tags": [
+          "Startup"
+        ],
+        "points": [
+          "Proizvod, logistika i prodaja izgrađeni od nule: Glovo, Wolt, Instagram i pretplate",
+          "Biznis doveden do profitabilnosti i prodat 2024."
+        ]
+      },
+      {
+        "years": "2021 – 2023",
+        "role": "Tehnička podrška",
+        "org": "NCR Corporation",
+        "place": "Tržište ZND",
+        "tags": [
+          "Tehnologija"
+        ],
+        "points": [
+          "Podrška za korporativne klijente na ruskom jeziku",
+          "IT Akademija: JavaScript, Ruby on Rails, Sass. Iskustvo koje danas koristim za sisteme u kuhinji [CHECK]"
+        ]
+      },
+      {
+        "years": "2016 – 2021",
+        "role": "Executive Chef",
+        "org": "Luksuzni rečni kruzeri: Scenic, Excellence, AmaWaterways, Amadeus",
+        "place": "Evropa",
+        "tags": [
+          "Kruzer",
+          "Pre-opening"
+        ],
+        "highlight": true,
+        "points": [
+          "Puna odgovornost za kuhinju na brodovima sa 220+ gostiju",
+          "Dva ciklusa obuke godišnje, po 350–400 regruta: procena i raspoređivanje po floti",
+          "Otvaranje novih brodova svakog proleća",
+          "Večeri sa gostujućim šefovima sa Michelin zvezdicama i gurmanski festivali"
+        ]
+      },
+      {
+        "years": "2013 – 2014",
+        "role": "Executive Chef",
+        "org": "Ugostiteljska grupa",
+        "place": "Orenburg, Rusija",
+        "tags": [
+          "Restorani",
+          "Pre-opening"
+        ],
+        "points": [
+          "Otvaranje i vođenje više restoranskih koncepata [CHECK]",
+          "Nabavka u vreme uvoznih ograničenja"
+        ]
+      },
+      {
+        "years": "2011 – 2013",
+        "role": "Chef de partie / Sous Chef",
+        "org": "Homa, Homa Bistrot, Toro Latino Gastro Bar",
+        "place": "Beograd",
+        "tags": [
+          "Restorani"
+        ],
+        "points": [
+          "Tehnička osnova i disciplina u kuhinjama gornjeg srednjeg segmenta",
+          "À la carte servis velikog obima"
+        ]
+      }
+    ]
+  },
   "footer": {
     "rights": "Sva prava zadržana.",
     "top": "Nazad na vrh"

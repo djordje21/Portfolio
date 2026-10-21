@@ -5,6 +5,7 @@ import Hero from '../../components/Hero.astro';
 import Numbers from '../../components/Numbers.astro';
 import Palette from '../../components/Palette.astro';
 import PreopeningTeaser from '../../components/PreopeningTeaser.astro';
+import Career from '../../components/Career.astro';
 import Intro from '../../components/Intro.astro';
 import Marquee from '../../components/Marquee.astro';
 import Footer from '../../components/Footer.astro';
@@ -27,6 +28,7 @@ const t = useTranslations(lang);
     <Marquee t={t} />
     <Palette t={t} />
     <PreopeningTeaser lang={lang} t={t} />
+    <Career t={t} />
   </main>
   <Footer t={t} />
 </Base>

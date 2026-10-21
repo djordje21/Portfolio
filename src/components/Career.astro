@@ -1,0 +1,90 @@
+---
+import type { Dict } from '../i18n/utils';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const c = t.career;
+---
+<section id="career" class="section relative border-t border-line" aria-labelledby="career-title">
+  <div class="container-x grid gap-14 lg:grid-cols-12">
+    <!-- naslov ostaje vidljiv dok se skroluje kroz godine -->
+    <header class="lg:col-span-4">
+      <div class="lg:sticky lg:top-32">
+        <p class="eyebrow" data-reveal>{c.eyebrow}</p>
+        <h2 id="career-title" class="mt-5 text-5xl md:text-6xl" data-split>{c.title}</h2>
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{c.intro}</p>
+      </div>
+    </header>
+
+    <div class="lg:col-span-8 relative" data-career>
+      <!-- linija vremena + deo koji se puni dok skroluješ -->
+      <span aria-hidden="true" class="absolute left-[7px] top-2 bottom-2 w-px bg-line"></span>
+      <span aria-hidden="true" class="career-progress absolute left-[7px] top-2 bottom-2 w-px bg-ice origin-top"></span>
+
+      <ol class="space-y-12 md:space-y-14">
+        {c.items.map((it) => {
+          const highlight = 'highlight' in it && it.highlight;
+          return (
+            <li class="relative pl-10 md:pl-14" data-reveal>
+              <span aria-hidden="true" class:list={['career-dot absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-2 border-navy', highlight ? 'bg-ice ring-4 ring-ice/20' : 'bg-line']}></span>
+              <div class:list={[highlight && 'border border-ice/30 bg-navy-2/70 p-6 md:p-8 -mt-2']}>
+                <p class="text-xs tracking-[0.2em] uppercase text-ice tabular-nums">{it.years}</p>
+                <h3 class="mt-2 text-2xl md:text-3xl leading-tight">{it.role}</h3>
+                <p class="mt-1 text-snow/80">{it.org} <span class="text-muted">· {it.place}</span></p>
+                <ul class="mt-3 flex flex-wrap gap-2">
+                  {it.tags.map((tag) => (
+                    <li class:list={['px-2.5 py-1 text-[0.65rem] tracking-[0.14em] uppercase border', tag === c.preopeningTag ? 'border-ice/60 text-ice' : 'border-line text-muted']}>{tag}</li>
+                  ))}
+                </ul>
+                <ul class="mt-4 space-y-2 text-[0.95rem] leading-relaxed text-snow/85 max-w-2xl">
+                  {it.points.map((pt) => (
+                    <li class="flex gap-3">
+                      <span aria-hidden="true" class="mt-[0.75em] h-0.5 w-3 shrink-0 rounded-full bg-snow/30"></span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const root = document.querySelector<HTMLElement>('[data-career]');
+  const line = root?.querySelector<HTMLElement>('.career-progress');
+  if (root && line) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      line.style.transform = 'scaleY(1)';
+    } else {
+      gsap.fromTo(line, { scaleY: 0 }, {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: root, start: 'top 70%', end: 'bottom 70%', scrub: true },
+      });
+      // tačka se "upali" kad je linija stigne
+      root.querySelectorAll<HTMLElement>('.career-dot').forEach((dot) => {
+        ScrollTrigger.create({
+          trigger: dot,
+          start: 'top 70%',
+          onEnter: () => dot.classList.add('is-on'),
+          onLeaveBack: () => dot.classList.remove('is-on'),
+        });
+      });
+    }
+  }
+</script>
+
+<style>
+  .career-dot { transition: background-color 0.4s, box-shadow 0.4s; }
+  .career-dot.is-on { background-color: var(--color-ice); }
+</style>
