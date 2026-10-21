@@ -331,14 +331,15 @@
       {
         "years": "2026 – present",
         "role": "Executive Chef",
-        "org": "International hotel",
+        "org": "AC Hotel by Marriott [CHECK]",
         "place": "Belgrade",
         "tags": [
           "Hotel",
           "Pre-opening"
         ],
         "points": [
-          "Building the complete kitchen pre-opening system [CHECK]"
+          "Pre-opening of the first AC Hotel by Marriott in Serbia",
+          "Building the complete kitchen pre-opening system"
         ]
       },
       {
@@ -390,7 +391,7 @@
         ],
         "points": [
           "Enterprise support in Russian",
-          "IT Academy: JavaScript, Ruby on Rails, Sass. Experience I now use for kitchen systems [CHECK]"
+          "IT Academy: JavaScript, Ruby on Rails, Sass. Experience I now use for kitchen systems"
         ]
       },
       {
@@ -411,6 +412,30 @@
         ]
       },
       {
+        "years": "2015 – 2016",
+        "role": "Cook",
+        "org": "Toro Latino Gastro Bar",
+        "place": "Belgrade",
+        "tags": [
+          "Restaurants"
+        ],
+        "points": [
+          "High-volume à la carte service"
+        ]
+      },
+      {
+        "years": "2014 – 2015",
+        "role": "Cook",
+        "org": "Homa",
+        "place": "Belgrade",
+        "tags": [
+          "Restaurants"
+        ],
+        "points": [
+          "Upper-mid-market kitchen"
+        ]
+      },
+      {
         "years": "2013 – 2014",
         "role": "Executive Chef",
         "org": "Hospitality group",
@@ -420,7 +445,7 @@
           "Pre-opening"
         ],
         "points": [
-          "Opening and running several restaurant concepts [CHECK]",
+          "Opening and running several restaurant concepts",
           "Purchasing under import restrictions"
         ]
       },
