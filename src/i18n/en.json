@@ -561,6 +561,116 @@
     "role": "F&B Manager, Grand Hotel Imperiale 5*",
     "place": "Forte dei Marmi, Italy"
   },
+  "costing": {
+    "eyebrow": "How I track the numbers",
+    "title": "What does your plate really cost?",
+    "intro": "I don’t publish my numbers, but I can show the method. Enter your dish and purchase prices. The calculator does what I do on every menu: it works out the plate cost, suggests a selling price and shows what is left on the plate.",
+    "privacy": "Everything is calculated in your browser. Nothing is sent or stored.",
+    "dish": "Dish name",
+    "dishDefault": "Spaghetti pomodoro",
+    "portions": "Portion",
+    "step1": "Ingredients",
+    "step2": "Target",
+    "step3": "Bill",
+    "cols": {
+      "name": "Ingredient",
+      "price": "Purchase price",
+      "unit": "Unit",
+      "qty": "Quantity per portion",
+      "yield": "Yield",
+      "cost": "Cost"
+    },
+    "perUnit": {
+      "kg": "kg",
+      "l": "l",
+      "pc": "pc"
+    },
+    "qtyUnit": {
+      "kg": "g",
+      "l": "ml",
+      "pc": "pc"
+    },
+    "add": "Add ingredient",
+    "remove": "Remove",
+    "reset": "Load example",
+    "clear": "Empty recipe",
+    "newItem": "New ingredient",
+    "target": "Target food cost",
+    "targetHint": "Fine dining ~25–30%, bistro and casual ~28–35%.",
+    "qfactor": "Small ingredients",
+    "qfactorHint": "Salt, pepper, frying oil, garnish… everything you don’t weigh.",
+    "vat": "VAT",
+    "currency": "Currency",
+    "rounding": "Round to a menu price",
+    "ticketTitle": "PLATE BILL",
+    "ingredients": "Ingredients",
+    "plateCost": "Plate cost",
+    "netPrice": "Suggested price excl. VAT",
+    "grossPrice": "Suggested price incl. VAT",
+    "menuPrice": "Menu price",
+    "actualFc": "Actual food cost",
+    "margin": "Left per plate (excl. VAT)",
+    "tipsTitle": "Chef’s notes",
+    "tips": [
+      "Yield is where the money disappears. Garlic after peeling, fish after filleting, herbs after picking: you pay for the full kilo, but less of it reaches the plate.",
+      "Food cost is not profit. A dish at 35% food cost can earn more than one at 25% if it sells better. That is why a menu is read as a whole (menu engineering).",
+      "Purchase prices change. Costing is not done once, but every time the supplier, the season or the price changes."
+    ],
+    "ctaText": "Want this for your whole menu, with your suppliers’ real prices?",
+    "cta": "Let’s talk",
+    "over": "Food cost is above target. Check portions or price.",
+    "ok": "Food cost is on target.",
+    "example": [
+      {
+        "name": "Spaghetti",
+        "price": 2.4,
+        "unit": "kg",
+        "qty": 120,
+        "yield": 100
+      },
+      {
+        "name": "Peeled tomatoes",
+        "price": 3.2,
+        "unit": "kg",
+        "qty": 180,
+        "yield": 100
+      },
+      {
+        "name": "Olive oil",
+        "price": 9.0,
+        "unit": "l",
+        "qty": 20,
+        "yield": 100
+      },
+      {
+        "name": "Garlic",
+        "price": 6.0,
+        "unit": "kg",
+        "qty": 8,
+        "yield": 85
+      },
+      {
+        "name": "Fresh basil",
+        "price": 30.0,
+        "unit": "kg",
+        "qty": 4,
+        "yield": 70
+      },
+      {
+        "name": "Parmesan",
+        "price": 22.0,
+        "unit": "kg",
+        "qty": 15,
+        "yield": 90
+      }
+    ],
+    "defaults": {
+      "currency": "EUR",
+      "vat": 20,
+      "target": 28,
+      "qfactor": 3
+    }
+  },
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

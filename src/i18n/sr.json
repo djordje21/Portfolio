@@ -561,6 +561,116 @@
     "role": "F&B Manager, Grand Hotel Imperiale 5*",
     "place": "Forte dei Marmi, Italy"
   },
+  "costing": {
+    "eyebrow": "Kako pratim brojeve",
+    "title": "Koliko košta tvoj tanjir?",
+    "intro": "Svoje brojeve ne objavljujem, ali metodu mogu da pokažem. Unesi svoje jelo i nabavne cene, a kalkulator radi isto što i ja na svakom meniju: računa cenu koštanja, predlaže prodajnu cenu i pokazuje šta ostaje na tanjiru.",
+    "privacy": "Sve se računa u tvom pregledaču. Ništa se ne šalje i ne čuva.",
+    "dish": "Naziv jela",
+    "dishDefault": "Špagete pomodoro",
+    "portions": "Porcija",
+    "step1": "Sastojci",
+    "step2": "Cilj",
+    "step3": "Račun",
+    "cols": {
+      "name": "Namirnica",
+      "price": "Nabavna cena",
+      "unit": "Jedinica",
+      "qty": "Količina po porciji",
+      "yield": "Iskorišćenje",
+      "cost": "Trošak"
+    },
+    "perUnit": {
+      "kg": "kg",
+      "l": "l",
+      "pc": "kom"
+    },
+    "qtyUnit": {
+      "kg": "g",
+      "l": "ml",
+      "pc": "kom"
+    },
+    "add": "Dodaj namirnicu",
+    "remove": "Ukloni",
+    "reset": "Vrati primer",
+    "clear": "Prazan recept",
+    "newItem": "Nova namirnica",
+    "target": "Ciljani food cost",
+    "targetHint": "Fine dining ~25–30%, bistro i casual ~28–35%.",
+    "qfactor": "Sitni sastojci",
+    "qfactorHint": "So, biber, ulje za tiganj, ukrasi… sve što se ne meri gramom.",
+    "vat": "PDV",
+    "currency": "Valuta",
+    "rounding": "Zaokruži na menijsku cenu",
+    "ticketTitle": "RAČUN TANJIRA",
+    "ingredients": "Namirnice",
+    "plateCost": "Cena koštanja tanjira",
+    "netPrice": "Predložena cena bez PDV-a",
+    "grossPrice": "Predložena cena sa PDV-om",
+    "menuPrice": "Cena na meniju",
+    "actualFc": "Stvarni food cost",
+    "margin": "Ostaje po tanjiru (bez PDV-a)",
+    "tipsTitle": "Šefove napomene",
+    "tips": [
+      "Iskorišćenje je mesto gde se gubi novac. Beli luk posle ljuštenja, riba posle filetiranja, začinsko bilje posle čišćenja: plaćaš ceo kilogram, a na tanjir ide manje.",
+      "Food cost nije isto što i profit. Jelo sa 35% food costa može da zaradi više od jela sa 25% ako se bolje prodaje. Zato se meni gleda kao celina (menu engineering).",
+      "Cene nabavke se menjaju. Kalkulacija se ne radi jednom, nego svaki put kad se promeni dobavljač, sezona ili cena."
+    ],
+    "ctaText": "Hoćete ovako za ceo meni, sa realnim cenama vaših dobavljača?",
+    "cta": "Hajde da razgovaramo",
+    "over": "Food cost je iznad cilja. Proveri porcije ili cenu.",
+    "ok": "Food cost je u cilju.",
+    "example": [
+      {
+        "name": "Špagete",
+        "price": 2.4,
+        "unit": "kg",
+        "qty": 120,
+        "yield": 100
+      },
+      {
+        "name": "Pelat paradajz",
+        "price": 3.2,
+        "unit": "kg",
+        "qty": 180,
+        "yield": 100
+      },
+      {
+        "name": "Maslinovo ulje",
+        "price": 9.0,
+        "unit": "l",
+        "qty": 20,
+        "yield": 100
+      },
+      {
+        "name": "Beli luk",
+        "price": 6.0,
+        "unit": "kg",
+        "qty": 8,
+        "yield": 85
+      },
+      {
+        "name": "Sveži bosiljak",
+        "price": 30.0,
+        "unit": "kg",
+        "qty": 4,
+        "yield": 70
+      },
+      {
+        "name": "Parmezan",
+        "price": 22.0,
+        "unit": "kg",
+        "qty": 15,
+        "yield": 90
+      }
+    ],
+    "defaults": {
+      "currency": "EUR",
+      "vat": 20,
+      "target": 28,
+      "qfactor": 3
+    }
+  },
   "footer": {
     "rights": "Sva prava zadržana.",
     "top": "Nazad na vrh"
