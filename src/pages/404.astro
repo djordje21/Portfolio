@@ -3,25 +3,180 @@ import Base from '../layouts/Base.astro';
 import { useTranslations } from '../i18n/utils';
 
 // Jedna 404 stranica za sva tri jezika (Netlify je prikazuje za svaku nepostojeću adresu).
+// Jezik se bira po pregledaču; bez JavaScripta se prikazuje engleski.
+// "86" je kuhinjski žargon za jelo kojeg više nema na meniju.
 const t = useTranslations('en');
-const lines = [
-  { lang: 'sr-Latn', href: '/sr/', title: 'Ovaj tanjir nije na meniju.', cta: 'Nazad na početnu' },
-  { lang: 'en', href: '/en/', title: 'This plate is not on the menu.', cta: 'Back to home' },
-  { lang: 'ru', href: '/ru/', title: 'Этого блюда нет в меню.', cta: 'На главную' },
+const copy = [
+  {
+    lang: 'sr', htmlLang: 'sr-Latn', home: '/sr/',
+    ticket: 'PORUDŽBINA #404', table: 'STO: ?', item: '1× Stranica koju tražiš',
+    title: 'Ova stranica je 86.',
+    explain: '„86“ je kuhinjski žargon za jelo kojeg više nema. Ova stranica je otišla sa menija, ili nikad nije ni bila na njemu.',
+    game: 'Dok si već ovde, okreni jaje.', flip: 'Okreni', flips: 'okretanja',
+    levels: ['Polako, polako…', 'Dobar zglob.', 'Ovaj može na stanicu za doručak.', 'Sous chef materijal.', 'Okej, hajde polako. Vrati se na posao. →'],
+    back: 'Nazad na početnu',
+  },
+  {
+    lang: 'en', htmlLang: 'en', home: '/en/',
+    ticket: 'ORDER #404', table: 'TABLE: ?', item: '1× The page you wanted',
+    title: 'This page is 86’d.',
+    explain: '“86” is kitchen slang for a dish that’s run out. This page is off the menu, or it was never on it.',
+    game: 'While you’re here, flip the egg.', flip: 'Flip', flips: 'flips',
+    levels: ['Easy, easy…', 'Nice wrist.', 'You could work the breakfast station.', 'Sous chef material.', 'Okay, take it easy. Back to work. →'],
+    back: 'Back to home',
+  },
+  {
+    lang: 'ru', htmlLang: 'ru', home: '/ru/',
+    ticket: 'ЗАКАЗ #404', table: 'СТОЛ: ?', item: '1× Страница, которую вы ищете',
+    title: 'Эта страница — 86.',
+    explain: '«86» на кухонном сленге — блюдо, которое закончилось. Эту страницу убрали из меню, или её там никогда не было.',
+    game: 'Раз уж вы здесь, переверните яичницу.', flip: 'Перевернуть', flips: 'переворотов',
+    levels: ['Спокойно, спокойно…', 'Хорошая кисть.', 'Можно ставить на завтраки.', 'Уровень су-шефа.', 'Окей, давай спокойно. За работу. →'],
+    back: 'На главную',
+  },
 ];
 ---
 <Base lang="en" title="404 · Đorđe Milenković" description={t.meta.description}>
-  <main id="main" class="min-h-dvh grid place-items-center px-5 py-24">
-    <div class="w-full max-w-2xl">
-      <h1 class="font-display text-[clamp(6rem,20vw,11rem)] leading-none text-gradient">404</h1>
-      <ul class="mt-10 border-t border-line">
-        {lines.map((l) => (
-          <li lang={l.lang} class="flex flex-col gap-2 border-b border-line py-6 sm:flex-row sm:items-baseline sm:justify-between">
-            <span class="font-display text-2xl md:text-3xl">{l.title}</span>
-            <a href={l.href} class="text-sm tracking-[0.16em] uppercase text-ice hover:text-snow transition-colors">{l.cta} →</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+  <main id="main" class="relative min-h-dvh overflow-hidden px-5 py-20 md:py-24">
+    {copy.map((c) => (
+      <div class="nf container-x grid items-center gap-14 lg:grid-cols-12" lang={c.htmlLang} data-lang={c.lang} hidden={c.lang !== 'en'}>
+        <!-- porudžbina sa šine -->
+        <div class="lg:col-span-6">
+          <div class="nf-rail mx-auto h-[3px] w-[min(22rem,80vw)] rounded-full bg-gradient-to-r from-transparent via-ice to-transparent"></div>
+          <div class="nf-ticket relative mx-auto -mt-px w-[min(20rem,78vw)] bg-snow text-navy shadow-[0_30px_60px_-20px_rgba(0,0,0,.7)]">
+            <div class="px-6 pt-6 pb-16 font-mono text-[0.82rem] leading-relaxed">
+              <div class="flex justify-between text-[0.7rem] tracking-widest"><span>{c.ticket}</span><span>--:--</span></div>
+              <div class="mt-1 text-[0.7rem] tracking-widest">{c.table}</div>
+              <div class="my-3 border-t border-dashed border-navy/40"></div>
+              <p class="line-through decoration-2 decoration-[#b3261e]">{c.item}</p>
+              <div class="my-3 border-t border-dashed border-navy/40"></div>
+            </div>
+            <div class="nf-stamp absolute right-5 bottom-4 rotate-[-14deg] border-[3px] border-[#b3261e] px-3 py-0.5 font-sans text-3xl font-bold tracking-[0.12em] text-[#b3261e]">86</div>
+            <div class="nf-edge absolute -bottom-2 inset-x-0 h-2 bg-snow"></div>
+          </div>
+        </div>
+
+        <!-- tekst + mini igra -->
+        <div class="lg:col-span-6">
+          <h1 class="font-display text-[clamp(2.6rem,6vw,4.75rem)] leading-[1.02]">
+            <span class="block text-gradient text-[1.6em] leading-none">404</span>
+            {c.title}
+          </h1>
+          <p class="mt-5 max-w-md text-lg leading-relaxed text-muted">{c.explain}</p>
+
+          <div class="mt-10 flex flex-col items-start gap-6 border-t border-line pt-8 sm:flex-row sm:items-center">
+            <button type="button" class="nf-pan group relative shrink-0" aria-label={c.flip}>
+              <svg viewBox="0 0 200 120" class="w-44 md:w-52 overflow-visible" aria-hidden="true">
+                <!-- drška -->
+                <rect x="138" y="70" width="60" height="10" rx="5" fill="#3a2e28" />
+                <!-- tiganj -->
+                <ellipse cx="80" cy="78" rx="70" ry="20" fill="#1c2433" />
+                <ellipse cx="80" cy="74" rx="62" ry="15" fill="#2a3448" />
+                <!-- jaje -->
+                <g class="nf-egg">
+                  <path d="M52 72 C46 62 62 56 74 60 C84 52 104 56 108 66 C116 70 108 82 94 81 C82 86 60 84 52 72 Z" fill="#fbfaf6" />
+                  <circle cx="82" cy="68" r="9" fill="#f2b631" />
+                  <circle cx="79" cy="65" r="2.5" fill="#fff" opacity=".7" />
+                </g>
+              </svg>
+              <span class="nf-sizzle pointer-events-none absolute left-1/3 top-0 text-xs text-muted opacity-0">ssss</span>
+            </button>
+            <div>
+              <p class="text-snow/90">{c.game}</p>
+              <p class="mt-2 text-sm text-muted"><span class="nf-count font-display text-2xl text-ice tabular-nums">0</span> {c.flips}</p>
+              <p class="nf-level mt-2 min-h-[1.5em] text-sm text-ice" aria-live="polite" data-levels={JSON.stringify(c.levels)} data-home={c.home}></p>
+            </div>
+          </div>
+
+          <a href={c.home} class="btn btn-primary mt-10" data-magnetic>{c.back} →</a>
+        </div>
+      </div>
+    ))}
   </main>
 </Base>
+
+<style>
+  .font-mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+  .nf-edge {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 95% 100%, 90% 0, 85% 100%, 80% 0, 75% 100%, 70% 0, 65% 100%, 60% 0, 55% 100%, 50% 0, 45% 100%, 40% 0, 35% 100%, 30% 0, 25% 100%, 20% 0, 15% 100%, 10% 0, 5% 100%, 0 0);
+  }
+  .nf-ticket { transform-origin: top center; animation: nf-swing 4s ease-in-out infinite; }
+  .nf-stamp { animation: nf-stamp 0.5s 0.6s cubic-bezier(0.5, 0, 0.75, 0) both; }
+  .nf-egg { transform-box: fill-box; transform-origin: center; }
+  .nf-egg.is-flipping { animation: nf-flip 0.75s cubic-bezier(0.3, 0.6, 0.4, 1); }
+  .nf-egg.is-flipping.is-dropped { animation: nf-drop 0.9s cubic-bezier(0.3, 0.6, 0.4, 1); }
+  .nf-pan:active svg { transform: rotate(-4deg); }
+  .nf-pan svg { transition: transform 0.15s; transform-origin: 70% 65%; }
+  .nf-sizzle.on { animation: nf-sizzle 0.8s ease-out; }
+
+  @keyframes nf-swing { 0%, 100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+  @keyframes nf-stamp { from { opacity: 0; transform: rotate(-14deg) scale(2.6); } to { opacity: 1; transform: rotate(-14deg) scale(1); } }
+  @keyframes nf-flip {
+    0% { transform: translateY(0) scaleY(1); }
+    45% { transform: translateY(-90px) scaleY(-1) rotate(8deg); }
+    100% { transform: translateY(0) scaleY(1); }
+  }
+  /* svako peto okretanje jaje "pobegne" i vrati se */
+  @keyframes nf-drop {
+    0% { transform: translateY(0) rotate(0); }
+    40% { transform: translate(40px, -120px) rotate(200deg); }
+    70% { transform: translate(10px, -20px) rotate(330deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+  }
+  @keyframes nf-sizzle { from { opacity: 0.9; transform: translateY(0); } to { opacity: 0; transform: translateY(-24px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nf-ticket, .nf-stamp, .nf-egg.is-flipping { animation: none !important; }
+  }
+</style>
+
+<script>
+  // Izaberi jezik po pregledaču
+  const pref = (navigator.languages || [navigator.language]).map((l) => l.toLowerCase());
+  const pick = pref.some((l) => /^(sr|hr|bs|sh|me)/.test(l)) ? 'sr' : pref.some((l) => /^(ru|uk|be|kk)/.test(l)) ? 'ru' : 'en';
+  document.querySelectorAll<HTMLElement>('.nf').forEach((el) => (el.hidden = el.dataset.lang !== pick));
+  document.documentElement.lang = document.querySelector<HTMLElement>(`.nf[data-lang="${pick}"]`)!.lang;
+
+  // Vreme na porudžbini
+  const time = new Date().toLocaleTimeString(document.documentElement.lang, { hour: '2-digit', minute: '2-digit' });
+  document.querySelectorAll('.nf-ticket .flex span:last-child').forEach((s) => (s.textContent = time));
+
+  // Okretanje jajeta
+  document.querySelectorAll<HTMLElement>('.nf').forEach((root) => {
+    const pan = root.querySelector<HTMLButtonElement>('.nf-pan')!;
+    const egg = root.querySelector<SVGGElement>('.nf-egg')!;
+    const count = root.querySelector<HTMLElement>('.nf-count')!;
+    const level = root.querySelector<HTMLElement>('.nf-level')!;
+    const sizzle = root.querySelector<HTMLElement>('.nf-sizzle')!;
+    const levels: string[] = JSON.parse(level.dataset.levels!);
+    let n = 0;
+    let busy = false;
+
+    pan.addEventListener('click', () => {
+      if (busy) return;
+      busy = true;
+      n++;
+      count.textContent = String(n);
+      egg.classList.toggle('is-dropped', n % 5 === 0);
+      egg.classList.remove('is-flipping');
+      void egg.getBoundingClientRect();
+      egg.classList.add('is-flipping');
+      sizzle.classList.remove('on');
+      void sizzle.offsetWidth;
+      sizzle.classList.add('on');
+
+      const step = n >= 15 ? 4 : n >= 10 ? 3 : n >= 6 ? 2 : n >= 3 ? 1 : 0;
+      if (n === 1 || [3, 6, 10, 15].includes(n)) {
+        level.textContent = '';
+        if (step === 4) {
+          const a = document.createElement('a');
+          a.href = level.dataset.home!;
+          a.textContent = levels[4];
+          a.className = 'underline underline-offset-4 hover:text-snow';
+          level.append(a);
+        } else level.textContent = levels[step];
+      }
+      setTimeout(() => (busy = false), n % 5 === 0 ? 900 : 750);
+    });
+  });
+</script>
