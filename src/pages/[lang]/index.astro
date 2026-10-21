@@ -8,6 +8,7 @@ import PreopeningTeaser from '../../components/PreopeningTeaser.astro';
 import Career from '../../components/Career.astro';
 import Philosophy from '../../components/Philosophy.astro';
 import Gallery from '../../components/Gallery.astro';
+import Contact from '../../components/Contact.astro';
 import Intro from '../../components/Intro.astro';
 import Marquee from '../../components/Marquee.astro';
 import Footer from '../../components/Footer.astro';
@@ -33,6 +34,7 @@ const t = useTranslations(lang);
     <Career t={t} />
     <Philosophy t={t} />
     <Gallery t={t} />
+    <Contact lang={lang} t={t} />
   </main>
   <Footer t={t} />
 </Base>

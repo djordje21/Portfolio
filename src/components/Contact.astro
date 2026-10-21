@@ -1,0 +1,174 @@
+---
+import type { Dict, Lang } from '../i18n/utils';
+import { site } from '../site.config';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+}
+const { lang, t } = Astro.props;
+const c = t.contact;
+const f = c.form;
+---
+<section id="contact" class="section relative overflow-hidden border-t border-line" aria-labelledby="contact-title">
+  <div aria-hidden="true" class="pointer-events-none absolute right-[-15%] bottom-0 h-[34rem] w-[34rem] rounded-full bg-ice-deep/20 blur-[150px]"></div>
+  <div class="container-x relative grid gap-16 lg:grid-cols-12">
+    <!-- Direktan kontakt -->
+    <div class="lg:col-span-5">
+      <p class="eyebrow" data-reveal>{c.eyebrow}</p>
+      <h2 id="contact-title" class="mt-5 text-5xl md:text-7xl" data-split>{c.title}</h2>
+      <p class="mt-6 max-w-md text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{c.intro}</p>
+
+      <dl class="mt-12 border-t border-line" data-reveal style="--reveal-delay:180ms">
+        <div class="border-b border-line py-5">
+          <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.emailLabel}</dt>
+          <dd class="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <a href={`mailto:${site.email}`} class="text-xl text-snow hover:text-ice transition-colors break-all">{site.email}</a>
+            <button type="button" class="copy-email text-xs tracking-[0.16em] uppercase text-ice hover:text-snow transition-colors" data-email={site.email} data-copied={c.copied}>{c.copy}</button>
+          </dd>
+        </div>
+        <div class="border-b border-line py-5">
+          <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.linkedinLabel}</dt>
+          <dd class="mt-1"><a href={site.linkedin} target="_blank" rel="noopener" class="text-lg text-snow hover:text-ice transition-colors">{c.linkedinCta} ↗</a></dd>
+        </div>
+        <div class="border-b border-line py-5">
+          <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.cvLabel}</dt>
+          <dd class="mt-1"><a href={site.cv[lang]} download class="text-lg text-snow hover:text-ice transition-colors" data-cursor="PDF">{c.cvCta} ↓</a></dd>
+        </div>
+        <div class="grid grid-cols-2 gap-6 py-5">
+          <div>
+            <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.languagesLabel}</dt>
+            <dd class="mt-1 text-snow/90">{c.languages}</dd>
+          </div>
+          <div>
+            <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.locationLabel}</dt>
+            <dd class="mt-1 text-snow/90">{c.location}</dd>
+          </div>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Forma (Netlify Forms: radi automatski kad je sajt na Netlify-ju) -->
+    <div class="lg:col-span-6 lg:col-start-7" data-reveal style="--reveal-delay:120ms">
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="company-website"
+        class="contact-form border border-line bg-navy-2/70 p-6 md:p-10"
+        data-sending={f.sending}
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="language" value={lang} />
+        <p class="hidden"><label>Website <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
+
+        <h3 class="text-3xl">{f.title}</h3>
+
+        <div class="mt-8 grid gap-6">
+          <div class="field">
+            <label for="cf-name">{f.name} <span class="sr-only">({f.required})</span></label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">{f.email} <span class="sr-only">({f.required})</span></label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="cf-company">{f.company}</label>
+            <input id="cf-company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="cf-message">{f.message} <span class="sr-only">({f.required})</span></label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-8 w-full justify-center sm:w-auto" data-magnetic>{f.send} →</button>
+
+        <p class="form-success hidden mt-6 text-ice" role="status">{f.success}</p>
+        <p class="form-error hidden mt-6 text-snow/90" role="alert">
+          {f.error} <a href={`mailto:${site.email}`} class="text-ice underline underline-offset-4">{site.email}</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .field { display: grid; gap: 0.5rem; }
+  .field label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.6rem 0;
+    color: var(--color-snow);
+    font-size: 1.05rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-ice);
+  }
+  .field input:focus-visible,
+  .field textarea:focus-visible {
+    box-shadow: 0 2px 0 0 var(--color-ice);
+  }
+</style>
+
+<script>
+  // Kopiranje email adrese
+  document.querySelectorAll<HTMLButtonElement>('.copy-email').forEach((btn) => {
+    const label = btn.textContent;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.email!);
+        btn.textContent = btn.dataset.copied!;
+        setTimeout(() => (btn.textContent = label), 2000);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(btn.previousElementSibling!);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    });
+  });
+
+  // Slanje forme bez napuštanja stranice
+  document.querySelectorAll<HTMLFormElement>('.contact-form').forEach((form) => {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const ok = form.querySelector<HTMLElement>('.form-success')!;
+    const err = form.querySelector<HTMLElement>('.form-error')!;
+    const label = submit.textContent;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.classList.add('hidden');
+      err.classList.add('hidden');
+      submit.disabled = true;
+      submit.textContent = form.dataset.sending!;
+      try {
+        const body = new URLSearchParams(new FormData(form) as any).toString();
+        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        ok.classList.remove('hidden');
+      } catch {
+        err.classList.remove('hidden');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = label;
+      }
+    });
+  });
+</script>

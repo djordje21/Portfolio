@@ -497,12 +497,40 @@
     "prev": "Prethodna",
     "next": "Sledeća",
     "items": {
-      "crudo": "Crudo sa kremom, jestivim cvećem i bistrim sosom [CHECK]",
+      "crudo": "Crudo od brancina sa kremom, jestivim cvećem i bistrim sosom",
       "beef-cheek": "Dinstani juneći obraz, pire, tartuf i čips od korenastog povrća [CHECK]",
       "sea-bass": "Brancin na tankim rezancima sa brokolijem i čeri paradajzom [CHECK]",
       "hummus-tart": "Tart sa humusom, svežim začinskim biljem i paprikom [CHECK]",
       "duck": "Pačji batak konfi, čupana pačetina i pire [CHECK]",
       "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom [CHECK]"
+    }
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Hajde da razgovaramo",
+    "intro": "Otvaranje, kuhinja kojoj treba sistem ili samo razgovor o saradnji. Javite se.",
+    "emailLabel": "Email",
+    "copy": "Kopiraj",
+    "copied": "Kopirano",
+    "linkedinLabel": "LinkedIn",
+    "linkedinCta": "Pogledaj profil",
+    "cvLabel": "CV",
+    "cvCta": "Preuzmi CV (PDF, engleski)",
+    "languagesLabel": "Jezici",
+    "languages": "Srpski · English · Русский",
+    "locationLabel": "Lokacija",
+    "location": "Beograd, Srbija",
+    "form": {
+      "title": "Pošaljite poruku",
+      "name": "Ime i prezime",
+      "email": "Email",
+      "company": "Hotel ili kompanija (opciono)",
+      "message": "Poruka",
+      "send": "Pošalji poruku",
+      "sending": "Šaljem…",
+      "success": "Hvala! Poruka je poslata, javiću se uskoro.",
+      "error": "Poruka nije poslata. Pišite mi direktno na",
+      "required": "obavezno"
     }
   },
   "footer": {

@@ -497,12 +497,40 @@
     "prev": "Previous",
     "next": "Next",
     "items": {
-      "crudo": "Crudo with cream, edible flowers and a clear dressing [CHECK]",
+      "crudo": "Sea bass crudo with cream, edible flowers and a clear dressing",
       "beef-cheek": "Braised beef cheek, mash, truffle and root vegetable crisps [CHECK]",
       "sea-bass": "Sea bass on fine noodles with broccoli and cherry tomatoes [CHECK]",
       "hummus-tart": "Hummus tart with fresh herbs and pepper [CHECK]",
       "duck": "Duck leg confit, pulled duck and purée [CHECK]",
       "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce [CHECK]"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let’s talk",
+    "intro": "An opening, a kitchen that needs a system, or just a conversation about working together. Get in touch.",
+    "emailLabel": "Email",
+    "copy": "Copy",
+    "copied": "Copied",
+    "linkedinLabel": "LinkedIn",
+    "linkedinCta": "View profile",
+    "cvLabel": "CV",
+    "cvCta": "Download CV (PDF, English)",
+    "languagesLabel": "Languages",
+    "languages": "Srpski · English · Русский",
+    "locationLabel": "Location",
+    "location": "Belgrade, Serbia",
+    "form": {
+      "title": "Send a message",
+      "name": "Full name",
+      "email": "Email",
+      "company": "Hotel or company (optional)",
+      "message": "Message",
+      "send": "Send message",
+      "sending": "Sending…",
+      "success": "Thank you! Your message has been sent. I will get back to you soon.",
+      "error": "The message was not sent. Please email me directly at",
+      "required": "required"
     }
   },
   "footer": {
