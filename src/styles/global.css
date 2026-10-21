@@ -21,13 +21,13 @@
   --color-ice: #9fc3ef;        /* akcent za tekst i linkove, ledeno plava */
   --color-ice-deep: #3f72c4;   /* akcent za površine i odsjaje, kobalt */
 
-  /* Knowledge Palette — tonska karta u nijansama plave */
-  --color-chip-1: #a9c2e4;
-  --color-chip-2: #7fa3d4;
-  --color-chip-3: #5683bf;
-  --color-chip-4: #3a66a6;
-  --color-chip-5: #264b82;
-  --color-chip-6: #183562;
+  /* Knowledge Palette — tonovi koji klasično idu uz teget (vrednosti se koriste u Palette.astro) */
+  --color-chip-terracotta: #b85c40;
+  --color-chip-sage: #7f9c7b;
+  --color-chip-slate: #5f80aa;
+  --color-chip-bordeaux: #7d2f42;
+  --color-chip-camel: #c4a27a;
+  --color-chip-petrol: #2f7479;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }

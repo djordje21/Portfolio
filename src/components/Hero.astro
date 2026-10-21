@@ -22,8 +22,8 @@ const h = t.hero;
       <p class="eyebrow" data-reveal>{h.eyebrow}</p>
 
       <h1 id="hero-title" class="mt-6 text-[clamp(3.2rem,9vw,7.5rem)] text-snow" data-split="hero">
-        {h.name}
-        <span class="block mt-3 text-[0.42em] italic font-normal text-gradient">{h.nickname}</span>
+        {h.name.split(' ').slice(0, -1).join(' ')}
+        <span class="text-gradient">{h.name.split(' ').slice(-1)[0]}</span>
       </h1>
 
       <p class="mt-8 text-sm md:text-base tracking-[0.18em] uppercase text-snow/90" data-reveal style="--reveal-delay:260ms">
@@ -34,14 +34,6 @@ const h = t.hero;
 
       <p class="mt-6 max-w-xl text-lg md:text-xl leading-relaxed text-muted" data-reveal style="--reveal-delay:380ms">
         {h.pitch}
-      </p>
-
-      <p class="mt-6 flex items-start gap-3 text-sm text-snow/85 max-w-xl" data-reveal style="--reveal-delay:440ms">
-        <span class="relative mt-1.5 flex h-2 w-2 shrink-0" aria-hidden="true">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-ice opacity-60 motion-safe:animate-ping"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-ice"></span>
-        </span>
-        {h.current}
       </p>
 
       <div class="mt-10 flex flex-wrap gap-4" data-reveal style="--reveal-delay:500ms">
