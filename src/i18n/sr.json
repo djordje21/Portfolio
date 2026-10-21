@@ -124,13 +124,13 @@
         "id": "suppliers",
         "name": "Mreža dobavljača",
         "glyph": "njiva → pass",
-        "summary": "Prava namirnica, po pravoj ceni, na vreme. Na svakom servisu.",
+        "summary": "Prava namirnica, prava oprema i pravi majstor. Na vreme, na svakom servisu.",
         "points": [
-          "Građenje i vođenje mreže dobavljača: lokalni proizvođači, veletrgovci i uvoznici specijaliteta [CHECK]",
-          "Izbor dobavljača, specifikacije proizvoda i pregovori o cenama",
-          "Kontrola kvaliteta pri prijemu robe: hladni lanac, sledljivost i HACCP",
-          "Nabavka pod uvoznim ograničenjima, uključujući sopstvenu farmu za sigurnost snabdevanja [CHECK]",
-          "Sezonska i lokalna nabavka uklopljena u meni"
+          "Namirnice od porodičnih gazdinstava, malih proizvođača i poljoprivrednika do velikih HoReCa distributera i cash & carry sistema",
+          "Specijalizovani dobavljači: mesare, živina i jaja, riba, mlečni proizvodi, voće i povrće",
+          "Oprema: od teške kuhinjske opreme do sitnog inventara",
+          "Majstori i serviseri: održavanje i servis, da kuhinja ne stane usred servisa",
+          "Izbor dobavljača, pregovori o cenama i kontrola pri prijemu: hladni lanac, sledljivost i HACCP"
         ]
       }
     ]

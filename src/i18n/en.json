@@ -124,13 +124,13 @@
         "id": "suppliers",
         "name": "Supplier network",
         "glyph": "farm → pass",
-        "summary": "The right product, at the right price, on time — every single service.",
+        "summary": "The right produce, the right equipment and the right technician. On time, every service.",
         "points": [
-          "Building and managing a supplier network: local producers, wholesalers and specialty importers [CHECK]",
-          "Supplier selection, product specifications and price negotiation",
-          "Quality control on delivery: cold chain, traceability and HACCP compliance",
-          "Sourcing under import restrictions, including an on-site farm for supply resilience [CHECK]",
-          "Seasonal and local sourcing planned into the menu"
+          "Produce from family farms, small producers and growers to large HoReCa distributors and cash & carry chains",
+          "Specialist suppliers: butchers, poultry and eggs, fish, dairy, fruit and vegetables",
+          "Equipment: from heavy kitchen equipment to smallwares",
+          "Technicians and service partners: maintenance and repairs, so the kitchen never stops mid-service",
+          "Supplier selection, price negotiation and receiving checks: cold chain, traceability and HACCP"
         ]
       }
     ]
