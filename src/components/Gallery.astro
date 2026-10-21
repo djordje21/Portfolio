@@ -1,0 +1,131 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { Dict } from '../i18n/utils';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const g = t.gallery;
+
+// Sve fotografije iz src/assets/images/gallery/ — dodaj novu i upiši njen opis u gallery.items u tekstovima.
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/images/gallery/*.{jpg,jpeg,png,webp}', { eager: true });
+const order = Object.keys(g.items);
+const photos = await Promise.all(
+  Object.entries(files)
+    .map(([path, mod]) => ({ id: path.split('/').pop()!.replace(/\.\w+$/, ''), src: mod.default }))
+    .sort((a, b) => (order.indexOf(a.id) + 1 || 99) - (order.indexOf(b.id) + 1 || 99))
+    .map(async (p) => ({
+      ...p,
+      caption: (g.items as Record<string, string>)[p.id] ?? '',
+      full: (await getImage({ src: p.src, width: Math.min(p.src.width, 1600), format: 'webp' })).src,
+    })),
+);
+---
+<section id="gallery" class="section relative border-t border-line" aria-labelledby="gallery-title">
+  <div class="container-x">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <p class="eyebrow" data-reveal>{g.eyebrow}</p>
+        <h2 id="gallery-title" class="mt-5 text-5xl md:text-7xl" data-split>{g.title}</h2>
+      </div>
+      <p class="lg:col-span-5 text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{g.intro}</p>
+    </div>
+
+    <ul class="mt-14 columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]" data-gallery>
+      {photos.map((p, i) => (
+        <li class="mb-4 break-inside-avoid" data-reveal style={`--reveal-delay:${(i % 3) * 90}ms`}>
+          <button
+            type="button"
+            class="group relative block w-full overflow-hidden bg-navy-2 text-left"
+            data-full={p.full}
+            data-caption={p.caption}
+            data-cursor={g.open}
+            aria-label={`${g.open}: ${p.caption}`}
+          >
+            <Image
+              src={p.src}
+              alt={p.caption}
+              widths={[400, 700, 1000]}
+              sizes="(min-width: 1024px) 26rem, (min-width: 640px) 45vw, 100vw"
+              class="block w-full h-auto transition-transform duration-700 ease-[var(--ease-out-soft)] group-hover:scale-[1.04]"
+            />
+            <span class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent px-4 pb-4 pt-12 text-sm leading-snug text-snow opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+              {p.caption}
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox m-0 h-dvh max-h-none w-screen max-w-none bg-navy/95 p-0 text-snow backdrop:bg-navy/80" aria-label={g.title}>
+    <div class="flex h-full flex-col">
+      <div class="flex items-center justify-between px-5 py-4 md:px-8">
+        <span class="lb-count text-xs tracking-[0.2em] text-muted tabular-nums"></span>
+        <button type="button" class="lb-close p-2 text-sm tracking-[0.16em] uppercase text-muted hover:text-snow" aria-label={g.close}>✕</button>
+      </div>
+      <div class="relative flex min-h-0 flex-1 items-center justify-center px-4 md:px-20">
+        <button type="button" class="lb-prev absolute left-2 md:left-6 z-10 grid h-12 w-12 place-items-center rounded-full border border-line text-snow/80 hover:border-ice hover:text-snow" aria-label={g.prev}>←</button>
+        <img class="lb-img max-h-full max-w-full object-contain" alt="" />
+        <button type="button" class="lb-next absolute right-2 md:right-6 z-10 grid h-12 w-12 place-items-center rounded-full border border-line text-snow/80 hover:border-ice hover:text-snow" aria-label={g.next}>→</button>
+      </div>
+      <p class="lb-caption px-5 py-5 md:px-8 text-center text-snow/85" aria-live="polite"></p>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-gallery]');
+  const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+  if (root && dialog) {
+    const items = Array.from(root.querySelectorAll<HTMLButtonElement>('button[data-full]'));
+    const img = dialog.querySelector<HTMLImageElement>('.lb-img')!;
+    const cap = dialog.querySelector<HTMLElement>('.lb-caption')!;
+    const count = dialog.querySelector<HTMLElement>('.lb-count')!;
+    let index = 0;
+    let opener: HTMLElement | null = null;
+    const lenis = () => (window as any).__lenis;
+
+    const show = (i: number) => {
+      index = (i + items.length) % items.length;
+      const it = items[index];
+      img.src = it.dataset.full!;
+      img.alt = it.dataset.caption ?? '';
+      cap.textContent = it.dataset.caption ?? '';
+      count.textContent = `${index + 1} / ${items.length}`;
+    };
+    const open = (i: number) => {
+      opener = items[i];
+      show(i);
+      dialog.showModal();
+      lenis()?.stop();
+    };
+    const close = () => dialog.close();
+    dialog.addEventListener('close', () => {
+      lenis()?.start();
+      opener?.focus({ preventScroll: true });
+    });
+
+    items.forEach((b, i) => b.addEventListener('click', () => open(i)));
+    dialog.querySelector('.lb-close')!.addEventListener('click', close);
+    dialog.querySelector('.lb-prev')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('.lb-next')!.addEventListener('click', () => show(index + 1));
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+    // klik van fotografije zatvara
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog || (e.target as HTMLElement).classList.contains('flex-1')) close();
+    });
+    // prevlačenje prstom na telefonu
+    let x0 = 0;
+    dialog.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+    dialog.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    });
+  }
+</script>

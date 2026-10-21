@@ -488,6 +488,23 @@
       }
     ]
   },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "From the pass",
+    "intro": "A selection of plates from different kitchens and years.",
+    "open": "Open photo",
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "items": {
+      "sea-bass": "Sea bass on fine noodles with broccoli and cherry tomatoes [CHECK]",
+      "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce [CHECK]",
+      "duck": "Duck leg confit, pulled duck and purée [CHECK]",
+      "steak-board": "Steak board with roasted onion, potatoes and sauces [CHECK]",
+      "sturgeon": "Banquet sturgeon with lemongrass and redcurrants [CHECK]",
+      "skillets": "Mushrooms, crispy chicken and skewers to share [CHECK]"
+    }
+  },
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

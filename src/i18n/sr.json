@@ -488,6 +488,23 @@
       }
     ]
   },
+  "gallery": {
+    "eyebrow": "Galerija",
+    "title": "Sa pass-a",
+    "intro": "Izbor tanjira iz različitih kuhinja i godina.",
+    "open": "Otvori fotografiju",
+    "close": "Zatvori",
+    "prev": "Prethodna",
+    "next": "Sledeća",
+    "items": {
+      "sea-bass": "Brancin na tankim rezancima sa brokolijem i čeri paradajzom [CHECK]",
+      "pork-tenderloin": "Svinjski file u korici od pistaća, sa kremastim sosom [CHECK]",
+      "duck": "Pačji batak konfi, čupana pačetina i pire [CHECK]",
+      "steak-board": "Daska sa steakovima, pečenim lukom, krompirom i sosovima [CHECK]",
+      "sturgeon": "Jesetra za banket, sa limunovom travom i ribizlama [CHECK]",
+      "skillets": "Pečurke, hrskava piletina i ražnjići za deljenje [CHECK]"
+    }
+  },
   "footer": {
     "rights": "Sva prava zadržana.",
     "top": "Nazad na vrh"
