@@ -9,6 +9,7 @@ const p = t.palette;
 const g = t.game;
 
 import { Image } from 'astro:assets';
+import { domainColours } from '../data/domains';
 import craftImg from '../assets/images/palette/craft.jpg';
 import opsImg from '../assets/images/palette/ops.jpg';
 import safetyImg from '../assets/images/palette/safety.jpg';
@@ -17,15 +18,8 @@ import preopeningImg from '../assets/images/palette/preopening.jpg';
 import suppliersImg from '../assets/images/palette/suppliers.jpg';
 import serviceImg from '../assets/images/portrait-kitchen.jpg';
 
-// Boja svake karte — tonovi koji klasično idu uz teget
-const colours: Record<string, string> = {
-  craft: '#b85c40', // terakota
-  ops: '#7f9c7b', // žalfija
-  safety: '#5f80aa', // škriljac
-  people: '#7d2f42', // bordo
-  preopening: '#c4a27a', // kamel
-  suppliers: '#2f7479', // petrolej
-};
+// Boja svake karte — tonovi koji klasično idu uz teget (src/data/domains.ts)
+const colours: Record<string, string> = domainColours;
 // Svetle boje dobijaju tamna slova, tamne bela (kontrast)
 const lightChips = new Set(['ops', 'preopening']);
 

@@ -1,0 +1,42 @@
+---
+import type { Dict, Lang } from '../i18n/utils';
+import Gantt from './Gantt.astro';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+}
+const { lang, t } = Astro.props;
+const c = t.caseStudy;
+---
+<section id="case-study" class="section relative border-t border-line" aria-labelledby="case-title">
+  <div class="container-x">
+    <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <p class="eyebrow" data-reveal>{c.eyebrow}</p>
+        <h2 id="case-title" class="mt-5 text-5xl md:text-7xl" data-split>{c.title}</h2>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{c.lead}</p>
+      </div>
+      <dl class="lg:col-span-5 grid gap-px bg-line border border-line self-end" data-reveal style="--reveal-delay:200ms">
+        <div class="bg-navy-2 px-5 py-4">
+          <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.projectLabel}</dt>
+          <dd class="mt-1 text-snow/90">{c.project}</dd>
+        </div>
+        {c.meta.map((m) => (
+          <div class="bg-navy-2 px-5 py-4 flex items-baseline justify-between gap-6">
+            <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{m.k}</dt>
+            <dd class="text-right text-snow/90">{m.v}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="mt-16 border border-line bg-navy-2/60 p-6 md:p-10" data-reveal>
+      <Gantt t={t} compact />
+    </div>
+
+    <div class="mt-10" data-reveal>
+      <a href={`/${lang}/case-study/pre-opening/`} class="btn btn-primary" data-magnetic>{c.readMore} →</a>
+    </div>
+  </div>
+</section>

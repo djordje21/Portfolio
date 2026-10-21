@@ -79,7 +79,7 @@
         "points": [
           "Menu engineering i kalkulacija normativa",
           "Odgovornost za P&L, food cost i troškove rada",
-          "Kontrola zaliha i smanjenje otpada [CHECK]",
+          "Kontrola zaliha i smanjenje otpada",
           "Vođenje više objekata: 4 koncepta i brigada od 25 ljudi istovremeno",
           "Osnovao i prodao profitabilan biznis za dostavu hrane"
         ]
@@ -126,7 +126,7 @@
         "glyph": "njiva → pass",
         "summary": "Prava namirnica, prava oprema i pravi majstor. Na vreme, na svakom servisu.",
         "points": [
-          "Namirnice od porodičnih gazdinstava, malih proizvođača i poljoprivrednika do velikih HoReCa distributera i cash & carry sistema",
+          "Namirnice od porodičnih gazdinstava, malih proizvođača i poljoprivrednika do velikih HoReCa distributera",
           "Specijalizovani dobavljači: mesare, živina i jaja, riba, mlečni proizvodi, voće i povrće",
           "Oprema: od teške kuhinjske opreme do sitnog inventara",
           "Majstori i serviseri: održavanje i servis, da kuhinja ne stane usred servisa",
@@ -172,6 +172,139 @@
     "Sistemi",
     "Servis"
   ],
+  "caseStudy": {
+    "eyebrow": "Studija slučaja",
+    "title": "Pre-opening sistem",
+    "lead": "Kako se kuhinja međunarodnog hotela dovodi od praznog prostora do prvog servisa: sa timom koji je spreman prvog dana, a ne posle tri meseca.",
+    "project": "Međunarodni hotel više kategorije · 200+ soba [CHECK]",
+    "meta": [
+      {
+        "k": "Uloga",
+        "v": "Executive Chef"
+      },
+      {
+        "k": "Obim",
+        "v": "Kuhinja i F&B, sa vezama ka svim departmanima"
+      },
+      {
+        "k": "Status",
+        "v": "Završna faza pre-openinga"
+      }
+    ],
+    "readMore": "Pročitaj celu studiju",
+    "back": "Nazad na početnu",
+    "ganttTitle": "Faze pre-openinga",
+    "ganttAxis": "nedelje do otvaranja",
+    "opening": "Otvaranje",
+    "ganttNote": "Ilustrativan prikaz faza, bez poverljivih podataka.",
+    "challengeTitle": "Izazov",
+    "challenge": [
+      "Hotel otvara kompletnu F&B operaciju odjednom. Većina tima dolazi iz različitih kuhinja i prvi put radi po standardima međunarodnog brenda.",
+      "Cilj nije da tim „uhvati ritam“ posle otvaranja, nego da svaka pozicija zna svoj posao prvog dana: isti tanjir, isti standard i ista bezbednost hrane, od prvog gosta."
+    ],
+    "approachTitle": "Pristup",
+    "steps": [
+      {
+        "t": "Definisati šta znači „spreman“",
+        "d": "Okvir kompetencija za svaku poziciju u kuhinji: šta kuvar mora da zna i ume, i kako se to proverava."
+      },
+      {
+        "t": "Plan obuke dan po dan",
+        "d": "Za svaki dan pre otvaranja tačno je određeno ko šta uči, sa kim i kako se proverava napredak."
+      },
+      {
+        "t": "Povezati sve departmane",
+        "d": "Master plan koji usklađuje kuhinju sa uslugom, stewardingom, nabavkom, tehničkom službom i housekeepingom."
+      },
+      {
+        "t": "Proveriti pod pritiskom",
+        "d": "Programi spremnosti: probni servisi i soft opening, sa pravim tempom i pravim greškama, pre pravih gostiju."
+      },
+      {
+        "t": "Potvrditi znanje",
+        "d": "Sertifikacija: svaki član tima je zvanično potvrđen za svoju poziciju pre otvaranja."
+      }
+    ],
+    "deliverablesTitle": "Šta je napravljeno",
+    "deliverables": [
+      "Okvir kompetencija i procena za svaku poziciju",
+      "Planovi obuke dan po dan, po departmanu",
+      "Master plan između departmana",
+      "Programi spremnosti i probni servisi",
+      "Sistem sertifikacije osoblja"
+    ],
+    "outcomeTitle": "Ishod",
+    "outcome": "Projekat je u završnoj fazi. Rezultati sa otvaranja biće dodati ovde. [CHECK]",
+    "cta": "Imate otvaranje pred sobom? Hajde da razgovaramo.",
+    "pageTitle": "Pre-opening sistem — studija slučaja · Đorđe Milenković",
+    "pageDescription": "Kako je postavljen kompletan pre-opening sistem za kuhinju međunarodnog hotela: kompetencije, obuka dan po dan, master plan, probni servisi i sertifikacija.",
+    "phases": [
+      {
+        "id": "recruit",
+        "domain": "people",
+        "start": -16,
+        "end": -8,
+        "label": "Regrutacija i onboarding"
+      },
+      {
+        "id": "framework",
+        "domain": "preopening",
+        "start": -15,
+        "end": -11,
+        "label": "Okvir kompetencija po poziciji"
+      },
+      {
+        "id": "suppliers",
+        "domain": "suppliers",
+        "start": -12,
+        "end": -2,
+        "label": "Dobavljači i prva narudžbina"
+      },
+      {
+        "id": "foundation",
+        "domain": "safety",
+        "start": -10,
+        "end": -6,
+        "label": "Osnovna obuka: standardi i HACCP"
+      },
+      {
+        "id": "position",
+        "domain": "craft",
+        "start": -8,
+        "end": -1,
+        "label": "Obuka po pozicijama, dan po dan"
+      },
+      {
+        "id": "crossdept",
+        "domain": "ops",
+        "start": -6,
+        "end": 0,
+        "label": "Master plan i probe između departmana"
+      },
+      {
+        "id": "mock",
+        "domain": "craft",
+        "start": -3,
+        "end": 0,
+        "label": "Probni servisi i soft opening"
+      },
+      {
+        "id": "cert",
+        "domain": "people",
+        "start": -2,
+        "end": 0,
+        "label": "Sertifikacija osoblja"
+      },
+      {
+        "id": "review",
+        "domain": "ops",
+        "start": 0,
+        "end": 4,
+        "label": "Analiza posle otvaranja"
+      }
+    ],
+    "projectLabel": "Projekat"
+  },
   "footer": {
     "rights": "Sva prava zadržana.",
     "top": "Nazad na vrh"

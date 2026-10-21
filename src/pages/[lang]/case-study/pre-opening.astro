@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import Gantt from '../../../components/Gantt.astro';
+import { langs, useTranslations, type Lang } from '../../../i18n/utils';
+import planningImg from '../../../assets/images/palette/preopening.jpg';
+
+export function getStaticPaths() {
+  return langs.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const c = t.caseStudy;
+---
+<Base lang={lang} title={c.pageTitle} description={c.pageDescription} ogAlt={c.title}>
+  <div id="top"></div>
+  <Header lang={lang} t={t} />
+  <main id="main">
+    <!-- Uvod -->
+    <section class="relative overflow-hidden pt-32 md:pt-40 pb-16 md:pb-24">
+      <div aria-hidden="true" class="pointer-events-none absolute -top-40 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-ice-deep/20 blur-[140px]"></div>
+      <div class="container-x relative grid gap-12 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-7">
+          <a href={`/${lang}/#case-study`} class="text-xs tracking-[0.2em] uppercase text-muted hover:text-snow transition-colors">← {c.back}</a>
+          <p class="eyebrow mt-10" data-reveal>{c.eyebrow}</p>
+          <h1 class="mt-5 text-[clamp(3rem,7vw,6rem)]" data-split="hero">{c.title}</h1>
+          <p class="mt-6 max-w-xl text-lg md:text-xl leading-relaxed text-muted" data-reveal style="--reveal-delay:160ms">{c.lead}</p>
+        </div>
+        <div class="lg:col-span-5" data-reveal style="--reveal-delay:120ms">
+          <figure class="relative">
+            <div aria-hidden="true" class="absolute -inset-2 md:-inset-3 border border-ice/40 translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4"></div>
+            <Image src={planningImg} alt="" widths={[480, 800]} sizes="(min-width: 1024px) 36vw, 100vw" class="relative w-full h-auto aspect-[4/3] object-cover" loading="eager" />
+          </figure>
+        </div>
+      </div>
+
+      <div class="container-x relative mt-14" data-reveal>
+        <dl class="grid gap-px bg-line border-y border-line sm:grid-cols-2 lg:grid-cols-4">
+          <div class="bg-navy py-5 sm:pr-6">
+            <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{c.projectLabel}</dt>
+            <dd class="mt-1 text-snow/90">{c.project}</dd>
+          </div>
+          {c.meta.map((m) => (
+            <div class="bg-navy py-5 sm:px-6">
+              <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{m.k}</dt>
+              <dd class="mt-1 text-snow/90">{m.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Izazov -->
+    <section class="section pt-8 md:pt-12" aria-labelledby="challenge-title">
+      <div class="container-x grid gap-10 lg:grid-cols-12">
+        <h2 id="challenge-title" class="lg:col-span-4 text-4xl md:text-5xl" data-split>{c.challengeTitle}</h2>
+        <div class="lg:col-span-8 space-y-6 text-lg md:text-xl leading-relaxed text-snow/85 max-w-3xl">
+          {c.challenge.map((p, i) => <p data-reveal style={`--reveal-delay:${i * 100}ms`}>{p}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Faze (Gantt) -->
+    <section class="pb-24 md:pb-32">
+      <div class="container-x">
+        <div class="border border-line bg-navy-2/60 p-6 md:p-12" data-reveal>
+          <Gantt t={t} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pristup: pet koraka, redosled je stvaran -->
+    <section class="section border-t border-line" aria-labelledby="approach-title">
+      <div class="container-x">
+        <h2 id="approach-title" class="text-4xl md:text-6xl" data-split>{c.approachTitle}</h2>
+        <ol class="mt-14 grid gap-px bg-line border border-line md:grid-cols-2 lg:grid-cols-5">
+          {c.steps.map((s, i) => (
+            <li class="bg-navy-2 p-6 md:p-8 flex flex-col gap-4" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+              <span class="font-display text-4xl text-ice tabular-nums" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-2xl leading-tight">{s.t}</h3>
+              <p class="text-[0.95rem] leading-relaxed text-muted">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Šta je napravljeno i ishod -->
+    <section class="section border-t border-line" aria-labelledby="deliverables-title">
+      <div class="container-x grid gap-14 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <h2 id="deliverables-title" class="text-4xl md:text-5xl" data-split>{c.deliverablesTitle}</h2>
+          <ul class="mt-10 border-t border-line">
+            {c.deliverables.map((d, i) => (
+              <li class="flex gap-5 border-b border-line py-5 text-lg text-snow/90" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+                <span aria-hidden="true" class="mt-[0.8em] h-0.5 w-5 shrink-0 rounded-full bg-ice"></span>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <aside class="lg:col-span-5 self-start border border-ice/30 bg-gradient-to-br from-ice-deep/20 to-navy-2 p-8 md:p-10" data-reveal>
+          <h2 class="text-3xl md:text-4xl">{c.outcomeTitle}</h2>
+          <p class="mt-4 text-lg leading-relaxed text-snow/85">{c.outcome}</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Poziv -->
+    <section class="section border-t border-line">
+      <div class="container-x flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <p class="font-display text-3xl md:text-5xl max-w-2xl">{c.cta}</p>
+        <a href={`/${lang}/#contact`} class="btn btn-primary shrink-0" data-magnetic>{t.hero.ctaContact} →</a>
+      </div>
+    </section>
+  </main>
+  <Footer t={t} />
+</Base>

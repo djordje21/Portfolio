@@ -79,7 +79,7 @@
         "points": [
           "Menu engineering and recipe costing",
           "P&L ownership, food cost and labour control",
-          "Inventory control and waste reduction [CHECK]",
+          "Inventory control and waste reduction",
           "Multi-unit management: 4 concepts and a 25-person brigade at once",
           "Built and sold a food-delivery business as a profitable going concern"
         ]
@@ -126,7 +126,7 @@
         "glyph": "farm → pass",
         "summary": "The right produce, the right equipment and the right technician. On time, every service.",
         "points": [
-          "Produce from family farms, small producers and growers to large HoReCa distributors and cash & carry chains",
+          "Produce from family farms, small producers and growers to large HoReCa distributors",
           "Specialist suppliers: butchers, poultry and eggs, fish, dairy, fruit and vegetables",
           "Equipment: from heavy kitchen equipment to smallwares",
           "Technicians and service partners: maintenance and repairs, so the kitchen never stops mid-service",
@@ -172,6 +172,139 @@
     "Systems",
     "Service"
   ],
+  "caseStudy": {
+    "eyebrow": "Case study",
+    "title": "Pre-opening system",
+    "lead": "How an international hotel kitchen goes from an empty space to its first service, with a team that is ready on day one, not three months later.",
+    "project": "Upscale international hotel · 200+ rooms [CHECK]",
+    "meta": [
+      {
+        "k": "Role",
+        "v": "Executive Chef"
+      },
+      {
+        "k": "Scope",
+        "v": "Kitchen and F&B, linked to every department"
+      },
+      {
+        "k": "Status",
+        "v": "Final pre-opening phase"
+      }
+    ],
+    "readMore": "Read the full case study",
+    "back": "Back to home",
+    "ganttTitle": "Pre-opening phases",
+    "ganttAxis": "weeks to opening",
+    "opening": "Opening",
+    "ganttNote": "Illustrative view of the phases, with no confidential data.",
+    "challengeTitle": "Challenge",
+    "challenge": [
+      "The hotel opens a complete F&B operation at once. Most of the team comes from different kitchens and works to an international brand standard for the first time.",
+      "The goal is not for the team to “find its rhythm” after opening. Every position has to know its job on day one: the same plate, the same standard and the same food safety from the first guest."
+    ],
+    "approachTitle": "Approach",
+    "steps": [
+      {
+        "t": "Define what “ready” means",
+        "d": "A competency framework for every kitchen position: what each cook must know and be able to do, and how it is assessed."
+      },
+      {
+        "t": "Train day by day",
+        "d": "For every day before opening it is clear who learns what, with whom, and how progress is checked."
+      },
+      {
+        "t": "Connect every department",
+        "d": "A master plan that aligns the kitchen with service, stewarding, purchasing, engineering and housekeeping."
+      },
+      {
+        "t": "Test under pressure",
+        "d": "Readiness programmes: mock services and a soft opening with real pace and real mistakes, before real guests."
+      },
+      {
+        "t": "Certify the knowledge",
+        "d": "Staff certification: every team member is formally signed off for their position before opening."
+      }
+    ],
+    "deliverablesTitle": "What was built",
+    "deliverables": [
+      "Competency framework and assessment for every position",
+      "Day-by-day training plans per department",
+      "Cross-department master plan",
+      "Readiness programmes and mock services",
+      "Staff certification system"
+    ],
+    "outcomeTitle": "Outcome",
+    "outcome": "The project is in its final phase. Results from the opening will be added here. [CHECK]",
+    "cta": "Have an opening ahead? Let’s talk.",
+    "pageTitle": "Pre-opening system — case study · Đorđe Milenković",
+    "pageDescription": "How a complete pre-opening system was built for an international hotel kitchen: competencies, day-by-day training, master plan, mock services and certification.",
+    "phases": [
+      {
+        "id": "recruit",
+        "domain": "people",
+        "start": -16,
+        "end": -8,
+        "label": "Recruitment and onboarding"
+      },
+      {
+        "id": "framework",
+        "domain": "preopening",
+        "start": -15,
+        "end": -11,
+        "label": "Competency framework per position"
+      },
+      {
+        "id": "suppliers",
+        "domain": "suppliers",
+        "start": -12,
+        "end": -2,
+        "label": "Suppliers and opening order"
+      },
+      {
+        "id": "foundation",
+        "domain": "safety",
+        "start": -10,
+        "end": -6,
+        "label": "Foundation training: standards and HACCP"
+      },
+      {
+        "id": "position",
+        "domain": "craft",
+        "start": -8,
+        "end": -1,
+        "label": "Position training, day by day"
+      },
+      {
+        "id": "crossdept",
+        "domain": "ops",
+        "start": -6,
+        "end": 0,
+        "label": "Cross-department master plan and rehearsals"
+      },
+      {
+        "id": "mock",
+        "domain": "craft",
+        "start": -3,
+        "end": 0,
+        "label": "Mock services and soft opening"
+      },
+      {
+        "id": "cert",
+        "domain": "people",
+        "start": -2,
+        "end": 0,
+        "label": "Staff certification"
+      },
+      {
+        "id": "review",
+        "domain": "ops",
+        "start": 0,
+        "end": 4,
+        "label": "Post-opening review"
+      }
+    ],
+    "projectLabel": "Project"
+  },
   "footer": {
     "rights": "All rights reserved.",
     "top": "Back to top"

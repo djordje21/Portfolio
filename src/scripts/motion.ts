@@ -66,7 +66,7 @@ if (!reduce) {
 
     if (el.dataset.split === 'hero') {
       const html = document.documentElement;
-      if (html.dataset.intro) play();
+      if (html.dataset.intro || !html.classList.contains('intro-active')) play();
       else document.addEventListener('intro:done', play, { once: true });
     } else {
       ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: play });

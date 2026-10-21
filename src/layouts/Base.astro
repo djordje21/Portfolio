@@ -10,9 +10,11 @@ interface Props {
   title: string;
   description: string;
   ogAlt?: string;
+  /** Da li stranica ima filmski uvod (samo početna) */
+  intro?: boolean;
 }
 
-const { lang, title, description, ogAlt = '' } = Astro.props;
+const { lang, title, description, ogAlt = '', intro = false } = Astro.props;
 const path = Astro.url.pathname;
 const canonical = new URL(localizePath(path, lang), Astro.site);
 const og = await getImage({ src: portrait, width: 1200, height: 1200, fit: 'cover', format: 'jpg' });
@@ -33,7 +35,7 @@ const jsonLd = {
 };
 ---
 <!doctype html>
-<html lang={languages[lang].htmlLang} class="no-js">
+<html lang={languages[lang].htmlLang} class="no-js" data-has-intro={intro ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -67,7 +69,7 @@ const jsonLd = {
         var seen = false;
         try { seen = !!sessionStorage.getItem('intro-seen'); } catch (e) {}
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (seen || reduce) d.classList.add('intro-seen');
+        if (seen || reduce || !d.hasAttribute('data-has-intro')) d.classList.add('intro-seen');
         else d.classList.add('intro-active');
       })();
     </script>
