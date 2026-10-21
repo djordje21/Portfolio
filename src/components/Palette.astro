@@ -307,6 +307,8 @@ const slots = p.chips.map((_, i) => {
     const canvas = root.querySelector<HTMLCanvasElement>('.game-sparks')!;
     const sparks = reduce ? null : createSparks(canvas, {});
     const plated = new Set<number>();
+    let round = 0;
+    let completeTimer: number | undefined;
     const total = tabs.length;
     const stationsLabel = label.textContent ?? '';
 
@@ -351,19 +353,18 @@ const slots = p.chips.map((_, i) => {
 
     const showDab = (i: number) => {
       const inner = dabs[i].querySelector<SVGGElement>('.dab-inner')!;
-      if (reduce) return inner.setAttribute('opacity', '1');
+      if (reduce) return void gsap.set(inner, { opacity: 1 });
       gsap.fromTo(inner, { opacity: 0, scale: 0.2, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.8, ease: 'elastic.out(1, 0.45)' });
       gsap.fromTo(plateBody, { scale: 1 }, { scale: 1.025, duration: 0.12, yoyo: true, repeat: 1, transformOrigin: '50% 50%', ease: 'power2.out' });
     };
 
     const complete = () => {
       const r = plateRect(), c = canvas.getBoundingClientRect();
-      count.setAttribute('opacity', '0');
-      label.setAttribute('opacity', '0');
+      gsap.set([count, label], { opacity: 0 });
       bell();
       done.classList.remove('hidden');
       if (reduce) {
-        doneText.setAttribute('opacity', '1');
+        gsap.set(doneText, { opacity: 1 });
       } else {
         gsap.fromTo(doneText, { opacity: 0, scale: 0.6, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.9, ease: 'elastic.out(1, 0.5)' });
         gsap.to(root.querySelector('.dabs'), { rotate: 360, duration: 2.4, ease: 'expo.inOut', svgOrigin: '200 200' });
@@ -402,7 +403,8 @@ const slots = p.chips.map((_, i) => {
         dot.style.top = `${start.y - 14}px`;
         document.body.append(dot);
         const dx = target.x - start.x, dy = target.y - start.y;
-        gsap.timeline({ onComplete: () => { dot.remove(); showDab(i); } })
+        const myRound = round;
+        gsap.timeline({ onComplete: () => { dot.remove(); if (myRound === round) showDab(i); } })
           .to(dot, { x: dx, duration: 0.6, ease: 'power2.inOut' }, 0)
           .to(dot, { y: Math.min(dy, 0) - 80, duration: 0.3, ease: 'power2.out' }, 0)
           .to(dot, { y: dy, duration: 0.3, ease: 'power2.in' }, 0.3)
@@ -410,20 +412,25 @@ const slots = p.chips.map((_, i) => {
       }
 
       updateCount();
-      if (plated.size === total) setTimeout(complete, reduce ? 0 : 750);
+      if (plated.size === total) completeTimer = window.setTimeout(complete, reduce ? 0 : 750);
     };
 
     const reset = () => {
+      round++;
+      clearTimeout(completeTimer);
       plated.clear();
       tabs.forEach((t) => t.classList.remove('is-plated'));
-      dabs.forEach((d) => d.querySelector('.dab-inner')!.setAttribute('opacity', '0'));
+      const inners = dabs.map((d) => d.querySelector('.dab-inner')!);
+      gsap.killTweensOf([...inners, doneText, plateBody, root.querySelector('.dabs')]);
+      gsap.set(inners, { opacity: 0, scale: 1 });
       gsap.set(root.querySelector('.dabs'), { rotate: 0, svgOrigin: '200 200' });
-      count.setAttribute('opacity', '1');
-      label.setAttribute('opacity', '1');
-      doneText.setAttribute('opacity', '0');
+      gsap.set(doneText, { opacity: 0, scale: 1 });
+      gsap.set([count, label], { opacity: 1 });
+      document.querySelectorAll('.fly-dot').forEach((d) => d.remove());
       done.classList.add('hidden');
       updateCount();
-      tabs[0].focus();
+      select(0);
+      tabs[0].focus({ preventScroll: true });
     };
     resetBtn.addEventListener('click', reset);
 
