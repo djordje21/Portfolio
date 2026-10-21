@@ -32,25 +32,36 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ---------- Osnova stranice ----------
+   Namerno van @layer: tako je nijedan spoljašnji stil (npr. pregled u Claude-u)
+   ne može pregaziti — pozadina, boja i font teksta uvek ostaju naši. */
+html {
+  background-color: var(--color-navy);
+  color-scheme: dark;
+}
+html body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--color-navy);
+  background-image:
+    radial-gradient(ellipse 70% 55% at 88% -5%, rgba(63, 114, 196, 0.35), transparent 65%),
+    radial-gradient(ellipse 60% 50% at -10% 40%, rgba(31, 74, 140, 0.28), transparent 65%),
+    radial-gradient(ellipse 80% 60% at 60% 110%, rgba(40, 88, 160, 0.25), transparent 65%),
+    linear-gradient(180deg, #0a1628 0%, #0d1d38 45%, #0a1628 100%);
+  background-attachment: fixed;
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
-  }
-  body {
-    background-color: var(--color-navy);
-    background-image:
-      radial-gradient(ellipse 70% 55% at 88% -5%, rgba(63, 114, 196, 0.35), transparent 65%),
-      radial-gradient(ellipse 60% 50% at -10% 40%, rgba(31, 74, 140, 0.28), transparent 65%),
-      radial-gradient(ellipse 80% 60% at 60% 110%, rgba(40, 88, 160, 0.25), transparent 65%),
-      linear-gradient(180deg, #0a1628 0%, #0d1d38 45%, #0a1628 100%);
-    background-attachment: fixed;
-    color: var(--color-snow);
-    font-family: var(--font-sans);
-    font-feature-settings: 'ss01', 'cv11';
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
   h1, h2, h3, .font-display {
     font-family: var(--font-serif);
