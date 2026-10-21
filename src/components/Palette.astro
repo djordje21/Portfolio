@@ -13,6 +13,8 @@ import craftImg from '../assets/images/palette/craft.jpg';
 import opsImg from '../assets/images/palette/ops.jpg';
 import safetyImg from '../assets/images/palette/safety.jpg';
 import peopleImg from '../assets/images/palette/people.jpg';
+import preopeningImg from '../assets/images/palette/preopening.jpg';
+import languagesImg from '../assets/images/palette/languages.jpg';
 import serviceImg from '../assets/images/portrait-kitchen.jpg';
 
 // Boja svake karte — tonovi koji klasično idu uz teget
@@ -34,6 +36,8 @@ const photos: Record<string, ImageMetadata | undefined> = {
   ops: opsImg,
   safety: safetyImg,
   people: peopleImg,
+  preopening: preopeningImg,
+  languages: languagesImg,
 };
 const glyphs: Record<string, string> = {
   preopening: 'D–1',
@@ -85,12 +89,12 @@ const slots = p.chips.map((_, i) => {
                       alt=""
                       widths={[240, 400, 600]}
                       sizes="(min-width: 1024px) 14rem, 30vw"
-                      class="chip-photo absolute inset-0 h-full w-full object-cover grayscale contrast-125 mix-blend-multiply transition-[filter,transform] duration-700 group-hover:grayscale-0 group-hover:scale-105 group-aria-selected:grayscale-0"
+                      class="chip-photo absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <span aria-hidden="true" class:list={['absolute inset-0 grid place-items-center font-display italic text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap', lightChips.has(c.id) ? 'text-navy/80' : 'text-white/90']}>{glyphs[c.id]}</span>
                   )}
-                  <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/25"></span>
+                  <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-transparent"></span>
                   <span aria-hidden="true" class:list={['absolute top-2.5 left-2.5 md:top-3 md:left-3 px-1.5 py-0.5 bg-[var(--chip)] text-[0.6rem] md:text-[0.65rem] tracking-[0.18em] font-medium', lightChips.has(c.id) ? 'text-navy' : 'text-white']}>{c.code}</span>
                   <span class="chip-check absolute bottom-2 right-2 md:bottom-3 md:right-3 grid h-6 w-6 place-items-center rounded-full bg-snow text-navy text-xs opacity-0 scale-50 transition-all duration-500" aria-hidden="true">✓</span>
                 </span>
