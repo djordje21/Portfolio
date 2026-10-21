@@ -498,11 +498,11 @@
     "next": "Next",
     "items": {
       "crudo": "Sea bass crudo with cream, edible flowers and a clear dressing",
-      "beef-cheek": "Braised beef cheek, mash, truffle and root vegetable crisps",
-      "sea-bass": "Sea bass on fine noodles with broccoli and cherry tomatoes",
-      "hummus-tart": "Hummus tart with fresh herbs and pepper",
-      "duck": "Duck leg confit, pulled duck and purée",
-      "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce"
+      "beef-cheek": "Braised beef cheek, mash, truffle and root vegetable crisps [CHECK]",
+      "sea-bass": "Sea bass on fine noodles with broccoli and cherry tomatoes [CHECK]",
+      "hummus-tart": "Hummus tart with fresh herbs and pepper [CHECK]",
+      "duck": "Duck leg confit, pulled duck and purée [CHECK]",
+      "pork-tenderloin": "Pistachio-crusted pork tenderloin with a creamy sauce [CHECK]"
     }
   },
   "contact": {
