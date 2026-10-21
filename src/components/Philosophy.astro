@@ -1,0 +1,38 @@
+---
+import type { Dict } from '../i18n/utils';
+
+interface Props {
+  t: Dict;
+}
+const { t } = Astro.props;
+const p = t.philosophy;
+---
+<section id="philosophy" class="section relative overflow-hidden border-t border-line" aria-labelledby="philosophy-title">
+  <div aria-hidden="true" class="pointer-events-none absolute left-[-15%] top-1/4 h-[34rem] w-[34rem] rounded-full bg-ice-deep/15 blur-[150px]"></div>
+  <div class="container-x relative">
+    <p class="eyebrow" data-reveal>{p.eyebrow}</p>
+
+    <!-- rečenica koju tim najčešće čuje: ostaje na srpskom, uz prevod -->
+    <figure class="mt-8 max-w-4xl">
+      <blockquote lang="sr-Latn">
+        <p id="philosophy-title" class="font-display italic text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] text-gradient" data-split>„{p.quote}“</p>
+      </blockquote>
+      <figcaption class="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1" data-reveal style="--reveal-delay:150ms">
+        {p.quoteTranslation && <span class="text-lg text-snow/85">{p.quoteTranslation}</span>}
+        <span class="text-sm tracking-[0.04em] text-muted">{p.quoteCaption}</span>
+      </figcaption>
+    </figure>
+
+    <div class="mt-16 md:mt-24 grid gap-14 lg:grid-cols-12">
+      <p class="lg:col-span-7 text-xl md:text-2xl leading-relaxed text-snow/90" data-reveal>{p.statement}</p>
+      <ul class="lg:col-span-5 grid gap-px bg-line border border-line self-start">
+        {p.principles.map((pr, i) => (
+          <li class="bg-navy-2 px-6 py-5" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <h3 class="text-2xl">{pr.t}</h3>
+            <p class="mt-2 text-[0.95rem] leading-relaxed text-muted">{pr.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

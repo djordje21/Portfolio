@@ -35,7 +35,7 @@
       {
         "value": 16,
         "suffix": "",
-        "label": "godina u profesionalnim kuhinjama [CHECK]"
+        "label": "godina u profesionalnim kuhinjama"
       },
       {
         "value": 2000,
@@ -331,7 +331,7 @@
       {
         "years": "2026 – danas",
         "role": "Executive Chef",
-        "org": "AC Hotel by Marriott [CHECK]",
+        "org": "AC Hotel Belgrade",
         "place": "Beograd",
         "tags": [
           "Hotel",
@@ -450,17 +450,41 @@
         ]
       },
       {
-        "years": "2011 – 2013",
-        "role": "Chef de partie / Sous Chef",
-        "org": "Homa, Homa Bistrot, Toro Latino Gastro Bar",
+        "years": "do 2013",
+        "role": "Kuvar",
+        "org": "Lokalni restorani",
         "place": "Beograd",
         "tags": [
           "Restorani"
         ],
         "points": [
-          "Tehnička osnova i disciplina u kuhinjama gornjeg srednjeg segmenta",
-          "À la carte servis velikog obima"
+          "„Krao“ zanat i učio osnove: tehnika, brzina i disciplina u kuhinji"
         ]
+      }
+    ]
+  },
+  "philosophy": {
+    "eyebrow": "Filozofija",
+    "quote": "Okej, hajde polako.",
+    "quoteTranslation": "",
+    "quoteCaption": "Rečenica koju moj tim najčešće čuje od mene.",
+    "statement": "Kuhinja je tim, a ne jedan čovek. Preumoran kuvar nije dobar kuvar, zato pravim sisteme koji nose posao i kad mene nema. Mlad kuvar ima pravo da proba i da pogreši, a moj posao je da ga podstaknem i da ja ili neko od mojih zamenika budemo tu da ga usmerimo. A gost treba da dobije isti tanjir i istu uslugu i prvi, i treći, i peti put. Tome služi sistem.",
+    "principles": [
+      {
+        "t": "Poštovanje",
+        "d": "U mojoj kuhinji nema mesta za nepoštovanje, podmetanje, laž i stalna kašnjenja bez opravdanja."
+      },
+      {
+        "t": "Pravo na grešku",
+        "d": "Mlad kuvar treba da radi i da greši. Ja ga guram da proba, a moj tim je tu da ga usmeri i ispravi."
+      },
+      {
+        "t": "Tim, ne jedan čovek",
+        "d": "Niko ne može sve sam. Kad je potrebno, svi zapnemo, ali sistem postoji da niko ne bi morao da nosi sve."
+      },
+      {
+        "t": "Doslednost",
+        "d": "Bez obzira na koncept, gost dobija isti tanjir i istu uslugu, svaki put."
       }
     ]
   },

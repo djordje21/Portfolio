@@ -35,7 +35,7 @@
       {
         "value": 16,
         "suffix": "",
-        "label": "years in professional kitchens [CHECK]"
+        "label": "years in professional kitchens"
       },
       {
         "value": 2000,
@@ -331,7 +331,7 @@
       {
         "years": "2026 – present",
         "role": "Executive Chef",
-        "org": "AC Hotel by Marriott [CHECK]",
+        "org": "AC Hotel Belgrade",
         "place": "Belgrade",
         "tags": [
           "Hotel",
@@ -450,17 +450,41 @@
         ]
       },
       {
-        "years": "2011 – 2013",
-        "role": "Chef de partie / Sous Chef",
-        "org": "Homa, Homa Bistrot, Toro Latino Gastro Bar",
+        "years": "until 2013",
+        "role": "Cook",
+        "org": "Local restaurants",
         "place": "Belgrade",
         "tags": [
           "Restaurants"
         ],
         "points": [
-          "Technical foundation and discipline in upper-mid-market kitchens",
-          "High-volume à la carte service"
+          "Learned the basics and “stole” the craft: technique, speed and kitchen discipline"
         ]
+      }
+    ]
+  },
+  "philosophy": {
+    "eyebrow": "Philosophy",
+    "quote": "Okej, hajde polako.",
+    "quoteTranslation": "“Okay, let’s take it easy.”",
+    "quoteCaption": "The sentence my team hears from me most often.",
+    "statement": "A kitchen is a team, not one person. An exhausted cook is not a good cook, so I build systems that carry the work even when I am not there. A young cook has the right to try and to make mistakes; my job is to push them to try, and to make sure that I or one of my deputies is there to guide them. And a guest should get the same plate and the same service the first, third and fifth time. That is what the system is for.",
+    "principles": [
+      {
+        "t": "Respect",
+        "d": "There is no place in my kitchen for disrespect, undermining, lies or constant lateness without a reason."
+      },
+      {
+        "t": "Room to make mistakes",
+        "d": "A young cook is there to work and to make mistakes. I push them to try, and my team is there to guide and correct."
+      },
+      {
+        "t": "A team, not a hero",
+        "d": "Nobody can do it all alone. When it is needed, we all push harder, but the system exists so that no one has to carry everything."
+      },
+      {
+        "t": "Consistency",
+        "d": "Whatever the concept, the guest gets the same plate and the same service, every time."
       }
     ]
   },
