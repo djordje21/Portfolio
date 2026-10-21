@@ -113,7 +113,7 @@
         "name": "Pre-opening & project leadership",
         "summary": "From empty kitchen to first service — on schedule.",
         "points": [
-          "14 pre-openings: restaurants, hotels and river cruise ships",
+          "Pre-openings of restaurants, hotels and river cruise ships",
           "New-vessel openings every spring on the cruise fleet",
           "Resort hotel F&B pre-opening consulting",
           "Day-by-day training plans and readiness programmes",
@@ -175,12 +175,8 @@
   "preopening": {
     "eyebrow": "Pre-opening",
     "title": "How I open a kitchen",
-    "lead": "14 openings: restaurants, hotels and river cruise ships. Each one is different, but the flow is the same: from concept to a stable service, with a team that is ready on day one.",
+    "lead": "Every opening is different, but the flow is the same: from concept to a stable service, with a team that is ready on day one.",
     "meta": [
-      {
-        "k": "Openings",
-        "v": "14 pre-openings"
-      },
       {
         "k": "Formats",
         "v": "Restaurants, hotels and river cruise ships"
@@ -323,7 +319,7 @@
     ],
     "cta": "Have an opening ahead? Let’s talk.",
     "pageTitle": "Pre-opening process · Đorđe Milenković",
-    "pageDescription": "How Đorđe Milenković opens a kitchen: concept and menu, equipment, team, suppliers, standards, training, mock services and stabilisation. 14 pre-openings of restaurants, hotels and river cruise ships."
+    "pageDescription": "How Đorđe Milenković opens a kitchen: concept and menu, equipment, team, suppliers, standards, training, mock services and stabilisation. Restaurants, hotels and river cruise ships."
   },
   "footer": {
     "rights": "All rights reserved.",

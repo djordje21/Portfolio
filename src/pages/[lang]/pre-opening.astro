@@ -40,9 +40,9 @@ const fmtWeek = (w: number) => (w > 0 ? `+${w}` : w === 0 ? '0' : `−${Math.abs
       </div>
 
       <div class="container-x relative mt-14" data-reveal>
-        <dl class="grid gap-px bg-line border-y border-line sm:grid-cols-3">
-          {c.meta.map((m, i) => (
-            <div class:list={['bg-navy py-5', i > 0 && 'sm:px-6', i === 0 && 'sm:pr-6']}>
+        <dl class="grid gap-px bg-line border border-line sm:grid-cols-2">
+          {c.meta.map((m) => (
+            <div class="bg-navy-2 px-5 py-5 sm:px-6">
               <dt class="text-[0.7rem] tracking-[0.18em] uppercase text-muted">{m.k}</dt>
               <dd class="mt-1 text-snow/90">{m.v}</dd>
             </div>

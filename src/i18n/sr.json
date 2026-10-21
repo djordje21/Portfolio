@@ -113,7 +113,7 @@
         "name": "Pre-opening i vođenje projekata",
         "summary": "Od prazne kuhinje do prvog servisa, u roku.",
         "points": [
-          "14 pre-openinga: restorani, hoteli i rečni kruzeri",
+          "Pre-opening restorana, hotela i rečnih kruzera",
           "Otvaranje novih brodova svakog proleća u floti",
           "F&B konsalting za pre-opening resort hotela",
           "Planovi obuke dan po dan i programi spremnosti",
@@ -175,12 +175,8 @@
   "preopening": {
     "eyebrow": "Pre-opening",
     "title": "Kako otvaram kuhinju",
-    "lead": "14 otvaranja: restorani, hoteli i rečni kruzeri. Svako je drugačije, ali tok je isti: od koncepta do stabilnog servisa, sa timom koji je spreman prvog dana.",
+    "lead": "Svako otvaranje je drugačije, ali tok je isti: od koncepta do stabilnog servisa, sa timom koji je spreman prvog dana.",
     "meta": [
-      {
-        "k": "Otvaranja",
-        "v": "14 pre-openinga"
-      },
       {
         "k": "Formati",
         "v": "Restorani, hoteli i rečni kruzeri"
@@ -323,7 +319,7 @@
     ],
     "cta": "Imate otvaranje pred sobom? Hajde da razgovaramo.",
     "pageTitle": "Pre-opening proces · Đorđe Milenković",
-    "pageDescription": "Kako Đorđe Milenković otvara kuhinju: koncept i meni, oprema, tim, dobavljači, standardi, obuka, probni servisi i stabilizacija. 14 pre-openinga restorana, hotela i rečnih kruzera."
+    "pageDescription": "Kako Đorđe Milenković otvara kuhinju: koncept i meni, oprema, tim, dobavljači, standardi, obuka, probni servisi i stabilizacija. Restorani, hoteli i rečni kruzeri."
   },
   "footer": {
     "rights": "Sva prava zadržana.",
