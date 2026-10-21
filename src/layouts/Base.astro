@@ -39,6 +39,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {!site.indexable && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     {langs.map((l) => (
       <link rel="alternate" hreflang={languages[l].htmlLang} href={new URL(localizePath(path, l), Astro.site)} />

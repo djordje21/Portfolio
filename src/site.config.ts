@@ -1,5 +1,8 @@
 // Osnovni podaci o tebi — menjaš ovde, važi za sve jezike.
 export const site = {
+  // Dok je false, sajt je sakriven od Google-a i ostalih pretraživača.
+  // Prebaci na true tek kad odlučiš da sajt ide javno.
+  indexable: false,
   name: 'Đorđe Milenković',
   email: 'dzordzcook@gmail.com',
   linkedin: 'https://www.linkedin.com/in/djordje-milenkovic-5900a941a/',
