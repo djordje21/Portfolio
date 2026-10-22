@@ -36,6 +36,10 @@ const config = {
       </div>
     </div>
 
+    <div class="mt-10" data-reveal>
+      <button type="button" class="cost-open btn btn-primary" aria-expanded="false" aria-controls="cost-body" data-close={`${c.close} ↑`} data-magnetic>{c.open} →</button>
+    </div>
+    <div id="cost-body" class="cost-wrap" hidden>
     <div class="cost mt-14 grid gap-8 lg:grid-cols-12" data-costing={JSON.stringify(config)} data-your-label={c.yourPrice} data-suggested-label={c.suggested}>
       <!-- unos -->
       <div class="lg:col-span-8 border border-line bg-navy-2/60 p-5 md:p-8">
@@ -140,6 +144,7 @@ const config = {
         </p>
       ))}
     </div>
+    </div>
     <noscript><p class="mt-6 text-muted">JavaScript is required for the calculator.</p></noscript>
   </div>
 </section>
@@ -188,6 +193,19 @@ const config = {
 
 <script>
   import { calculate, ingredientCost, foodCostAt, roundSteps, type Ingredient, type Unit } from '../scripts/costing';
+
+  // otvaranje/zatvaranje kalkulatora
+  document.querySelectorAll<HTMLButtonElement>('.cost-open').forEach((btn) => {
+    const body = document.getElementById(btn.getAttribute('aria-controls')!)!;
+    const openLabel = btn.textContent;
+    btn.addEventListener('click', () => {
+      const open = body.hidden;
+      body.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? btn.dataset.close! : openLabel;
+      if (open) (window as any).__lenis?.resize?.();
+    });
+  });
 
   document.querySelectorAll<HTMLElement>('[data-costing]').forEach((root) => {
     const cfg = JSON.parse(root.dataset.costing!);

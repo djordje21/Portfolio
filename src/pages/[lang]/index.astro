@@ -11,6 +11,7 @@ import Philosophy from '../../components/Philosophy.astro';
 import Gallery from '../../components/Gallery.astro';
 import Testimonial from '../../components/Testimonial.astro';
 import Contact from '../../components/Contact.astro';
+import ContactFab from '../../components/ContactFab.astro';
 import Intro from '../../components/Intro.astro';
 import Marquee from '../../components/Marquee.astro';
 import References from '../../components/References.astro';
@@ -42,5 +43,6 @@ const t = useTranslations(lang);
     <Gallery t={t} />
     <Contact lang={lang} t={t} />
   </main>
+  <ContactFab lang={lang} t={t} />
   <Footer t={t} />
 </Base>

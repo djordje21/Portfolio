@@ -164,7 +164,9 @@
     "soundOff": "Zvuk isključen",
     "plated": "na tanjiru",
     "cursor": "Prevuci",
-    "close": "Zatvori"
+    "close": "Zatvori",
+    "prev": "Prethodna kartica",
+    "next": "Sledeća kartica"
   },
   "marquee": [
     "Mise en place",
@@ -462,7 +464,8 @@
           "„Krao“ zanat i učio osnove: tehnika, brzina i disciplina u kuhinji"
         ]
       }
-    ]
+    ],
+    "hint": "Klikni na poziciju da vidiš detalje"
   },
   "philosophy": {
     "eyebrow": "Filozofija",
@@ -671,7 +674,9 @@
     "yourPrice": "Tvoja cena na meniju",
     "foodCost": "Food cost",
     "enterPrices": "Unesi nabavne cene da se tanjir izračuna.",
-    "pricePh": "cena"
+    "pricePh": "cena",
+    "open": "Izračunaj svoj tanjir",
+    "close": "Zatvori kalkulator"
   },
   "footer": {
     "rights": "Sva prava zadržana.",

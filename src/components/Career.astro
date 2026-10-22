@@ -6,85 +6,86 @@ interface Props {
 }
 const { t } = Astro.props;
 const c = t.career;
+// Kompaktan spisak: svaki red je dugme koje otvara detalje te pozicije.
 ---
 <section id="career" class="section relative border-t border-line" aria-labelledby="career-title">
-  <div class="container-x grid gap-14 lg:grid-cols-12">
-    <!-- naslov ostaje vidljiv dok se skroluje kroz godine -->
+  <div class="container-x grid gap-12 lg:grid-cols-12">
     <header class="lg:col-span-4">
       <div class="lg:sticky lg:top-32">
         <p class="eyebrow" data-reveal>{c.eyebrow}</p>
         <h2 id="career-title" class="mt-5 text-5xl md:text-6xl" data-split>{c.title}</h2>
         <p class="mt-6 max-w-md text-lg leading-relaxed text-muted" data-reveal style="--reveal-delay:120ms">{c.intro}</p>
+        <p class="mt-4 text-xs tracking-[0.18em] uppercase text-ice" data-reveal style="--reveal-delay:180ms">{c.hint}</p>
       </div>
     </header>
 
-    <div class="lg:col-span-8 relative" data-career>
-      <!-- linija vremena + deo koji se puni dok skroluješ -->
-      <span aria-hidden="true" class="absolute left-[7px] top-2 bottom-2 w-px bg-line"></span>
-      <span aria-hidden="true" class="career-progress absolute left-[7px] top-2 bottom-2 w-px bg-ice origin-top"></span>
-
-      <ol class="space-y-12 md:space-y-14">
-        {c.items.map((it) => {
-          const highlight = 'highlight' in it && it.highlight;
-          return (
-            <li class="relative pl-10 md:pl-14" data-reveal>
-              <span aria-hidden="true" class:list={['career-dot absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-2 border-navy', highlight ? 'bg-ice ring-4 ring-ice/20' : 'bg-line']}></span>
-              <div class:list={[highlight && 'border border-ice/30 bg-navy-2/70 p-6 md:p-8 -mt-2']}>
-                <p class="text-xs tracking-[0.2em] uppercase text-ice tabular-nums">{it.years}</p>
-                <h3 class="mt-2 text-2xl md:text-3xl leading-tight">{it.role}</h3>
-                <p class="mt-1 text-snow/80">{it.org} <span class="text-muted">· {it.place}</span></p>
-                <ul class="mt-3 flex flex-wrap gap-2">
-                  {it.tags.map((tag) => (
-                    <li class:list={['px-2.5 py-1 text-[0.65rem] tracking-[0.14em] uppercase border', tag === c.preopeningTag ? 'border-ice/60 text-ice' : 'border-line text-muted']}>{tag}</li>
-                  ))}
-                </ul>
-                <ul class="mt-4 space-y-2 text-[0.95rem] leading-relaxed text-snow/85 max-w-2xl">
-                  {it.points.map((pt) => (
-                    <li class="flex gap-3">
-                      <span aria-hidden="true" class="mt-[0.75em] h-0.5 w-3 shrink-0 rounded-full bg-snow/30"></span>
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
+    <ol class="lg:col-span-8 border-t border-line" data-career data-reveal>
+      {c.items.map((it, i) => {
+        const highlight = 'highlight' in it && it.highlight;
+        const id = `career-${i}`;
+        return (
+          <li class="border-b border-line">
+            <h3>
+              <button
+                type="button"
+                class="career-row group grid w-full grid-cols-[5.5rem_1fr_auto] items-center gap-x-4 gap-y-1 py-5 text-left md:grid-cols-[8.5rem_1fr_auto] md:py-6"
+                aria-expanded="false"
+                aria-controls={id}
+              >
+                <span class="font-sans text-xs tracking-[0.12em] tabular-nums text-ice md:text-sm">{it.years}</span>
+                <span class="min-w-0">
+                  <span class="block font-display text-xl leading-tight text-snow transition-colors group-hover:text-ice md:text-2xl">
+                    {it.role}
+                    {highlight && <span aria-hidden="true" class="ml-2 align-middle text-xs text-ice">★</span>}
+                  </span>
+                  <span class="mt-0.5 block truncate font-sans text-sm text-muted">{it.org} · {it.place}</span>
+                </span>
+                <span aria-hidden="true" class="career-plus grid h-9 w-9 place-items-center rounded-full border border-line text-snow/70 transition-transform duration-300 group-hover:border-ice">+</span>
+              </button>
+            </h3>
+            <div id={id} class="career-body grid" role="region" aria-label={`${it.role}, ${it.org}`}>
+              <div class="overflow-hidden">
+                <div class="pb-6 md:pl-[10.5rem]">
+                  <ul class="flex flex-wrap gap-2">
+                    {it.tags.map((tag) => (
+                      <li class:list={['px-2.5 py-1 text-[0.65rem] tracking-[0.14em] uppercase border', tag === c.preopeningTag ? 'border-ice/60 text-ice' : 'border-line text-muted']}>{tag}</li>
+                    ))}
+                  </ul>
+                  <ul class="mt-4 space-y-2 text-[0.95rem] leading-relaxed text-snow/85">
+                    {it.points.map((pt) => (
+                      <li class="flex gap-3">
+                        <span aria-hidden="true" class="mt-[0.75em] h-0.5 w-3 shrink-0 rounded-full bg-ice/60"></span>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   </div>
 </section>
 
-<script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
-
-  const root = document.querySelector<HTMLElement>('[data-career]');
-  const line = root?.querySelector<HTMLElement>('.career-progress');
-  if (root && line) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      line.style.transform = 'scaleY(1)';
-    } else {
-      gsap.fromTo(line, { scaleY: 0 }, {
-        scaleY: 1,
-        ease: 'none',
-        scrollTrigger: { trigger: root, start: 'top 70%', end: 'bottom 70%', scrub: true },
-      });
-      // tačka se "upali" kad je linija stigne
-      root.querySelectorAll<HTMLElement>('.career-dot').forEach((dot) => {
-        ScrollTrigger.create({
-          trigger: dot,
-          start: 'top 70%',
-          onEnter: () => dot.classList.add('is-on'),
-          onLeaveBack: () => dot.classList.remove('is-on'),
-        });
-      });
-    }
-  }
-</script>
-
 <style>
-  .career-dot { transition: background-color 0.4s, box-shadow 0.4s; }
-  .career-dot.is-on { background-color: var(--color-ice); }
+  .career-body { grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease-out-soft); }
+  .career-body.is-open { grid-template-rows: 1fr; }
+  .career-row[aria-expanded='true'] .career-plus { transform: rotate(45deg); border-color: var(--color-ice); color: var(--color-ice); }
+  .career-body:not(.is-open) { visibility: hidden; transition: grid-template-rows 0.45s var(--ease-out-soft), visibility 0s 0.45s; }
+  @media (prefers-reduced-motion: reduce) { .career-body, .career-body:not(.is-open) { transition: none; } }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-career]').forEach((list) => {
+    list.querySelectorAll<HTMLButtonElement>('.career-row').forEach((btn) => {
+      const body = document.getElementById(btn.getAttribute('aria-controls')!)!;
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open));
+        body.classList.toggle('is-open', open);
+      });
+    });
+  });
+</script>

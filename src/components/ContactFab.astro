@@ -1,0 +1,42 @@
+---
+import type { Dict, Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+}
+const { t } = Astro.props;
+// Plutajuće dugme do kontakta: pojavi se posle heroja, nestane kad je kontakt na ekranu.
+---
+<a
+  href="#contact"
+  class="contact-fab fixed z-40 inline-flex lg:hidden items-center gap-2 rounded-full bg-snow px-5 py-3 text-xs font-medium tracking-[0.16em] uppercase text-navy shadow-[0_15px_35px_-12px_rgba(0,0,0,.7)] transition-[opacity,transform] duration-500 hover:bg-ice"
+  style="right:max(1rem, env(safe-area-inset-right, 0px)); bottom:calc(1rem + env(safe-area-inset-bottom, 0px));"
+  data-fab
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <span aria-hidden="true">✉</span>{t.nav.contact}
+</a>
+
+<style>
+  .contact-fab { opacity: 0; transform: translateY(1rem); pointer-events: none; }
+  .contact-fab.is-on { opacity: 1; transform: none; pointer-events: auto; }
+</style>
+
+<script>
+  const fab = document.querySelector<HTMLElement>('[data-fab]');
+  const hero = document.getElementById('hero');
+  const contact = document.getElementById('contact');
+  if (fab && hero && contact) {
+    let pastHero = false, atContact = false;
+    const sync = () => {
+      const on = pastHero && !atContact;
+      fab.classList.toggle('is-on', on);
+      fab.setAttribute('aria-hidden', String(!on));
+      fab.tabIndex = on ? 0 : -1;
+    };
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }).observe(hero);
+    new IntersectionObserver(([e]) => { atContact = e.isIntersecting; sync(); }, { rootMargin: '0px 0px -30% 0px' }).observe(contact);
+  }
+</script>

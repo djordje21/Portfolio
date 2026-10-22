@@ -164,7 +164,9 @@
     "soundOff": "Sound off",
     "plated": "on the plate",
     "cursor": "Drag",
-    "close": "Close"
+    "close": "Close",
+    "prev": "Previous card",
+    "next": "Next card"
   },
   "marquee": [
     "Mise en place",
@@ -462,7 +464,8 @@
           "Learned the basics and “stole” the craft: technique, speed and kitchen discipline"
         ]
       }
-    ]
+    ],
+    "hint": "Select a role to see the details"
   },
   "philosophy": {
     "eyebrow": "Philosophy",
@@ -671,7 +674,9 @@
     "yourPrice": "Your menu price",
     "foodCost": "Food cost",
     "enterPrices": "Enter purchase prices to cost the plate.",
-    "pricePh": "price"
+    "pricePh": "price",
+    "open": "Cost your plate",
+    "close": "Close calculator"
   },
   "footer": {
     "rights": "All rights reserved.",

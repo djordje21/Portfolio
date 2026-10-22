@@ -34,12 +34,18 @@ const path = Astro.url.pathname;
     </a>
 
     <nav aria-label="Primary" class="hidden lg:block">
-      <ul class="flex items-center gap-8">
-        {links.map((l) => (
+      <ul class="flex items-center gap-7">
+        {links.map((l, i) => (
           <li>
-            <a href={l.href} class="text-[0.78rem] tracking-[0.12em] uppercase text-muted hover:text-snow transition-colors">
-              {l.label}
-            </a>
+            {i === links.length - 1 ? (
+              <a href={l.href} class="border border-ice/60 px-4 py-2 text-[0.78rem] tracking-[0.12em] uppercase text-snow hover:bg-snow hover:text-navy transition-colors">
+                {l.label}
+              </a>
+            ) : (
+              <a href={l.href} class="text-[0.78rem] tracking-[0.12em] uppercase text-muted hover:text-snow transition-colors">
+                {l.label}
+              </a>
+            )}
           </li>
         ))}
       </ul>
