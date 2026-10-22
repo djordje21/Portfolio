@@ -658,7 +658,7 @@
       }
     ],
     "defaults": {
-      "currency": "EUR",
+      "currency": "RSD",
       "vat": 20,
       "target": 30,
       "qfactor": 3

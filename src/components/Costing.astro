@@ -252,6 +252,7 @@ const config = {
       const s = { target: num(target) || 30, qfactor: num(q), vat: num(vat), roundStep: roundSteps[cur.value] ?? 0.5 };
       const r = calculate(items, s);
       $('.cost-cur-sym').textContent = symbol();
+      sell.step = whole() ? '10' : '0.1';
       $('.cost-dish-out').textContent = dish.value || '—';
 
       const has = r.plateCost > 0;
