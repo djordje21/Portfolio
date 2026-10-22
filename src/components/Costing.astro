@@ -18,6 +18,7 @@ const config = {
   cols: c.cols,
   remove: c.remove,
   newItem: c.newItem,
+  pricePh: c.pricePh,
   over: c.over,
   ok: c.ok,
 };
@@ -35,8 +36,8 @@ const config = {
       </div>
     </div>
 
-    <div class="cost mt-14 grid gap-8 lg:grid-cols-12" data-costing={JSON.stringify(config)}>
-      <!-- 1 + 2: unos -->
+    <div class="cost mt-14 grid gap-8 lg:grid-cols-12" data-costing={JSON.stringify(config)} data-your-label={c.yourPrice} data-suggested-label={c.suggested}>
+      <!-- unos -->
       <div class="lg:col-span-8 border border-line bg-navy-2/60 p-5 md:p-8">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div class="field min-w-0 w-full sm:flex-1">
@@ -57,34 +58,37 @@ const config = {
         <button type="button" class="cost-add mt-4 text-sm tracking-[0.12em] uppercase text-ice hover:text-snow">+ {c.add}</button>
 
         <h3 class="mt-12 flex items-center gap-3 text-xl"><span class="step">2</span>{c.step2}</h3>
-        <div class="mt-6 grid gap-8 md:grid-cols-2">
-          <div class="field">
-            <label for="cost-target">{c.target}: <output class="cost-target-out text-snow normal-case tracking-normal text-base"></output></label>
-            <input id="cost-target" type="range" min="15" max="45" step="1" class="range" />
-            <p class="text-xs text-muted">{c.targetHint}</p>
+        <div class="mt-5 field max-w-sm">
+          <label for="cost-sell">{c.sellPrice}</label>
+          <div class="flex items-end gap-2">
+            <input id="cost-sell" type="number" min="0" step="0.1" inputmode="decimal" placeholder={c.pricePh} class="!text-2xl font-display" />
+            <span class="cost-cur-sym text-muted pb-2"></span>
           </div>
-          <div class="field">
-            <label for="cost-q">{c.qfactor}: <output class="cost-q-out text-snow normal-case tracking-normal text-base"></output></label>
-            <input id="cost-q" type="range" min="0" max="10" step="1" class="range" />
-            <p class="text-xs text-muted">{c.qfactorHint}</p>
-          </div>
-          <div class="field">
-            <label for="cost-vat">{c.vat} (%)</label>
-            <input id="cost-vat" type="number" min="0" max="40" step="1" inputmode="decimal" />
-          </div>
-          <div class="field">
-            <label for="cost-cur">{c.currency}</label>
-            <select id="cost-cur">
-              <option value="EUR">EUR €</option>
-              <option value="RSD">RSD</option>
-              <option value="RUB">RUB ₽</option>
-              <option value="USD">USD $</option>
-            </select>
-          </div>
+          <p class="text-xs text-muted">{c.sellHint}</p>
         </div>
+
+        <details class="mt-10 group">
+          <summary class="cursor-pointer list-none text-xs tracking-[0.16em] uppercase text-muted hover:text-snow">
+            <span class="inline-block transition-transform group-open:rotate-90">›</span> {c.settings}
+          </summary>
+          <div class="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="field"><label for="cost-target">{c.target}</label><input id="cost-target" type="number" min="10" max="60" step="1" inputmode="decimal" /></div>
+            <div class="field"><label for="cost-q">{c.qfactor}</label><input id="cost-q" type="number" min="0" max="20" step="1" inputmode="decimal" /></div>
+            <div class="field"><label for="cost-vat">{c.vat} (%)</label><input id="cost-vat" type="number" min="0" max="40" step="1" inputmode="decimal" /></div>
+            <div class="field">
+              <label for="cost-cur">{c.currency}</label>
+              <select id="cost-cur">
+                <option value="EUR">EUR €</option>
+                <option value="RSD">RSD</option>
+                <option value="RUB">RUB ₽</option>
+                <option value="USD">USD $</option>
+              </select>
+            </div>
+          </div>
+        </details>
       </div>
 
-      <!-- 3: račun -->
+      <!-- račun -->
       <div class="lg:col-span-4">
         <div class="lg:sticky lg:top-28">
           <h3 class="mb-4 flex items-center gap-3 text-xl"><span class="step">3</span>{c.step3}</h3>
@@ -93,26 +97,28 @@ const config = {
               <div class="flex justify-between text-[0.7rem] tracking-widest"><span>{c.ticketTitle}</span><span class="cost-time"></span></div>
               <p class="cost-dish-out mt-2 font-sans text-base font-semibold"></p>
               <div class="my-3 border-t border-dashed border-navy/40"></div>
-              <dl class="space-y-1.5">
-                <div class="flex justify-between gap-4"><dt>{c.ingredients}</dt><dd class="cost-ing tabular-nums"></dd></div>
-                <div class="flex justify-between gap-4"><dt>+ {c.qfactor} <span class="cost-q-small"></span></dt><dd class="cost-qv tabular-nums"></dd></div>
-                <div class="flex justify-between gap-4 font-bold"><dt>{c.plateCost}</dt><dd class="cost-plate tabular-nums"></dd></div>
-              </dl>
-              <div class="my-3 border-t border-dashed border-navy/40"></div>
-              <dl class="space-y-1.5">
-                <div class="flex justify-between gap-4"><dt>{c.netPrice}</dt><dd class="cost-net tabular-nums"></dd></div>
-                <div class="flex justify-between gap-4"><dt>{c.grossPrice}</dt><dd class="cost-gross tabular-nums"></dd></div>
-              </dl>
-              <div class="my-3 border-t border-dashed border-navy/40"></div>
-              <div class="flex items-baseline justify-between gap-4">
-                <span class="text-[0.72rem] tracking-widest uppercase">{c.menuPrice}</span>
-                <span class="cost-menu font-display text-4xl tabular-nums"></span>
+
+              <p class="cost-empty font-sans text-sm text-navy/70">{c.enterPrices}</p>
+
+              <div class="cost-result hidden">
+                <dl class="space-y-1.5">
+                  <div class="flex justify-between gap-4"><dt>{c.ingredients}</dt><dd class="cost-ing tabular-nums"></dd></div>
+                  <div class="flex justify-between gap-4"><dt>+ {c.qfactor.replace(' (%)', '')}</dt><dd class="cost-qv tabular-nums"></dd></div>
+                  <div class="flex justify-between gap-4 font-bold"><dt>{c.plateCost}</dt><dd class="cost-plate tabular-nums"></dd></div>
+                </dl>
+                <div class="my-3 border-t border-dashed border-navy/40"></div>
+                <p class="cost-price-label text-[0.72rem] tracking-widest uppercase"></p>
+                <p class="cost-menu mt-1 font-display text-4xl tabular-nums"></p>
+                <div class="mt-4 flex items-end justify-between gap-4">
+                  <span class="text-[0.72rem] tracking-widest uppercase">{c.foodCost}</span>
+                  <span class="cost-fc font-display text-4xl tabular-nums"></span>
+                </div>
+                <div class="mt-3 h-1.5 w-full bg-navy/10" aria-hidden="true"><div class="cost-bar h-full bg-navy transition-[width] duration-500"></div></div>
+                <dl class="mt-4 space-y-1.5">
+                  <div class="flex justify-between gap-4"><dt>{c.margin}</dt><dd class="cost-margin tabular-nums"></dd></div>
+                </dl>
+                <p class="cost-status mt-4 font-sans text-xs"></p>
               </div>
-              <dl class="mt-3 space-y-1.5">
-                <div class="flex justify-between gap-4"><dt>{c.actualFc}</dt><dd class="cost-fc tabular-nums font-bold"></dd></div>
-                <div class="flex justify-between gap-4"><dt>{c.margin}</dt><dd class="cost-margin tabular-nums"></dd></div>
-              </dl>
-              <p class="cost-status mt-4 font-sans text-xs"></p>
             </div>
             <div class="cost-edge absolute -bottom-2 inset-x-0 h-2 bg-snow"></div>
           </div>
@@ -154,19 +160,21 @@ const config = {
   :global(.cost-row) { border-bottom: 1px solid var(--color-line); padding-block: 0.6rem; }
   .field { display: grid; gap: 0.4rem; }
   .field label, :global(.cost-row label) { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); }
-  .field input:not([type='range']), .field select, :global(.cost-row input), :global(.cost-row select) {
+  .field input, .field select, :global(.cost-row input), :global(.cost-row select) {
     width: 100%; min-width: 0; background: transparent; border: 0; border-bottom: 1px solid var(--color-line);
     padding: 0.4rem 0; color: var(--color-snow); font: inherit; font-size: 1rem;
   }
+  :global(.cost-row input[data-k='price']) { border-bottom-color: color-mix(in oklab, var(--color-ice) 55%, transparent); }
+  :global(.cost-row input::placeholder), .field input::placeholder { color: color-mix(in oklab, var(--color-muted) 60%, transparent); }
   .field select option, :global(.cost-row select option) { background: var(--color-navy); }
   .field input:focus, .field select:focus, :global(.cost-row input:focus), :global(.cost-row select:focus) { outline: none; border-bottom-color: var(--color-ice); }
-  :global(.cost-row .unit-sel) { width: 3.6rem !important; flex: none; }
-  .range { accent-color: var(--color-ice); width: 100%; }
   :global(.cost-row .unit) { font-size: 0.8rem; color: var(--color-muted); white-space: nowrap; }
+  :global(.cost-row .unit-sel) { width: 3.6rem !important; flex: none; }
+  summary::-webkit-details-marker { display: none; }
   .cost-edge {
     clip-path: polygon(0 0, 100% 0, 100% 0, 95% 100%, 90% 0, 85% 100%, 80% 0, 75% 100%, 70% 0, 65% 100%, 60% 0, 55% 100%, 50% 0, 45% 100%, 40% 0, 35% 100%, 30% 0, 25% 100%, 20% 0, 15% 100%, 10% 0, 5% 100%, 0 0);
   }
-  .cost-menu.bump { animation: bump 0.4s ease-out; }
+  .cost-menu.bump, .cost-fc.bump { animation: bump 0.4s ease-out; }
   @keyframes bump { 50% { transform: scale(1.08); } }
   @media (max-width: 767px) {
     :global(.cost-row) {
@@ -175,42 +183,44 @@ const config = {
       row-gap: 0.6rem; padding-block: 1rem;
     }
   }
-  @media (prefers-reduced-motion: reduce) { .cost-menu.bump { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .cost-menu.bump, .cost-fc.bump { animation: none; } }
 </style>
 
 <script>
-  import { calculate, ingredientCost, roundSteps, exampleRates, type Ingredient, type Unit } from '../scripts/costing';
+  import { calculate, ingredientCost, foodCostAt, roundSteps, type Ingredient, type Unit } from '../scripts/costing';
 
   document.querySelectorAll<HTMLElement>('[data-costing]').forEach((root) => {
     const cfg = JSON.parse(root.dataset.costing!);
     const $ = <T extends Element = HTMLElement>(s: string) => root.querySelector<T>(s)!;
     const rows = $('.cost-rows');
     const dish = document.getElementById('cost-dish') as HTMLInputElement;
+    const sell = document.getElementById('cost-sell') as HTMLInputElement;
     const target = document.getElementById('cost-target') as HTMLInputElement;
     const q = document.getElementById('cost-q') as HTMLInputElement;
     const vat = document.getElementById('cost-vat') as HTMLInputElement;
     const cur = document.getElementById('cost-cur') as HTMLSelectElement;
     let uid = 0;
-    let dirty = false; // da li je posetilac menjao recept
-    const exampleIn = (c: string) => cfg.example.map((i: Ingredient) => ({ ...i, price: +(i.price * (exampleRates[c] ?? 1)).toFixed(c === 'RSD' || c === 'RUB' ? 0 : 2) }));
 
+    const whole = () => cur.value === 'RSD' || cur.value === 'RUB';
     const money = (v: number) =>
-      new Intl.NumberFormat(cfg.locale, { style: 'currency', currency: cur.value, minimumFractionDigits: cur.value === 'RSD' || cur.value === 'RUB' ? 0 : 2, maximumFractionDigits: cur.value === 'RSD' || cur.value === 'RUB' ? 0 : 2 }).format(v || 0);
+      new Intl.NumberFormat(cfg.locale, { style: 'currency', currency: cur.value, minimumFractionDigits: whole() ? 0 : 2, maximumFractionDigits: whole() ? 0 : 2 }).format(v || 0);
     const pct = (v: number) => new Intl.NumberFormat(cfg.locale, { style: 'percent', maximumFractionDigits: 1 }).format(v || 0);
     const num = (el: HTMLInputElement) => parseFloat(el.value.replace(',', '.')) || 0;
+    const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    const symbol = () => new Intl.NumberFormat(cfg.locale, { style: 'currency', currency: cur.value }).formatToParts(0).find((p) => p.type === 'currency')?.value ?? cur.value;
 
     const rowHtml = (id: number, i: Ingredient) => `
-      <div class="c-name" style="grid-area:name"><label for="n${id}" class="md:sr-only">${cfg.cols.name}</label><input id="n${id}" data-k="name" type="text" value="${i.name.replace(/"/g, '&quot;')}"></div>
+      <div class="c-name" style="grid-area:name"><label for="n${id}" class="md:sr-only">${cfg.cols.name}</label><input id="n${id}" data-k="name" type="text" value="${esc(i.name)}"></div>
       <div style="grid-area:price"><label for="p${id}" class="md:sr-only">${cfg.cols.price}</label>
-        <div class="flex items-end gap-2"><input id="p${id}" data-k="price" type="number" min="0" step="0.01" inputmode="decimal" value="${i.price}">
+        <div class="flex items-end gap-2"><input id="p${id}" data-k="price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="${cfg.pricePh}" value="${i.price || ''}">
         <label for="u${id}" class="sr-only">${cfg.cols.unit}</label>
         <select id="u${id}" data-k="unit" class="unit-sel">${(['kg', 'l', 'pc'] as Unit[]).map((u) => `<option value="${u}"${u === i.unit ? ' selected' : ''}>/${cfg.perUnit[u]}</option>`).join('')}</select></div></div>
       <div style="grid-area:qty"><label for="q${id}" class="md:sr-only">${cfg.cols.qty}</label>
-        <div class="flex items-end gap-2"><input id="q${id}" data-k="qty" type="number" min="0" step="1" inputmode="decimal" value="${i.qty}"><span class="unit" data-unit>${cfg.qtyUnit[i.unit]}</span></div></div>
+        <div class="flex items-end gap-2"><input id="q${id}" data-k="qty" type="number" min="0" step="1" inputmode="decimal" value="${i.qty || ''}"><span class="unit" data-unit>${cfg.qtyUnit[i.unit]}</span></div></div>
       <div style="grid-area:yield"><label for="y${id}" class="md:sr-only">${cfg.cols.yield}</label>
         <div class="flex items-end gap-2"><input id="y${id}" data-k="yield" type="number" min="1" max="100" step="1" inputmode="decimal" value="${i.yield}"><span class="unit">%</span></div></div>
       <div class="text-right" style="grid-area:cost"><span class="md:sr-only text-[0.68rem] tracking-[0.14em] uppercase text-muted block">${cfg.cols.cost}</span><output class="row-cost tabular-nums text-snow"></output></div>
-      <div class="text-right" style="grid-area:del"><button type="button" class="row-del text-muted hover:text-snow text-lg leading-none p-1" aria-label="${cfg.remove}: ${i.name.replace(/"/g, '&quot;')}">×</button></div>`;
+      <div class="text-right" style="grid-area:del"><button type="button" class="row-del text-muted hover:text-snow text-lg leading-none p-1" aria-label="${cfg.remove}: ${esc(i.name)}">×</button></div>`;
 
     const addRow = (i: Ingredient, focus = false) => {
       const li = document.createElement('li');
@@ -225,34 +235,48 @@ const config = {
       return { name: g('name').value, price: num(g('price')), unit: g('unit').value as Unit, qty: num(g('qty')), yield: num(g('yield')) };
     };
 
-    let lastMenu = 0;
+    const bump = (el: HTMLElement, value: string) => {
+      if (el.textContent === value) return;
+      el.textContent = value;
+      el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+    };
+
     const update = () => {
       const items = [...rows.children].map((li) => {
         const it = readRow(li);
         li.querySelector('[data-unit]')!.textContent = cfg.qtyUnit[it.unit];
-        li.querySelector('.row-cost')!.textContent = money(ingredientCost(it));
+        const cost = ingredientCost(it);
+        li.querySelector('.row-cost')!.textContent = cost > 0 ? money(cost) : '—';
         return it;
       });
-      const s = { target: num(target), qfactor: num(q), vat: num(vat), roundStep: roundSteps[cur.value] ?? 0.5 };
+      const s = { target: num(target) || 30, qfactor: num(q), vat: num(vat), roundStep: roundSteps[cur.value] ?? 0.5 };
       const r = calculate(items, s);
-      $('.cost-target-out').textContent = `${s.target}%`;
-      $('.cost-q-out').textContent = `${s.qfactor}%`;
-      $('.cost-q-small').textContent = `(${s.qfactor}%)`;
+      $('.cost-cur-sym').textContent = symbol();
       $('.cost-dish-out').textContent = dish.value || '—';
+
+      const has = r.plateCost > 0;
+      $('.cost-empty').classList.toggle('hidden', has);
+      $('.cost-result').classList.toggle('hidden', !has);
+      if (!has) return;
+
+      const own = num(sell);
+      const price = own > 0 ? own : r.menu;
+      const fc = own > 0 ? foodCostAt(r.plateCost, own, s.vat) : r.actualFc;
+      const net = price / (1 + s.vat / 100);
+
       $('.cost-ing').textContent = money(r.ingredients);
       $('.cost-qv').textContent = money(r.plateCost - r.ingredients);
       $('.cost-plate').textContent = money(r.plateCost);
-      $('.cost-net').textContent = money(r.net);
-      $('.cost-gross').textContent = money(r.gross);
-      const menu = $('.cost-menu');
-      menu.textContent = money(r.menu);
-      if (r.menu !== lastMenu) { menu.classList.remove('bump'); void menu.offsetWidth; menu.classList.add('bump'); lastMenu = r.menu; }
-      $('.cost-fc').textContent = pct(r.actualFc);
-      $('.cost-margin').textContent = money(r.margin);
+      $('.cost-price-label').textContent = own > 0 ? root.dataset.yourLabel! : root.dataset.suggestedLabel!;
+      bump($('.cost-menu'), money(price));
+      bump($('.cost-fc'), pct(fc));
+      $('.cost-bar').style.width = `${Math.min(fc, 1) * 100}%`;
+      $('.cost-margin').textContent = money(net - r.plateCost);
+      const over = fc > s.target / 100 + 1e-9;
       const status = $('.cost-status');
-      const over = r.plateCost > 0 && r.actualFc > s.target / 100 + 1e-9;
-      status.textContent = r.plateCost > 0 ? (over ? cfg.over : cfg.ok) : '';
+      status.textContent = over ? cfg.over : cfg.ok;
       status.style.color = over ? '#b3261e' : '#1f6b3a';
+      $('.cost-bar').style.background = over ? '#b3261e' : '';
     };
 
     const load = (items: Ingredient[]) => {
@@ -268,23 +292,24 @@ const config = {
     $('.cost-time').textContent = new Date().toLocaleTimeString(cfg.locale, { hour: '2-digit', minute: '2-digit' });
     load(cfg.example);
 
-    rows.addEventListener('input', () => (dirty = true));
-    cur.addEventListener('change', () => { if (!dirty) load(exampleIn(cur.value)); });
     root.addEventListener('input', update);
     root.addEventListener('change', update);
     rows.addEventListener('click', (e) => {
       const btn = (e.target as HTMLElement).closest('.row-del');
       if (!btn) return;
       btn.closest('li')!.remove();
-      dirty = true;
       update();
     });
     $('.cost-add').addEventListener('click', () => {
-      dirty = true;
       addRow({ name: cfg.newItem, price: 0, unit: 'kg', qty: 0, yield: 100 }, true);
       update();
     });
-    $('.cost-reset').addEventListener('click', () => { dish.value = cfg.dishDefault; dirty = false; load(exampleIn(cur.value)); });
-    $('.cost-clear').addEventListener('click', () => { dirty = true; dish.value = ''; load([]); addRow({ name: cfg.newItem, price: 0, unit: 'kg', qty: 0, yield: 100 }, true); update(); });
+    $('.cost-reset').addEventListener('click', () => { dish.value = cfg.dishDefault; sell.value = ''; load(cfg.example); });
+    $('.cost-clear').addEventListener('click', () => {
+      dish.value = ''; sell.value = '';
+      load([]);
+      addRow({ name: cfg.newItem, price: 0, unit: 'kg', qty: 0, yield: 100 }, true);
+      update();
+    });
   });
 </script>

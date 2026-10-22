@@ -38,8 +38,11 @@ export function calculate(items: Ingredient[], s: Settings) {
   return { ingredients, plateCost, net, gross, menu, menuNet, actualFc, margin: menuNet - plateCost };
 }
 
+/** Food cost za cenu koju je uneo korisnik (cena sa PDV-om). */
+export function foodCostAt(plateCost: number, priceWithVat: number, vat: number) {
+  const net = priceWithVat / (1 + vat / 100);
+  return net > 0 ? plateCost / net : 0;
+}
+
 /** Korak zaokruživanja po valuti. */
 export const roundSteps: Record<string, number> = { EUR: 0.5, USD: 0.5, RSD: 50, RUB: 50 };
-
-/** Približni kursevi samo za prikaz primera u drugoj valuti (ne za obračun). */
-export const exampleRates: Record<string, number> = { EUR: 1, RSD: 117, RUB: 100, USD: 1.1 };

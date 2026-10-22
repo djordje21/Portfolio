@@ -564,13 +564,13 @@
   "costing": {
     "eyebrow": "How I track the numbers",
     "title": "What does your plate really cost?",
-    "intro": "I don’t publish my numbers, but I can show the method. Enter your dish and purchase prices. The calculator does what I do on every menu: it works out the plate cost, suggests a selling price and shows what is left on the plate.",
+    "intro": "I don’t publish my numbers, but I can show the method. Enter the purchase prices for your dish, and the calculator works out the plate cost, suggests a menu price and shows the food cost.",
     "privacy": "Everything is calculated in your browser. Nothing is sent or stored.",
     "dish": "Dish name",
     "dishDefault": "Spaghetti pomodoro",
     "portions": "Portion",
     "step1": "Ingredients",
-    "step2": "Target",
+    "step2": "Selling price",
     "step3": "Bill",
     "cols": {
       "name": "Ingredient",
@@ -595,20 +595,13 @@
     "reset": "Load example",
     "clear": "Empty recipe",
     "newItem": "New ingredient",
-    "target": "Target food cost",
-    "targetHint": "Fine dining ~25–30%, bistro and casual ~28–35%.",
-    "qfactor": "Small ingredients",
-    "qfactorHint": "Salt, pepper, frying oil, garnish… everything you don’t weigh.",
+    "target": "Target food cost (%)",
+    "qfactor": "Small ingredients (%)",
     "vat": "VAT",
     "currency": "Currency",
-    "rounding": "Round to a menu price",
     "ticketTitle": "PLATE BILL",
     "ingredients": "Ingredients",
     "plateCost": "Plate cost",
-    "netPrice": "Suggested price excl. VAT",
-    "grossPrice": "Suggested price incl. VAT",
-    "menuPrice": "Menu price",
-    "actualFc": "Actual food cost",
     "margin": "Left per plate (excl. VAT)",
     "tipsTitle": "Chef’s notes",
     "tips": [
@@ -618,47 +611,47 @@
     ],
     "ctaText": "Want this for your whole menu, with your suppliers’ real prices?",
     "cta": "Let’s talk",
-    "over": "Food cost is above target. Check portions or price.",
+    "over": "Food cost is above target: check portions or price.",
     "ok": "Food cost is on target.",
     "example": [
       {
         "name": "Spaghetti",
-        "price": 2.4,
+        "price": null,
         "unit": "kg",
         "qty": 120,
         "yield": 100
       },
       {
         "name": "Peeled tomatoes",
-        "price": 3.2,
+        "price": null,
         "unit": "kg",
         "qty": 180,
         "yield": 100
       },
       {
         "name": "Olive oil",
-        "price": 9.0,
+        "price": null,
         "unit": "l",
         "qty": 20,
         "yield": 100
       },
       {
         "name": "Garlic",
-        "price": 6.0,
+        "price": null,
         "unit": "kg",
         "qty": 8,
         "yield": 85
       },
       {
         "name": "Fresh basil",
-        "price": 30.0,
+        "price": null,
         "unit": "kg",
         "qty": 4,
         "yield": 70
       },
       {
         "name": "Parmesan",
-        "price": 22.0,
+        "price": null,
         "unit": "kg",
         "qty": 15,
         "yield": 90
@@ -667,9 +660,17 @@
     "defaults": {
       "currency": "EUR",
       "vat": 20,
-      "target": 28,
+      "target": 30,
       "qfactor": 3
-    }
+    },
+    "sellPrice": "Your menu price (incl. VAT)",
+    "sellHint": "Optional. Leave it empty and the calculator will suggest a price.",
+    "settings": "Settings",
+    "suggested": "Suggested menu price",
+    "yourPrice": "Your menu price",
+    "foodCost": "Food cost",
+    "enterPrices": "Enter purchase prices to cost the plate.",
+    "pricePh": "price"
   },
   "footer": {
     "rights": "All rights reserved.",
