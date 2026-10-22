@@ -159,7 +159,7 @@ const f = c.form;
       submit.textContent = form.dataset.sending!;
       try {
         const body = new URLSearchParams(new FormData(form) as any).toString();
-        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        const res = await fetch(location.pathname, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
         if (!res.ok) throw new Error(String(res.status));
         form.reset();
         ok.classList.remove('hidden');
