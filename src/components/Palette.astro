@@ -193,7 +193,7 @@ const slots = p.chips.map((_, i) => {
 
       <!-- Detalji izabrane oblasti (na telefonu: list koji izlazi odozdo) -->
       <div class="sheet-backdrop fixed inset-0 z-[89] bg-navy/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
-      <div class="panels mt-12 md:mt-16" data-sheet>
+      <div class="panels mt-12 md:mt-16" data-sheet data-lenis-prevent>
         <div class="sheet-bar sticky top-0 z-10 flex items-center justify-between border-b border-line bg-navy-2 px-5 py-3 lg:hidden">
           <span aria-hidden="true" class="mx-auto h-1 w-10 rounded-full bg-snow/25"></span>
           <button type="button" class="sheet-close absolute right-3 top-1.5 p-2 text-muted hover:text-snow" aria-label={g.close}>✕</button>
