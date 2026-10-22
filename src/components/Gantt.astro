@@ -40,10 +40,17 @@ const fmtWeek = (w: number) => (w > 0 ? `+${w}` : w === 0 ? '0' : `−${Math.abs
     <ol class:list={['relative', compact ? 'space-y-2.5' : 'space-y-3.5']}>
       {c.phases.map((ph) => (
         <li class="md:grid md:grid-cols-[16rem_1fr] md:gap-6 md:items-center">
-          <span class:list={['block text-snow/90 mb-1.5 md:mb-0', compact ? 'text-sm' : 'text-[0.95rem]']}>
-            {ph.label}
-            <span class="sr-only"> ({fmtWeek(ph.start)} – {fmtWeek(ph.end)} {c.ganttAxis})</span>
-          </span>
+          {compact ? (
+            <span class="block text-snow/90 mb-1.5 md:mb-0 text-sm">
+              {ph.label}
+              <span class="sr-only"> ({fmtWeek(ph.start)} – {fmtWeek(ph.end)} {c.ganttAxis})</span>
+            </span>
+          ) : (
+            <a href={`#phase-${ph.id}`} class="block text-snow/90 mb-1.5 md:mb-0 text-[0.95rem] underline decoration-snow/20 underline-offset-4 hover:text-ice hover:decoration-ice">
+              {ph.label}
+              <span class="sr-only"> ({fmtWeek(ph.start)} – {fmtWeek(ph.end)} {c.ganttAxis})</span>
+            </a>
+          )}
           <div class="gantt-track relative h-3 md:h-3.5 rounded-full bg-snow/[0.06]" aria-hidden="true">
             {ticks.map((w) => (
               <span class:list={['absolute inset-y-0 w-px', w === 0 ? 'bg-ice md:bg-snow/10' : 'bg-snow/10']} style={`left:${pos(w)}%`}></span>

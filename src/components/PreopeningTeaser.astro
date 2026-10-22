@@ -13,29 +13,26 @@ const c = t.preopening;
 ---
 <section id="pre-opening" class="relative border-t border-line py-16 md:py-24" aria-labelledby="preopening-title">
   <div class="container-x">
-    <a
-      href={`/${lang}/pre-opening/`}
-      class="group grid overflow-hidden border border-line bg-navy-2/60 transition-colors hover:border-ice/50 md:grid-cols-12"
-      data-reveal
-      data-cursor={c.readMore}
-    >
-      <div class="relative aspect-[16/9] overflow-hidden md:col-span-5 md:aspect-auto">
+    <div class="group grid overflow-hidden border border-line bg-navy-2/60 transition-colors hover:border-ice/50 md:grid-cols-12" data-reveal>
+      <a href={`/${lang}/pre-opening/`} class="relative block aspect-[16/9] overflow-hidden md:col-span-5 md:aspect-auto" tabindex="-1" aria-hidden="true">
         <Image src={planningImg} alt="" widths={[480, 800]} sizes="(min-width: 768px) 40vw, 100vw" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent md:bg-gradient-to-r md:from-transparent md:to-navy/40"></div>
-      </div>
+        <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent md:bg-gradient-to-r md:from-transparent md:to-navy/40"></span>
+      </a>
       <div class="flex flex-col justify-center gap-5 p-6 md:col-span-7 md:p-12">
         <p class="eyebrow">{c.eyebrow}</p>
         <h2 id="preopening-title" class="text-4xl md:text-6xl">{c.title}</h2>
         <p class="max-w-xl text-lg leading-relaxed text-muted">{c.lead}</p>
         <ol class="flex flex-wrap gap-2" aria-label={c.ganttTitle}>
           {c.phases.map((ph, i) => (
-            <li class="border border-line px-2.5 py-1 text-[0.68rem] tracking-[0.1em] uppercase text-snow/70">
-              <span class="text-ice tabular-nums">{String(i + 1).padStart(2, '0')}</span> {ph.label}
+            <li>
+              <a href={`/${lang}/pre-opening/#phase-${ph.id}`} class="block border border-line px-2.5 py-1.5 text-[0.68rem] tracking-[0.1em] uppercase text-snow/75 transition-colors hover:border-ice hover:text-snow">
+                <span class="text-ice tabular-nums">{String(i + 1).padStart(2, '0')}</span> {ph.label}
+              </a>
             </li>
           ))}
         </ol>
-        <span class="btn btn-primary mt-2 self-start">{c.readMore} →</span>
+        <a href={`/${lang}/pre-opening/`} class="btn btn-primary mt-2 self-start" data-magnetic>{c.readMore} →</a>
       </div>
-    </a>
+    </div>
   </div>
 </section>
