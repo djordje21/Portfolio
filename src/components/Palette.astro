@@ -54,10 +54,10 @@ const slots = p.chips.map((_, i) => {
     <div class="relative mt-14 md:mt-20" data-game>
       <canvas class="game-sparks pointer-events-none absolute inset-0 z-20 h-full w-full" aria-hidden="true"></canvas>
 
-      <div class="grid gap-12 lg:grid-cols-12 lg:gap-10 items-center">
+      <div class="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-12 lg:gap-10 items-center">
         <!-- Tonske karte -->
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <div role="tablist" aria-label={p.title} data-reveal class="grid grid-cols-3 gap-3 md:gap-5">
+        <div class="min-w-0 lg:col-span-7 order-2 lg:order-1">
+          <div role="tablist" aria-label={p.title} data-reveal class="chip-strip -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pt-4 pb-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0">
             {p.chips.map((c, i) => (
               <button
                 type="button"
@@ -69,7 +69,7 @@ const slots = p.chips.map((_, i) => {
                 data-index={i}
                 data-colour={colours[c.id]}
                 data-cursor={g.cursor}
-                class="chip group relative flex flex-col text-left bg-snow select-none touch-manipulation shadow-[0_1px_0_rgba(0,0,0,.4)] transition-[translate,box-shadow,opacity] duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
+                class="chip group relative flex w-[42vw] max-w-[13rem] shrink-0 snap-start flex-col text-left bg-snow select-none lg:w-auto lg:max-w-none touch-manipulation shadow-[0_1px_0_rgba(0,0,0,.4)] transition-[translate,box-shadow,opacity] duration-500 ease-[var(--ease-out-soft)] hover:-translate-y-2 aria-selected:-translate-y-3"
                 style={`--chip:${colours[c.id]}`}
               >
                 <span class="chip-swatch block aspect-[4/3] bg-[var(--chip)] relative overflow-hidden">
@@ -95,7 +95,7 @@ const slots = p.chips.map((_, i) => {
               </button>
             ))}
           </div>
-          <p class="mt-8 text-xs tracking-[0.2em] uppercase text-muted flex items-center gap-3">
+          <p class="mt-2 lg:mt-8 text-xs tracking-[0.2em] uppercase text-muted flex items-center gap-3">
             <span aria-hidden="true" class="inline-block h-px w-8 bg-ice"></span>
             <span class="hint-drag hidden">{g.hintDrag}</span>
             <span class="hint-tap">{g.hintTap}</span>
@@ -104,7 +104,7 @@ const slots = p.chips.map((_, i) => {
 
         <!-- Tanjir -->
         <div class="lg:col-span-5 order-1 lg:order-2" data-reveal style="--reveal-delay:120ms">
-          <div class="plate-wrap relative mx-auto w-[min(70vw,16rem)] sm:w-[min(100%,20rem)] lg:w-[min(100%,26rem)]">
+          <div class="plate-wrap relative mx-auto w-[min(48vw,11rem)] sm:w-[min(100%,14rem)] lg:w-[min(100%,26rem)]">
             <svg class="plate block w-full h-auto overflow-visible" viewBox="0 0 400 400" role="img" aria-labelledby="plate-title">
               <title id="plate-title">{g.title}</title>
               <defs>
@@ -146,7 +146,7 @@ const slots = p.chips.map((_, i) => {
             </svg>
           </div>
 
-          <div class="mt-6 flex items-center justify-center gap-6 text-[0.7rem] tracking-[0.2em] uppercase">
+          <div class="mt-3 lg:mt-6 flex items-center justify-center gap-6 text-[0.7rem] tracking-[0.2em] uppercase">
             <button type="button" class="game-sound text-muted hover:text-snow transition-colors py-2" aria-pressed="true" data-on={g.soundOn} data-off={g.soundOff}>
               ♪ <span>{g.soundOn}</span>
             </button>
@@ -181,8 +181,13 @@ const slots = p.chips.map((_, i) => {
         </div>
       </div>
 
-      <!-- Detalji izabrane oblasti -->
-      <div class="mt-12 md:mt-16">
+      <!-- Detalji izabrane oblasti (na telefonu: list koji izlazi odozdo) -->
+      <div class="sheet-backdrop fixed inset-0 z-[89] bg-navy/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+      <div class="panels mt-12 md:mt-16" data-sheet>
+        <div class="sheet-bar sticky top-0 z-10 flex items-center justify-between border-b border-line bg-navy-2 px-5 py-3 lg:hidden">
+          <span aria-hidden="true" class="mx-auto h-1 w-10 rounded-full bg-snow/25"></span>
+          <button type="button" class="sheet-close absolute right-3 top-1.5 p-2 text-muted hover:text-snow" aria-label={g.close}>✕</button>
+        </div>
         {p.chips.map((c, i) => (
           <div
             role="tabpanel"
@@ -221,6 +226,22 @@ const slots = p.chips.map((_, i) => {
   .chip.is-plated .chip-check { opacity: 1; transform: scale(1); }
   .chip.is-dragging { opacity: 0.35; }
   .panel:not([hidden]) { animation: panel-in 0.6s var(--ease-out-soft); }
+  .chip-strip { scrollbar-width: none; }
+  .chip-strip::-webkit-scrollbar { display: none; }
+  @media (max-width: 1023px) {
+    .chip:hover { translate: none; }
+    .chip[aria-selected='true'] { translate: 0 -0.5rem; }
+    .panels {
+      position: fixed; inset-inline: 0; bottom: 0; z-index: 90; margin: 0;
+      max-height: 82dvh; overflow-y: auto; overscroll-behavior: contain;
+      background: var(--color-navy-2); border-top: 1px solid var(--color-line);
+      transform: translateY(105%); transition: transform 0.45s var(--ease-out-soft);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    .panels.is-open { transform: none; box-shadow: 0 -30px 60px -20px rgba(0, 0, 0, 0.6); }
+    .panels .panel { border: 0; }
+    .sheet-backdrop.is-open { opacity: 1; pointer-events: auto; }
+  }
   .plate-wrap.is-over .plate-ring { stroke-width: 3; opacity: 1; }
   .plate-ring { transition: stroke-width 0.3s, opacity 0.3s; }
   :global(.drag-ghost) {
@@ -363,6 +384,7 @@ const slots = p.chips.map((_, i) => {
       gsap.set([count, label], { opacity: 0 });
       bell();
       done.classList.remove('hidden');
+      if (mobile.matches) setTimeout(() => (window as any).__lenis ? (window as any).__lenis.scrollTo(done, { offset: -90 }) : done.scrollIntoView({ behavior: 'smooth' }), 1400);
       if (reduce) {
         gsap.set(doneText, { opacity: 1 });
       } else {
@@ -434,13 +456,50 @@ const slots = p.chips.map((_, i) => {
     };
     resetBtn.addEventListener('click', reset);
 
+    /* --- list sa detaljima na telefonu --- */
+    const sheet = root.querySelector<HTMLElement>('[data-sheet]')!;
+    const backdrop = root.querySelector<HTMLElement>('.sheet-backdrop')!;
+    const mobile = window.matchMedia('(max-width: 1023px)');
+    let sheetTimer: number | undefined;
+    let sheetOpener: HTMLElement | null = null;
+    const openSheet = (delay = 0) => {
+      if (!mobile.matches) return;
+      clearTimeout(sheetTimer);
+      sheetTimer = window.setTimeout(() => {
+        sheet.classList.add('is-open');
+        backdrop.classList.add('is-open');
+        sheet.scrollTop = 0;
+        (window as any).__lenis?.stop();
+        sheet.querySelector<HTMLElement>('.sheet-close')!.focus({ preventScroll: true });
+      }, delay);
+    };
+    const closeSheet = () => {
+      clearTimeout(sheetTimer);
+      if (!sheet.classList.contains('is-open')) return;
+      sheet.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      (window as any).__lenis?.start();
+      sheetOpener?.focus({ preventScroll: true });
+    };
+    sheet.querySelector('.sheet-close')!.addEventListener('click', closeSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
+    // prevlačenje lista nadole ga zatvara
+    let sy = 0;
+    sheet.addEventListener('touchstart', (e) => (sy = e.touches[0].clientY), { passive: true });
+    sheet.addEventListener('touchend', (e) => { if (sheet.scrollTop <= 0 && e.changedTouches[0].clientY - sy > 80) closeSheet(); });
+
     /* --- klik / tastatura --- */
     let suppressClick = false;
     tabs.forEach((tab, i) => {
       tab.addEventListener('click', () => {
         if (suppressClick) return void (suppressClick = false);
+        const fresh = !plated.has(i);
         select(i);
         plate(i);
+        sheetOpener = tab;
+        // posle poslednje kartice ostaje se na tanjiru da se vidi "Service!"
+        if (plated.size < total || !fresh) openSheet(fresh && !reduce ? 750 : 0);
       });
       tab.addEventListener('keydown', (e) => {
         const n = tabs.length;

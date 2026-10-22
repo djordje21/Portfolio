@@ -163,7 +163,8 @@
     "soundOn": "Звук вкл.",
     "soundOff": "Звук выкл.",
     "plated": "на тарелке",
-    "cursor": "Тяни"
+    "cursor": "Тяни",
+    "close": "Закрыть"
   },
   "marquee": [
     "Mise en place",
