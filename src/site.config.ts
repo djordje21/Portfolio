@@ -4,7 +4,7 @@ export const site = {
   // Prebaci na true tek kad odlučiš da sajt ide javno.
   indexable: false,
   // Preporuka (Massimo Bartolucci) — uključi tek kad dobiješ njegovu pisanu dozvolu za objavu.
-  showTestimonial: false,
+  showTestimonial: true,
   name: 'Đorđe Milenković',
   email: 'dzordzcook@gmail.com',
   linkedin: 'https://www.linkedin.com/in/djordje-milenkovic-5900a941a/',
