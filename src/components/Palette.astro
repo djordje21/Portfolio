@@ -57,7 +57,8 @@ const slots = p.chips.map((_, i) => {
       <div class="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-12 lg:gap-10 items-center">
         <!-- Tonske karte -->
         <div class="min-w-0 lg:col-span-7 order-2 lg:order-1">
-          <div role="tablist" aria-label={p.title} data-reveal data-lenis-prevent class="chip-strip -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pt-4 pb-6 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:p-0">
+          <div class="strip-viewport -mx-5 overflow-hidden lg:mx-0 lg:overflow-visible" data-reveal data-lenis-prevent>
+          <div role="tablist" aria-label={p.title} class="chip-strip flex gap-3 px-5 pt-4 pb-6 lg:grid lg:grid-cols-3 lg:gap-5 lg:p-0">
             {p.chips.map((c, i) => (
               <button
                 type="button"
@@ -94,6 +95,7 @@ const slots = p.chips.map((_, i) => {
                 <span aria-hidden="true" class="chip-indicator absolute -bottom-3 left-1/2 -translate-x-1/2 h-1 w-0 bg-[var(--chip)] transition-all duration-500"></span>
               </button>
             ))}
+          </div>
           </div>
           <!-- telefon: strelice i tačkice za traku sa karticama -->
           <div class="strip-nav flex items-center justify-between gap-4 lg:hidden">
@@ -234,8 +236,10 @@ const slots = p.chips.map((_, i) => {
   .chip.is-plated .chip-check { opacity: 1; transform: scale(1); }
   .chip.is-dragging { opacity: 0.35; }
   .panel:not([hidden]) { animation: panel-in 0.6s var(--ease-out-soft); }
-  .chip-strip { scrollbar-width: none; }
-  .chip-strip::-webkit-scrollbar { display: none; }
+  @media (max-width: 1023px) {
+    .chip-strip { touch-action: pan-y; will-change: transform; transition: transform 0.45s var(--ease-out-soft); }
+    .chip-strip.is-dragging { transition: none; }
+  }
   @media (max-width: 1023px) {
     .chip:hover { translate: none; }
     .chip[aria-selected='true'] { translate: 0 -0.5rem; }
@@ -367,7 +371,8 @@ const slots = p.chips.map((_, i) => {
         tab.tabIndex = on ? 0 : -1;
         panels[i].hidden = !on;
       });
-      if (focus) tabs[idx].focus();
+      if (focus) tabs[idx].focus({ preventScroll: true });
+      showTab(idx);
       if (!reduce) gsap.fromTo(panels[idx].querySelectorAll('.panel-point'), { opacity: 0, x: 20 }, { opacity: 1, x: 0, stagger: 0.05, duration: 0.5, ease: 'power3.out', overwrite: true });
     };
 
@@ -464,27 +469,86 @@ const slots = p.chips.map((_, i) => {
     };
     resetBtn.addEventListener('click', reset);
 
-    /* --- traka sa karticama na telefonu: strelice i tačkice --- */
+    /* --- traka sa karticama na telefonu: sopstveni klizač (prst i strelice) --- */
+    const viewport = root.querySelector<HTMLElement>('.strip-viewport')!;
     const strip = root.querySelector<HTMLElement>('.chip-strip')!;
     const prevBtn = root.querySelector<HTMLButtonElement>('.strip-prev')!;
     const nextBtn = root.querySelector<HTMLButtonElement>('.strip-next')!;
     const dots = Array.from(root.querySelectorAll<HTMLElement>('.strip-dots span'));
-    const stepWidth = () => tabs[1].getBoundingClientRect().left - tabs[0].getBoundingClientRect().left;
-    const syncStrip = () => {
-      const max = strip.scrollWidth - strip.clientWidth;
-      prevBtn.disabled = strip.scrollLeft <= 4;
-      nextBtn.disabled = strip.scrollLeft >= max - 4;
-      const i = Math.round(strip.scrollLeft / stepWidth());
-      const active = strip.scrollLeft >= max - 4 ? dots.length - 1 : Math.min(i, dots.length - 1);
+    const narrow = window.matchMedia('(max-width: 1023px)');
+    let pos = 0;
+    let dragX: number | null = null;
+    let dragY = 0;
+    let dragDx = 0;
+    let dragging = false;
+    const step = () => tabs[1].offsetLeft - tabs[0].offsetLeft;
+    const maxOffset = () => Math.max(0, strip.scrollWidth - viewport.clientWidth);
+    const lastPos = () => Math.ceil(maxOffset() / step() - 0.01);
+    const offsetFor = (i: number) => Math.min(i * step(), maxOffset());
+    const render = (extra = 0) => {
+      if (!narrow.matches) { strip.style.transform = ''; return; }
+      const x = Math.max(-maxOffset() - 40, Math.min(40, -offsetFor(pos) + extra));
+      strip.style.transform = `translate3d(${x}px,0,0)`;
+      prevBtn.disabled = pos <= 0;
+      nextBtn.disabled = pos >= lastPos();
       dots.forEach((d, k) => {
-        d.classList.toggle('w-5', k === active); d.classList.toggle('bg-ice', k === active);
-        d.classList.toggle('w-1.5', k !== active); d.classList.toggle('bg-snow/25', k !== active);
+        d.hidden = k > lastPos();
+        const on = k === pos;
+        d.classList.toggle('w-5', on); d.classList.toggle('bg-ice', on);
+        d.classList.toggle('w-1.5', !on); d.classList.toggle('bg-snow/25', !on);
       });
     };
-    prevBtn.addEventListener('click', () => strip.scrollBy({ left: -stepWidth(), behavior: reduce ? 'auto' : 'smooth' }));
-    nextBtn.addEventListener('click', () => strip.scrollBy({ left: stepWidth(), behavior: reduce ? 'auto' : 'smooth' }));
-    strip.addEventListener('scroll', syncStrip, { passive: true });
-    syncStrip();
+    const go = (i: number) => { pos = Math.max(0, Math.min(lastPos(), i)); render(); };
+    prevBtn.addEventListener('click', () => go(pos - 1));
+    nextBtn.addEventListener('click', () => go(pos + 1));
+    // izabrana kartica (npr. tastaturom) uvek je vidljiva
+    function showTab(i: number) {
+      if (!narrow.matches) return;
+      const o = offsetFor(pos);
+      if (tabs[i].offsetLeft - o < 0 || tabs[i].offsetLeft + tabs[i].offsetWidth - o > viewport.clientWidth) go(Math.min(i, lastPos()));
+    }
+    strip.addEventListener('pointerdown', (e) => {
+      if (!narrow.matches || e.pointerType === 'mouse') return;
+      dragX = e.clientX; dragY = e.clientY; dragDx = 0; dragging = false;
+    });
+    strip.addEventListener('pointermove', (e) => {
+      if (dragX === null) return;
+      const dx = e.clientX - dragX, dy = e.clientY - dragY;
+      if (!dragging && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { dragging = true; strip.classList.add('is-dragging'); }
+      if (dragging) { dragDx = dx; render(dx); }
+    });
+    const endDrag = () => {
+      if (dragX === null) return;
+      strip.classList.remove('is-dragging');
+      if (dragging) {
+        const moved = Math.round(-dragDx / step());
+        const nudge = moved === 0 && Math.abs(dragDx) > 40 ? (dragDx < 0 ? 1 : -1) : moved;
+        go(pos + nudge);
+        // posle prevlačenja ne računaj dodir kao klik na karticu
+        const block = (ev: Event) => { ev.stopPropagation(); ev.preventDefault(); };
+        strip.addEventListener('click', block, { capture: true, once: true });
+        setTimeout(() => strip.removeEventListener('click', block, { capture: true } as any), 50);
+      }
+      dragX = null; dragging = false;
+    };
+    strip.addEventListener('pointerup', endDrag);
+    strip.addEventListener('pointercancel', endDrag);
+    // dodir: touch događaji kao rezerva za WebView-ove koji ne šalju pointer događaje
+    strip.addEventListener('touchstart', (e) => {
+      if (!narrow.matches || dragX !== null) return;
+      dragX = e.touches[0].clientX; dragY = e.touches[0].clientY; dragDx = 0; dragging = false;
+    }, { passive: true });
+    strip.addEventListener('touchmove', (e) => {
+      if (dragX === null) return;
+      const t = e.touches[0];
+      const dx = t.clientX - dragX, dy = t.clientY - dragY;
+      if (!dragging && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { dragging = true; strip.classList.add('is-dragging'); }
+      if (dragging) { e.preventDefault(); dragDx = dx; render(dx); }
+    }, { passive: false });
+    strip.addEventListener('touchend', endDrag);
+    narrow.addEventListener('change', () => go(pos));
+    window.addEventListener('resize', () => go(pos));
+    render();
 
     /* --- list sa detaljima na telefonu --- */
     const sheet = root.querySelector<HTMLElement>('[data-sheet]')!;
@@ -549,8 +613,8 @@ const slots = p.chips.map((_, i) => {
       });
     });
 
-    /* --- prevlačenje (samo miš/trackpad) --- */
-    if (fine) {
+    /* --- prevlačenje (samo miš/trackpad, na širokom ekranu) --- */
+    if (fine && window.matchMedia('(min-width: 1024px)').matches) {
       tabs.forEach((tab, i) => {
         tab.addEventListener('pointerdown', (e) => {
           if (e.button !== 0) return;
