@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 // [CHECK] Zameni sa pravim domenom kad ga kupiš (koristi se za canonical, hreflang i sitemap).
-const SITE = 'https://djordjemilenkovic.com';
+const SITE = 'https://djordje-milenkovic.netlify.app';
 
 export default defineConfig({
   site: SITE,
