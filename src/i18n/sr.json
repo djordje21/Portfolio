@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Đorđe Milenković — Executive Chef · Lider kulinarskih operacija",
+    "title": "Đorđe Milenković — Executive Chef",
     "description": "Executive Chef iz Beograda sa 16 godina iskustva u profesionalnim kuhinjama: pre-opening hotela, vođenje više koncepata, luksuzni rečni kruzeri i obuka timova u velikom obimu.",
     "ogAlt": "Portret šefa kuhinje Đorđa Milenkovića u beloj kuvarskoj bluzi"
   },
@@ -16,12 +16,13 @@
     "career": "Karijera",
     "philosophy": "Filozofija",
     "gallery": "Galerija",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "projects": "Projekti"
   },
   "hero": {
     "eyebrow": "Beograd · Srbija",
     "name": "Đorđe Milenković",
-    "title": "Executive Chef · Lider kulinarskih operacija",
+    "title": "Executive Chef",
     "pitch": "Kuvar koji gradi sisteme. Zanat na tanjiru i struktura iza njega, da se kuhinja otvori i vodi po međunarodnim standardima.",
     "ctaContact": "Kontakt",
     "ctaCv": "Preuzmi CV",
@@ -677,6 +678,28 @@
     "pricePh": "cena",
     "open": "Izračunaj svoj tanjir",
     "close": "Zatvori kalkulator"
+  },
+  "projects": {
+    "eyebrow": "Moji projekti",
+    "title": "Šta gradim i šta dajem.",
+    "macrochef": {
+      "kind": "Aplikacija",
+      "name": "MacroChef",
+      "text": "Brojač kalorija i makroa bez reklama, koji je napravio kuvar. Recepti, meal prep i skener barkoda. Podaci ostaju na telefonu.",
+      "cta": "Otvori MacroChef"
+    },
+    "academy": {
+      "kind": "Škola kuvanja",
+      "name": "Macro Chef Academy",
+      "text": "Kuvanje korak po korak, od prvog reza do vođenja kuhinje. Tri razreda, tačne mere i znak po kome vidiš da je gotovo.",
+      "cta": "Otvori Academy"
+    },
+    "menu": {
+      "here": "ovde si",
+      "portfolio": "Ko sam · Executive Chef",
+      "macrochef": "Šta gradim · kalorije i makroi",
+      "academy": "Šta dajem · škola kuvanja"
+    }
   },
   "footer": {
     "rights": "Sva prava zadržana.",

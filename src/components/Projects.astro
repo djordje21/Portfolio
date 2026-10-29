@@ -1,0 +1,33 @@
+---
+import type { Dict, Lang } from '../i18n/utils';
+import { site } from '../site.config';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+}
+const { lang, t } = Astro.props;
+const c = t.projects;
+const { family } = site;
+// Aplikacije dobijaju ?lang= da se otvore na istom jeziku.
+const cards = [
+  { ...c.macrochef, href: `${family.macrochef}?lang=${lang}`, show: true },
+  { ...c.academy, href: `${family.academy}?lang=${lang}`, show: family.showAcademyLink },
+].filter((card) => card.show);
+---
+<section id="projects" class="relative border-t border-line py-16 md:py-24" aria-labelledby="projects-title">
+  <div class="container-x">
+    <p class="eyebrow">{c.eyebrow}</p>
+    <h2 id="projects-title" class="mt-4 text-4xl md:text-6xl">{c.title}</h2>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      {cards.map((card) => (
+        <a href={card.href} class="group flex flex-col gap-4 border border-line bg-navy-2/60 p-6 md:p-10 transition-colors hover:border-ice/60" data-reveal>
+          <span class="text-[0.7rem] tracking-[0.18em] uppercase text-gold">{card.kind}</span>
+          <span class="font-display text-3xl md:text-4xl text-snow">{card.name}</span>
+          <span class="text-base leading-relaxed text-muted">{card.text}</span>
+          <span class="mt-auto pt-2 text-[0.78rem] tracking-[0.12em] uppercase text-ice group-hover:text-snow transition-colors">{card.cta} ↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

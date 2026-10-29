@@ -1,5 +1,7 @@
 ---
 import { languages, langs, localizePath, type Lang, type Dict } from '../i18n/utils';
+import { site } from '../site.config';
+import Monogram from './Monogram.astro';
 
 interface Props {
   lang: Lang;
@@ -13,9 +15,19 @@ const links = [
   { href: `${home}#career`, label: t.nav.career },
   { href: `${home}#philosophy`, label: t.nav.philosophy },
   { href: `${home}#gallery`, label: t.nav.gallery },
+  { href: `${home}#projects`, label: t.nav.projects },
   { href: `${home}#contact`, label: t.nav.contact },
 ];
 const path = Astro.url.pathname;
+// Porodica projekata u meniju na telefonu: portfolio (ovde si), pa aplikacije.
+const m = t.projects.menu;
+const family = [
+  { tile: 'monogram', name: site.name, sub: m.portfolio, href: null },
+  { tile: 'MC', name: 'MacroChef', sub: m.macrochef, href: `${site.family.macrochef}?lang=${lang}` },
+  ...(site.family.showAcademyLink ? [{ tile: 'MCA', name: 'Macro Chef Academy', sub: m.academy, href: `${site.family.academy}?lang=${lang}` }] : []),
+];
+// U meniju na telefonu Projekti imaju svoj blok, pa ih nema u spisku.
+const mobileLinks = links.filter((l) => !l.href.endsWith('#projects'));
 ---
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-snow focus:text-navy focus:px-4 focus:py-2">
   {t.a11y.skip}
@@ -82,22 +94,64 @@ const path = Astro.url.pathname;
         data-close-label={t.a11y.closeMenu}
         aria-label={t.a11y.menu}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path class="menu-open" d="M3 7h18M3 12h18M3 17h12" />
-          <path class="menu-close hidden" d="M5 5l14 14M19 5L5 19" />
-        </svg>
+        <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Mobile" class="lg:hidden hidden border-t border-line bg-navy/95 backdrop-blur">
-    <ul class="container-x py-6 flex flex-col">
-      {links.map((l) => (
-        <li>
-          <a href={l.href} class="block py-3 font-display text-3xl text-snow hover:text-ice transition-colors">{l.label}</a>
+  <nav id="mobile-menu" aria-label="Mobile" class="lg:hidden border-t border-b border-line bg-navy shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]" data-open="false" data-lenis-prevent inert>
+    <ul class="container-x pt-4 pb-6">
+      {mobileLinks.slice(0, -1).map((l, i) => (
+        <li class="menu-item border-b border-line/70" style={`--i:${i}`}>
+          <a href={l.href} class="group flex items-baseline gap-4 py-4">
+            <span class="w-6 text-[0.65rem] tabular-nums tracking-[0.15em] text-ice/70">{String(i + 1).padStart(2, '0')}</span>
+            <span class="font-display text-[1.45rem] leading-none text-snow transition-colors group-hover:text-ice">{l.label}</span>
+            <span aria-hidden="true" class="ml-auto text-sm text-muted transition-transform group-hover:translate-x-1 group-hover:text-ice">→</span>
+          </a>
         </li>
       ))}
+      <li class="menu-item pt-6" style={`--i:${mobileLinks.length - 1}`}>
+        <a href={mobileLinks[mobileLinks.length - 1].href} class="block border border-ice/60 py-3.5 text-center text-[0.78rem] tracking-[0.18em] uppercase text-snow transition-colors hover:bg-snow hover:text-navy">
+          {mobileLinks[mobileLinks.length - 1].label}
+        </a>
+      </li>
     </ul>
+    <div class="menu-item container-x pb-8" style={`--i:${mobileLinks.length}`}>
+      <p class="pb-3 text-[0.65rem] tracking-[0.2em] uppercase text-muted">{t.nav.projects}</p>
+      <ul class="family">
+        {family.map((f) => {
+          const inner = (
+            <>
+              <span class:list={['family-tile', f.tile === 'MC' && 'is-filled']}>
+                {f.tile === 'monogram' ? <Monogram class="w-9 h-auto" /> : f.tile}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block font-display text-lg leading-tight text-snow">{f.name}</span>
+                <span class="mt-0.5 block text-[0.8rem] text-muted">
+                  {f.href ? f.sub : <>{f.sub.split(' · ')[0]} · <span class="text-gold">{m.here}</span></>}
+                </span>
+              </span>
+              {f.href && <span aria-hidden="true" class="text-sm text-gold">↗</span>}
+            </>
+          );
+          return (
+            <li>
+              {f.href
+                ? <a href={f.href} class="family-row">{inner}</a>
+                : <div class="family-row is-here" aria-current="page">{inner}</div>}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="mt-8 border-t border-line pt-6">
+        <Monogram class="w-20 h-auto text-gold" />
+        <p class="mt-3 text-[0.68rem] tracking-[0.12em] uppercase leading-relaxed text-muted">
+          <span class="text-snow">{site.family.title} {site.name}</span><span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}
+          <span class="whitespace-nowrap">MacroChef<span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}Macro Chef Academy</span>
+        </p>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -116,11 +170,10 @@ const path = Astro.url.pathname;
   window.addEventListener('scroll', onScroll, { passive: true });
 
   const setOpen = (open: boolean) => {
-    menu.classList.toggle('hidden', !open);
+    menu.dataset.open = String(open);
+    menu.toggleAttribute('inert', !open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', (open ? toggle.dataset.closeLabel : toggle.dataset.openLabel) ?? '');
-    toggle.querySelector('.menu-open')!.classList.toggle('hidden', open);
-    toggle.querySelector('.menu-close')!.classList.toggle('hidden', !open);
     if (open) header.classList.add('bg-navy/85', 'backdrop-blur-md');
     else onScroll();
   };
@@ -133,3 +186,93 @@ const path = Astro.url.pathname;
     }
   });
 </script>
+
+<style>
+  /* Meni se spušta kao zavesa, stavke ulaze jedna za drugom */
+  #mobile-menu {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition: clip-path 0.6s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.6s;
+  }
+  #mobile-menu[data-open='true'] {
+    clip-path: inset(0 0 0 0);
+    visibility: visible;
+    transition: clip-path 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .menu-item {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  #mobile-menu[data-open='true'] .menu-item {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s ease calc(0.12s + var(--i) * 0.05s), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(0.12s + var(--i) * 0.05s);
+  }
+
+  /* Projekti: pločice povezane zlatnom linijom, kao u aplikacijama */
+  #mobile-menu { max-height: calc(100dvh - 4rem); overflow-y: auto; overscroll-behavior: contain; }
+  .family { position: relative; }
+  .family li + li { margin-top: 0.5rem; }
+  .family li:not(:last-child) .family-row::after {
+    content: '';
+    position: absolute;
+    left: calc(0.75rem + 1.5rem - 0.75px);
+    top: calc(50% + 1.5rem);
+    height: calc(100% - 3rem + 0.5rem);
+    width: 1.5px;
+    background: var(--color-gold);
+    opacity: 0.7;
+  }
+  .family-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  a.family-row:hover { background: color-mix(in oklab, var(--color-snow) 5%, transparent); }
+  .family-row.is-here { background: var(--color-navy-2); box-shadow: inset 0 0 0 1px var(--color-line); }
+  .family-tile {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border: 1.5px solid var(--color-gold);
+    border-radius: 0.8rem;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+  .family-tile.is-filled { background: var(--color-gold); color: var(--color-navy); }
+
+  /* Tri linije koje se pretvore u X */
+  .burger { position: relative; display: block; width: 24px; height: 24px; }
+  .burger span {
+    position: absolute;
+    left: 3px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s, width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .burger span:nth-child(1) { top: 6.25px; width: 18px; }
+  .burger span:nth-child(2) { top: 11.25px; width: 18px; }
+  .burger span:nth-child(3) { top: 16.25px; width: 12px; }
+  [aria-expanded='true'] .burger span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  [aria-expanded='true'] .burger span:nth-child(2) { opacity: 0; }
+  [aria-expanded='true'] .burger span:nth-child(3) { width: 18px; transform: translateY(-5px) rotate(-45deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    #mobile-menu, #mobile-menu[data-open='true'], .menu-item, #mobile-menu[data-open='true'] .menu-item, .burger span { transition: none; }
+  }
+</style>
