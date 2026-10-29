@@ -16,7 +16,8 @@
     "career": "Karijera",
     "philosophy": "Filozofija",
     "gallery": "Galerija",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "projects": "Projekti"
   },
   "hero": {
     "eyebrow": "Beograd · Srbija",
@@ -677,6 +678,22 @@
     "pricePh": "cena",
     "open": "Izračunaj svoj tanjir",
     "close": "Zatvori kalkulator"
+  },
+  "projects": {
+    "eyebrow": "Moji projekti",
+    "title": "Šta gradim i šta dajem.",
+    "macrochef": {
+      "kind": "Aplikacija",
+      "name": "MacroChef",
+      "text": "Brojač kalorija i makroa bez reklama, koji je napravio kuvar. Recepti, meal prep i skener barkoda. Podaci ostaju na telefonu.",
+      "cta": "Otvori MacroChef"
+    },
+    "academy": {
+      "kind": "Škola kuvanja",
+      "name": "Macro Chef Academy",
+      "text": "Kuvanje korak po korak, od prvog reza do vođenja kuhinje. Tri razreda, tačne mere i znak po kome vidiš da je gotovo.",
+      "cta": "Otvori Academy"
+    }
   },
   "footer": {
     "rights": "Sva prava zadržana.",

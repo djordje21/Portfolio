@@ -16,7 +16,8 @@
     "career": "Career",
     "philosophy": "Philosophy",
     "gallery": "Gallery",
-    "contact": "Contact"
+    "contact": "Contact",
+    "projects": "Projects"
   },
   "hero": {
     "eyebrow": "Belgrade · Serbia",
@@ -677,6 +678,22 @@
     "pricePh": "price",
     "open": "Cost your plate",
     "close": "Close calculator"
+  },
+  "projects": {
+    "eyebrow": "My projects",
+    "title": "What I build and what I give.",
+    "macrochef": {
+      "kind": "App",
+      "name": "MacroChef",
+      "text": "An ad-free calorie and macro tracker built by a chef. Recipes, meal prep and a barcode scanner. Your data stays on your phone.",
+      "cta": "Open MacroChef"
+    },
+    "academy": {
+      "kind": "Cooking school",
+      "name": "Macro Chef Academy",
+      "text": "Cooking step by step, from the first cut to running a kitchen. Three grades, exact measures and a sign that tells you it is done.",
+      "cta": "Open the Academy"
+    }
   },
   "footer": {
     "rights": "All rights reserved.",

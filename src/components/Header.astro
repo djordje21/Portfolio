@@ -1,5 +1,6 @@
 ---
 import { languages, langs, localizePath, type Lang, type Dict } from '../i18n/utils';
+import { site } from '../site.config';
 
 interface Props {
   lang: Lang;
@@ -13,9 +14,15 @@ const links = [
   { href: `${home}#career`, label: t.nav.career },
   { href: `${home}#philosophy`, label: t.nav.philosophy },
   { href: `${home}#gallery`, label: t.nav.gallery },
+  { href: `${home}#projects`, label: t.nav.projects },
   { href: `${home}#contact`, label: t.nav.contact },
 ];
 const path = Astro.url.pathname;
+// Aplikacije iz porodice, direktno iz menija na telefonu.
+const apps = [
+  { href: `${site.family.macrochef}?lang=${lang}`, label: 'MacroChef' },
+  ...(site.family.showAcademyLink ? [{ href: `${site.family.academy}?lang=${lang}`, label: 'Macro Chef Academy' }] : []),
+];
 ---
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-snow focus:text-navy focus:px-4 focus:py-2">
   {t.a11y.skip}
@@ -98,6 +105,11 @@ const path = Astro.url.pathname;
         </li>
       ))}
     </ul>
+    <div class="container-x pb-6 flex flex-wrap gap-2">
+      {apps.map((a) => (
+        <a href={a.href} class="border border-line px-4 py-2.5 text-[0.75rem] tracking-[0.12em] uppercase text-gold hover:border-gold transition-colors">{a.label} ↗</a>
+      ))}
+    </div>
   </nav>
 </header>
 

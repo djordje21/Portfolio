@@ -47,11 +47,14 @@ MacroChef's `netlify.toml` is a leftover; Cloudflare is the only live host. Each
 
 | Bridge | From | To | Status |
 |---|---|---|---|
-| "My projects" cards | Portfolio | Academy, MacroChef | planned |
-| Footer signature with links | all three | the other two | built: portfolio footer, Academy landing and menu, MacroChef side menu. On the portfolio Academy is plain text until review (`site.family.showAcademyLink`) |
-| "Ko predaje" → "Ceo put" | Academy landing (`landing-chef` section) | Portfolio | planned |
-| "Otvori u MacroChef-u" | Academy lesson end (`lesson.recipe`) | MacroChef | planned, design not agreed |
-| "Nauči tehniku" | MacroChef recipe | Academy lesson | planned, design not agreed |
+| Family links in the burger menu | all three | the other two | built: Academy menu and MacroChef side menu (pills under the head), portfolio mobile menu (app pills) and nav "Projekti" |
+| "Moji projekti" cards | Portfolio (`Projects.astro`, `#projects`) | Academy, MacroChef | built |
+| Footer signature with links | all three | the other two | built: portfolio footer, Academy landing and menu, MacroChef side menu |
+| "Ko predaje" → "Ceo put" | Academy landing (`.chef-path`) | Portfolio | built |
+| "Otvori u MacroChef-u" | Academy lesson end (`.open-mc`) | MacroChef `#/academy?lesson=&name=&kcal=&p=&c=&f=` | built: MacroChef saves the dish as a food (`baseKey` `academy:<lesson id>`, `src/db/academy.ts`) and opens it ready to log |
+| "Nauči tehniku" | MacroChef library recipe (`TECHNIQUE` in `src/app/family.ts`, category → grade-1 module) and any Academy dish in the add panel (its own lesson) | Academy | built |
+
+Every cross-link carries the language: `?lang=sr|en|ru` before the hash for the apps, `/sr/` etc. for the portfolio. Both apps read `?lang=` on start and store it.
 
 Deep links: both apps use hash routing. Academy lesson: `https://macrochef-academy.macrochef.workers.dev/#/lesson/<id>` (ids like `5.2`, `2.4.1`, `3.10.5`). MacroChef library recipe: `https://macrochef.macrochef.workers.dev/#/lib?key=<key>`. MacroChef data lives on the device (IndexedDB), so anything passed between the apps goes in the link.
 
@@ -59,6 +62,6 @@ Known gap: an Academy `recipe` is only a name and macros per 100 g; a MacroChef 
 
 ### Family rules
 
-- Do not feature Academy on the portfolio until Đole has reviewed the course content.
+- Academy is shown on the portfolio (cards, menu, footer) since Đole asked to connect all three on 2026-10-29. One switch hides it again: `site.family.showAcademyLink` in the portfolio. Grades 2 and 3 are still not reviewed by him.
 - Before any change users can see on the portfolio or in MacroChef, show Đole a preview (screenshot or preview URL) and wait for his OK.
 - Later, not now: one domain with three addresses, possibly one shared account.

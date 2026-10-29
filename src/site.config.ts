@@ -14,7 +14,7 @@ export const site = {
     title: 'Executive Chef',
     macrochef: 'https://macrochef.macrochef.workers.dev/',
     academy: 'https://macrochef-academy.macrochef.workers.dev/',
-    showAcademyLink: false,
+    showAcademyLink: true,
   },
   cv: {
     en: '/cv/Djordje-Milenkovic-CV-EN.pdf',
