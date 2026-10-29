@@ -31,15 +31,16 @@ One name, three doors. The umbrella brand is Đorđe himself; the portfolio is t
 | Project | What it is | Repo | Live | Stack | Deploys from |
 |---|---|---|---|---|---|
 | Portfolio | Who he is | `djordje21/portfolio` | djordje-milenkovic.netlify.app (`/sr/`, `/en/`, `/ru/`) | Astro + Tailwind, static | `main` → Netlify |
-| MacroChef Academy | What he gives: cooking school for young cooks and learners | `djordje21/macrochef-academy` | macrochef-academy.macrochef.workers.dev | React + Vite PWA, no backend | `main` → Cloudflare Workers Builds |
+| Macro Chef Academy | What he gives: cooking school for young cooks and learners | `djordje21/macrochef-academy` | macrochef-academy.macrochef.workers.dev | React + Vite PWA, no backend | `main` → Cloudflare Workers Builds |
 | MacroChef | What he builds: ad-free calorie and macro tracker | `djordje21/macrochef` | macrochef.macrochef.workers.dev | React + Vite PWA, Dexie, Supabase accounts | `ccr-e80a272b-xkto0p` → Cloudflare Workers Builds |
 
 MacroChef's `netlify.toml` is a leftover; Cloudflare is the only live host. Each project has its own Claude Code session; the main session coordinates the three and tells Đole every task it sends to another session.
 
 ### Shared signature
 
-- Signature line, exactly: **Executive Chef Đorđe Milenković · MacroChef · Macro Chef Academy**. It goes in each project's footer, with the monogram.
-- Thread colour: yellow `#F5B83D`. In MacroChef and Academy it is already the primary/grade-1 accent. In the portfolio it is an accent only (signature, monogram, small marks); the portfolio stays navy with ice blue.
+- Signature line, exactly: **Executive Chef Đorđe Milenković · MacroChef · Macro Chef Academy**. It goes in each project's footer, with the monogram. The name of the project you are in is not a link.
+- Monogram: Đorđe's own hand-drawn ĐM signature, traced to one SVG path. Each repo has it as a `Monogram` component; reuse it, do not redraw it. The app name is written "Macro Chef Academy" (separate words) everywhere users see it; the in-app badge stays "MCA".
+- Thread colour: yellow `#F5B83D`. In MacroChef and Academy it is already the primary/grade-1 accent. In the portfolio the signature uses gold `#C8A982` instead (monogram and dots only, `--color-gold`); the portfolio stays navy with ice blue.
 - Full rules for signature, colour and tone: `docs/family.md` in the portfolio repo.
 
 ### Bridges
@@ -47,7 +48,7 @@ MacroChef's `netlify.toml` is a leftover; Cloudflare is the only live host. Each
 | Bridge | From | To | Status |
 |---|---|---|---|
 | "My projects" cards | Portfolio | Academy, MacroChef | planned |
-| Footer signature with links | all three | the other two | planned |
+| Footer signature with links | all three | the other two | built: portfolio footer, Academy landing and menu, MacroChef side menu. On the portfolio Academy is plain text until review (`site.family.showAcademyLink`) |
 | "Ko predaje" → "Ceo put" | Academy landing (`landing-chef` section) | Portfolio | planned |
 | "Otvori u MacroChef-u" | Academy lesson end (`lesson.recipe`) | MacroChef | planned, design not agreed |
 | "Nauči tehniku" | MacroChef recipe | Academy lesson | planned, design not agreed |
