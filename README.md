@@ -35,3 +35,10 @@ Otvori http://localhost:4321/en/
 
 **Oznaka `[CHECK]`** u tekstovima znači da to treba da proveriš. U `npm run dev` se vidi na sajtu,
 a iz finalnog build-a se automatski briše — zato pokreni `npm run check-texts` pre objave.
+
+## Objava
+
+Sajt je na Cloudflare Workers: https://portfolio.macrochef.workers.dev/
+
+- Svaka izmena na grani `main` automatski pravi novu verziju (`npm run build`, pa `npx wrangler deploy`, podešavanje je u `wrangler.jsonc`).
+- Kontakt forma šalje poruke preko Web3Forms na email iz `src/site.config.ts`.
