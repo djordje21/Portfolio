@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { useTranslations } from '../i18n/utils';
 
-// Jedna 404 stranica za sva tri jezika (Netlify je prikazuje za svaku nepostojeću adresu).
+// Jedna 404 stranica za sva tri jezika (host je prikazuje za svaku nepostojeću adresu).
 // Jezik se bira po pregledaču; bez JavaScripta se prikazuje engleski.
 // "86" je kuhinjski žargon za jelo kojeg više nema na meniju.
 const t = useTranslations('en');

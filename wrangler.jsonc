@@ -1,0 +1,9 @@
+// Cloudflare Workers: statični sajt iz dist/ (build: npm run build, deploy: npx wrangler deploy)
+{
+  "name": "djordje-milenkovic",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}

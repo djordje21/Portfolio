@@ -10,7 +10,7 @@ Jedno ime, tri vrata. Krovni brend je Đorđe. Portfolio je centar, a MacroChef 
 - Ime škole se piše odvojeno: Macro Chef Academy. Oznaka u aplikaciji ostaje „MCA“.
 - Na srpskom, engleskom i ruskom red ostaje isti. Imena se ne prevode, a „Executive Chef“ ostaje na engleskom.
 - Adrese:
-  - Portfolio: https://djordje-milenkovic.netlify.app/ (jezik prati stranu: `/sr/`, `/en/`, `/ru/`)
+  - Portfolio: https://djordje-milenkovic.macrochef.workers.dev/ (jezik prati stranu: `/sr/`, `/en/`, `/ru/`)
   - MacroChef: https://macrochef.macrochef.workers.dev/
   - Macro Chef Academy: https://macrochef-academy.macrochef.workers.dev/
 

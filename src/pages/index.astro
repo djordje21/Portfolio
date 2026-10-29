@@ -1,6 +1,5 @@
 ---
-// Koren sajta. Na Netlify-ju public/_redirects šalje posetioca na jezik pregledača;
-// ova stranica je rezerva za ostale hostove i vodi na engleski.
+// Koren sajta: vodi posetioca na jezik pregledača (srpski i susedni → /sr/, ruski i susedni → /ru/, ostali → /en/).
 ---
 <!doctype html>
 <html lang="en">
@@ -8,7 +7,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Đorđe Milenković — Executive Chef</title>
-    <meta http-equiv="refresh" content="0; url=/en/" />
+    <script is:inline>
+      (function () {
+        var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+        var target = '/en/';
+        for (var i = 0; i < list.length; i++) {
+          var code = String(list[i]).toLowerCase().split('-')[0];
+          if (['sr', 'hr', 'bs', 'sh', 'me'].indexOf(code) > -1) { target = '/sr/'; break; }
+          if (['ru', 'uk', 'be', 'kk'].indexOf(code) > -1) { target = '/ru/'; break; }
+          if (code === 'en') break;
+        }
+        location.replace(target + location.search + location.hash);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
     <link rel="canonical" href={new URL('/en/', Astro.site)} />
     <meta name="robots" content="noindex" />
     <style>body{background:#0a1628;color:#f4f7fb;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#9fc3ef}</style>

@@ -8,6 +8,8 @@ export const site = {
   name: 'Đorđe Milenković',
   email: 'dzordzcook@gmail.com',
   linkedin: 'https://www.linkedin.com/in/djordje-milenkovic-5900a941a/',
+  // Kontakt forma ide preko Web3Forms na email iznad. Ključ je javni (nije šifra), dobija se na web3forms.com.
+  web3formsKey: '',
   // CV po jeziku. Kad napraviš SR/RU verziju, ubaci PDF u public/cv/ i promeni putanju.
   // Porodica projekata: red potpisa u podnožju. Academy ostaje bez linka dok Đorđe ne pregleda kurs.
   family: {

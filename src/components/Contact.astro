@@ -48,19 +48,20 @@ const f = c.form;
       </dl>
     </div>
 
-    <!-- Forma (Netlify Forms: radi automatski kad je sajt na Netlify-ju) -->
+    <!-- Forma: šalje se preko Web3Forms na email iz site.config.ts -->
     <div class="lg:col-span-6 lg:col-start-7" data-reveal style="--reveal-delay:120ms">
       <form
         name="contact"
         method="POST"
-        data-netlify="true"
-        netlify-honeypot="company-website"
+        action="https://api.web3forms.com/submit"
         class="contact-form border border-line bg-navy-2/70 p-6 md:p-10"
         data-sending={f.sending}
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="access_key" value={site.web3formsKey} />
+        <input type="hidden" name="subject" value={`Portfolio: nova poruka (${lang.toUpperCase()})`} />
+        <input type="hidden" name="from_name" value="Portfolio" />
         <input type="hidden" name="language" value={lang} />
-        <p class="hidden"><label>Website <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
         <h3 class="text-3xl">{f.title}</h3>
 
@@ -158,9 +159,9 @@ const f = c.form;
       submit.disabled = true;
       submit.textContent = form.dataset.sending!;
       try {
-        const body = new URLSearchParams(new FormData(form) as any).toString();
-        const res = await fetch(location.pathname, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
-        if (!res.ok) throw new Error(String(res.status));
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.success) throw new Error(String(res.status));
         form.reset();
         ok.classList.remove('hidden');
       } catch {

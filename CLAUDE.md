@@ -2,7 +2,7 @@
 
 Personal site of Đorđe (Đole), chef. Talk to him in Serbian (Latin script), casual tone, no flattery. Content about his career, kitchens and professional practice is his call.
 
-Live: djordje-milenkovic.netlify.app (`SITE` in `astro.config.mjs`, until a custom domain). Static Astro site in three languages: `/sr/`, `/en/`, `/ru/`; `/` redirects. Hidden from search engines while `site.indexable` is `false` in `src/site.config.ts`.
+Live: djordje-milenkovic.macrochef.workers.dev on Cloudflare Workers (static assets, `wrangler.jsonc`; `SITE` in `astro.config.mjs`, until a custom domain). Static Astro site in three languages: `/sr/`, `/en/`, `/ru/`; `/` redirects. Hidden from search engines while `site.indexable` is `false` in `src/site.config.ts`.
 
 ## Commands
 
@@ -14,14 +14,14 @@ Live: djordje-milenkovic.netlify.app (`SITE` in `astro.config.mjs`, until a cust
 
 - `src/pages/[lang]/index.astro`: the home page, one component per section (`src/components/`). `pre-opening.astro` is the pre-opening page.
 - `src/i18n/{sr,en,ru}.json`: all texts; `en.json` defines the shape (`Dict`).
-- `src/site.config.ts`: name, email, LinkedIn, CV paths, `indexable`, `showTestimonial`.
+- `src/site.config.ts`: name, email, LinkedIn, `web3formsKey` (contact form via Web3Forms), CV paths, `indexable`, `showTestimonial`.
 - `src/styles/global.css`: colours and fonts in the `@theme` block. Navy `#0a1628` base, ice blue `#9fc3ef` accent, Playfair Display and Inter.
 - `src/data/domains.ts`: the six knowledge-area colours.
 - `src/assets/images/`: photos (replace a file under the same name). `public/cv/`: CV PDFs.
 
 ## Workflow
 
-- Never push straight to `main`: `main` deploys to Netlify at once. Work on a separate branch, push it, send Đole a Netlify preview URL or a screenshot, and merge into `main` only after his OK.
+- Never push straight to `main`: `main` deploys to Cloudflare at once. Work on a separate branch, push it, send Đole the branch preview URL from Cloudflare or a screenshot, and merge into `main` only after his OK.
 - Before any change users can see, show him a preview and wait for his OK.
 
 ## Project family
@@ -30,7 +30,7 @@ One name, three doors. The umbrella brand is Đorđe himself; the portfolio is t
 
 | Project | What it is | Repo | Live | Stack | Deploys from |
 |---|---|---|---|---|---|
-| Portfolio | Who he is | `djordje21/portfolio` | djordje-milenkovic.netlify.app (`/sr/`, `/en/`, `/ru/`) | Astro + Tailwind, static | `main` → Netlify |
+| Portfolio | Who he is | `djordje21/portfolio` | djordje-milenkovic.macrochef.workers.dev (`/sr/`, `/en/`, `/ru/`) | Astro + Tailwind, static | `main` → Cloudflare Workers Builds |
 | Macro Chef Academy | What he gives: cooking school for young cooks and learners | `djordje21/macrochef-academy` | macrochef-academy.macrochef.workers.dev | React + Vite PWA, no backend | `main` → Cloudflare Workers Builds |
 | MacroChef | What he builds: ad-free calorie and macro tracker | `djordje21/macrochef` | macrochef.macrochef.workers.dev | React + Vite PWA, Dexie, Supabase accounts | `ccr-e80a272b-xkto0p` → Cloudflare Workers Builds |
 
