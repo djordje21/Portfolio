@@ -693,6 +693,12 @@
       "name": "Macro Chef Academy",
       "text": "Kuvanje korak po korak, od prvog reza do vođenja kuhinje. Tri razreda, tačne mere i znak po kome vidiš da je gotovo.",
       "cta": "Otvori Academy"
+    },
+    "menu": {
+      "here": "ovde si",
+      "portfolio": "Ko sam · Executive Chef",
+      "macrochef": "Šta gradim · kalorije i makroi",
+      "academy": "Šta dajem · škola kuvanja"
     }
   },
   "footer": {

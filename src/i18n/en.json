@@ -693,6 +693,12 @@
       "name": "Macro Chef Academy",
       "text": "Cooking step by step, from the first cut to running a kitchen. Three grades, exact measures and a sign that tells you it is done.",
       "cta": "Open the Academy"
+    },
+    "menu": {
+      "here": "you are here",
+      "portfolio": "Who I am · Executive Chef",
+      "macrochef": "What I build · calories and macros",
+      "academy": "What I give · cooking school"
     }
   },
   "footer": {

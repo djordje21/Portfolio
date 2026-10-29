@@ -1,6 +1,7 @@
 ---
 import { languages, langs, localizePath, type Lang, type Dict } from '../i18n/utils';
 import { site } from '../site.config';
+import Monogram from './Monogram.astro';
 
 interface Props {
   lang: Lang;
@@ -18,11 +19,15 @@ const links = [
   { href: `${home}#contact`, label: t.nav.contact },
 ];
 const path = Astro.url.pathname;
-// Aplikacije iz porodice, direktno iz menija na telefonu.
-const apps = [
-  { href: `${site.family.macrochef}?lang=${lang}`, label: 'MacroChef' },
-  ...(site.family.showAcademyLink ? [{ href: `${site.family.academy}?lang=${lang}`, label: 'Macro Chef Academy' }] : []),
+// Porodica projekata u meniju na telefonu: portfolio (ovde si), pa aplikacije.
+const m = t.projects.menu;
+const family = [
+  { tile: 'monogram', name: site.name, sub: m.portfolio, href: null },
+  { tile: 'MC', name: 'MacroChef', sub: m.macrochef, href: `${site.family.macrochef}?lang=${lang}` },
+  ...(site.family.showAcademyLink ? [{ tile: 'MCA', name: 'Macro Chef Academy', sub: m.academy, href: `${site.family.academy}?lang=${lang}` }] : []),
 ];
+// U meniju na telefonu Projekti imaju svoj blok, pa ih nema u spisku.
+const mobileLinks = links.filter((l) => !l.href.endsWith('#projects'));
 ---
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-snow focus:text-navy focus:px-4 focus:py-2">
   {t.a11y.skip}
@@ -94,9 +99,9 @@ const apps = [
     </div>
   </div>
 
-  <nav id="mobile-menu" aria-label="Mobile" class="lg:hidden border-t border-b border-line bg-navy shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]" data-open="false" inert>
+  <nav id="mobile-menu" aria-label="Mobile" class="lg:hidden border-t border-b border-line bg-navy shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]" data-open="false" data-lenis-prevent inert>
     <ul class="container-x pt-4 pb-6">
-      {links.slice(0, -1).map((l, i) => (
+      {mobileLinks.slice(0, -1).map((l, i) => (
         <li class="menu-item border-b border-line/70" style={`--i:${i}`}>
           <a href={l.href} class="group flex items-baseline gap-4 py-4">
             <span class="w-6 text-[0.65rem] tabular-nums tracking-[0.15em] text-ice/70">{String(i + 1).padStart(2, '0')}</span>
@@ -105,16 +110,47 @@ const apps = [
           </a>
         </li>
       ))}
-      <li class="menu-item pt-6" style={`--i:${links.length - 1}`}>
-        <a href={links[links.length - 1].href} class="block border border-ice/60 py-3.5 text-center text-[0.78rem] tracking-[0.18em] uppercase text-snow transition-colors hover:bg-snow hover:text-navy">
-          {links[links.length - 1].label}
+      <li class="menu-item pt-6" style={`--i:${mobileLinks.length - 1}`}>
+        <a href={mobileLinks[mobileLinks.length - 1].href} class="block border border-ice/60 py-3.5 text-center text-[0.78rem] tracking-[0.18em] uppercase text-snow transition-colors hover:bg-snow hover:text-navy">
+          {mobileLinks[mobileLinks.length - 1].label}
         </a>
       </li>
     </ul>
-    <div class="container-x pb-6 flex flex-wrap gap-2">
-      {apps.map((a) => (
-        <a href={a.href} class="border border-line px-4 py-2.5 text-[0.75rem] tracking-[0.12em] uppercase text-gold hover:border-gold transition-colors">{a.label} ↗</a>
-      ))}
+    <div class="menu-item container-x pb-8" style={`--i:${mobileLinks.length}`}>
+      <p class="pb-3 text-[0.65rem] tracking-[0.2em] uppercase text-muted">{t.nav.projects}</p>
+      <ul class="family">
+        {family.map((f) => {
+          const inner = (
+            <>
+              <span class:list={['family-tile', f.tile === 'MC' && 'is-filled']}>
+                {f.tile === 'monogram' ? <Monogram class="w-9 h-auto" /> : f.tile}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="block font-display text-lg leading-tight text-snow">{f.name}</span>
+                <span class="mt-0.5 block text-[0.8rem] text-muted">
+                  {f.href ? f.sub : <>{f.sub.split(' · ')[0]} · <span class="text-gold">{m.here}</span></>}
+                </span>
+              </span>
+              {f.href && <span aria-hidden="true" class="text-sm text-gold">↗</span>}
+            </>
+          );
+          return (
+            <li>
+              {f.href
+                ? <a href={f.href} class="family-row">{inner}</a>
+                : <div class="family-row is-here" aria-current="page">{inner}</div>}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="mt-8 border-t border-line pt-6">
+        <Monogram class="w-20 h-auto text-gold" />
+        <p class="mt-3 text-[0.68rem] tracking-[0.12em] uppercase leading-relaxed text-muted">
+          <span class="text-snow">{site.family.title} {site.name}</span><span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}
+          <span class="whitespace-nowrap">MacroChef<span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}Macro Chef Academy</span>
+        </p>
+      </div>
     </div>
   </nav>
 </header>
@@ -176,6 +212,48 @@ const apps = [
     transform: none;
     transition: opacity 0.5s ease calc(0.12s + var(--i) * 0.05s), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(0.12s + var(--i) * 0.05s);
   }
+
+  /* Projekti: pločice povezane zlatnom linijom, kao u aplikacijama */
+  #mobile-menu { max-height: calc(100dvh - 4rem); overflow-y: auto; overscroll-behavior: contain; }
+  .family { position: relative; }
+  .family li + li { margin-top: 0.5rem; }
+  .family li:not(:last-child) .family-row::after {
+    content: '';
+    position: absolute;
+    left: calc(0.75rem + 1.5rem - 0.75px);
+    top: calc(50% + 1.5rem);
+    height: calc(100% - 3rem + 0.5rem);
+    width: 1.5px;
+    background: var(--color-gold);
+    opacity: 0.7;
+  }
+  .family-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  a.family-row:hover { background: color-mix(in oklab, var(--color-snow) 5%, transparent); }
+  .family-row.is-here { background: var(--color-navy-2); box-shadow: inset 0 0 0 1px var(--color-line); }
+  .family-tile {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border: 1.5px solid var(--color-gold);
+    border-radius: 0.8rem;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+  .family-tile.is-filled { background: var(--color-gold); color: var(--color-navy); }
 
   /* Tri linije koje se pretvore u X */
   .burger { position: relative; display: block; width: 24px; height: 24px; }
