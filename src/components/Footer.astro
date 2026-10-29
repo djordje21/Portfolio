@@ -1,15 +1,29 @@
 ---
 import type { Dict } from '../i18n/utils';
 import { site } from '../site.config';
+import Monogram from './Monogram.astro';
 
 interface Props {
   t: Dict;
 }
 const { t } = Astro.props;
 const year = new Date().getFullYear();
+const { family } = site;
 ---
 <footer class="border-t border-line">
-  <div class="container-x py-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between text-xs tracking-[0.12em] uppercase text-muted">
+  <div class="container-x pt-10">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 pb-8 border-b border-line">
+      <Monogram class="w-20 h-auto shrink-0 text-gold" />
+      <p class="text-xs tracking-[0.12em] uppercase leading-relaxed text-muted">
+        <span class="text-snow whitespace-nowrap">{family.title} {site.name}</span><span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}
+        <a href={family.macrochef} class="whitespace-nowrap text-ice border-b border-ice-deep hover:text-snow transition-colors">MacroChef</a><span class="text-gold px-1.5" aria-hidden="true">·</span>{' '}
+        {family.showAcademyLink
+          ? <a href={family.academy} class="whitespace-nowrap text-ice border-b border-ice-deep hover:text-snow transition-colors">Macro Chef Academy</a>
+          : <span class="whitespace-nowrap">Macro Chef Academy</span>}
+      </p>
+    </div>
+  </div>
+  <div class="container-x py-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between text-xs tracking-[0.12em] uppercase text-muted">
     <p>© {year} {site.name}. {t.footer.rights}</p>
     <a href="#top" class="hover:text-snow transition-colors">{t.footer.top} ↑</a>
   </div>

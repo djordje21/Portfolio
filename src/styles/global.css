@@ -20,6 +20,7 @@
   --color-muted: #a6b5ca;      /* sporedni tekst */
   --color-ice: #9fc3ef;        /* akcent za tekst i linkove, ledeno plava */
   --color-ice-deep: #3f72c4;   /* akcent za površine i odsjaje, kobalt */
+  --color-gold: #c8a982;       /* zlato potpisa: samo monogram i tačke u potpisu (porodica projekata) */
 
   /* Knowledge Palette — tonovi koji klasično idu uz teget (vrednosti se koriste u Palette.astro) */
   --color-chip-terracotta: #b85c40;

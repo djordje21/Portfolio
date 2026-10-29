@@ -9,6 +9,13 @@ export const site = {
   email: 'dzordzcook@gmail.com',
   linkedin: 'https://www.linkedin.com/in/djordje-milenkovic-5900a941a/',
   // CV po jeziku. Kad napraviš SR/RU verziju, ubaci PDF u public/cv/ i promeni putanju.
+  // Porodica projekata: red potpisa u podnožju. Academy ostaje bez linka dok Đorđe ne pregleda kurs.
+  family: {
+    title: 'Executive Chef',
+    macrochef: 'https://macrochef.macrochef.workers.dev/',
+    academy: 'https://macrochef-academy.macrochef.workers.dev/',
+    showAcademyLink: false,
+  },
   cv: {
     en: '/cv/Djordje-Milenkovic-CV-EN.pdf',
     sr: '/cv/Djordje-Milenkovic-CV-EN.pdf',
