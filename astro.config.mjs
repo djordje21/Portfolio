@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 // [CHECK] Zameni sa pravim domenom kad ga kupiš (koristi se za canonical, hreflang i sitemap).
-const SITE = 'https://djordje-milenkovic.macrochef.workers.dev';
+const SITE = 'https://portfolio.macrochef.workers.dev';
 
 export default defineConfig({
   site: SITE,
