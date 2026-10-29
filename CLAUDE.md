@@ -47,7 +47,7 @@ MacroChef's `netlify.toml` is a leftover; Cloudflare is the only live host. Each
 
 | Bridge | From | To | Status |
 |---|---|---|---|
-| Family links in the burger menu | all three | the other two | built: Academy menu and MacroChef side menu (pills under the head), portfolio mobile menu (app pills) and nav "Projekti" |
+| Family links in the burger menu | all three | the other two | built: Academy menu has a "Projekti" block at the bottom above the signature (three rows Ko sam / Šta gradim / Šta dajem joined by a yellow line, `.menu-family`); MacroChef side menu has pills under the head; portfolio mobile menu has app pills and nav "Projekti" |
 | "Moji projekti" cards | Portfolio (`Projects.astro`, `#projects`) | Academy, MacroChef | built |
 | Footer signature with links | all three | the other two | built: portfolio footer, Academy landing and menu, MacroChef side menu |
 | "Ko predaje" → "Ceo put" | Academy landing (`.chef-path`) | Portfolio | built |
