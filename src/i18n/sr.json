@@ -136,22 +136,6 @@
       }
     ]
   },
-  "intro": {
-    "skip": "Preskoči uvod",
-    "ticket": "Porudžbina",
-    "order": "PORUDŽBINA #0001",
-    "table": "STO: TI",
-    "lines": [
-      "1× Executive Chef",
-      "16 god. u kuhinji",
-      "2.000+ obučenih kuvara",
-      "14 pre-openinga",
-      "3 jezika"
-    ],
-    "note": "NAPOMENA: prvo sistem, pa kuvanje",
-    "fire": "FIRE!",
-    "service": "Servis."
-  },
   "game": {
     "title": "Mise en place",
     "hintDrag": "Prevuci karticu na tanjir ili samo klikni",

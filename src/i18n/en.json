@@ -136,22 +136,6 @@
       }
     ]
   },
-  "intro": {
-    "skip": "Skip intro",
-    "ticket": "Order ticket",
-    "order": "ORDER #0001",
-    "table": "TABLE: YOU",
-    "lines": [
-      "1× Executive Chef",
-      "16 yrs in the kitchen",
-      "2,000+ cooks trained",
-      "14 pre-openings",
-      "3 languages"
-    ],
-    "note": "NOTE: build the system, then cook",
-    "fire": "FIRE!",
-    "service": "Service."
-  },
   "game": {
     "title": "Mise en place",
     "hintDrag": "Drag a card onto the plate — or click it",
