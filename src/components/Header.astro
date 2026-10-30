@@ -38,23 +38,23 @@ const mobileLinks = links.filter((l) => !l.href.endsWith('#projects'));
   class="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 border-b border-transparent"
 >
   <div class="container-x flex h-16 md:h-20 items-center justify-between gap-6">
-    <a href={home} class="group flex items-baseline gap-3">
-      <span class="font-display text-2xl text-ice" aria-hidden="true">ĐM</span>
-      <span class="sr-only sm:not-sr-only text-[0.7rem] tracking-[0.22em] uppercase text-muted group-hover:text-snow transition-colors">
+    <a href={home} class="group flex items-center gap-3">
+      <Monogram class="h-9 md:h-11 w-auto text-gold transition-opacity group-hover:opacity-80" />
+      <span class="sr-only sm:not-sr-only lg:sr-only xl:not-sr-only text-[0.7rem] tracking-[0.22em] uppercase text-muted group-hover:text-snow transition-colors">
         {t.hero.name}
       </span>
     </a>
 
     <nav aria-label="Primary" class="hidden lg:block">
-      <ul class="flex items-center gap-7">
+      <ul class="flex items-center gap-5 xl:gap-7">
         {links.map((l, i) => (
           <li>
             {i === links.length - 1 ? (
-              <a href={l.href} class="border border-ice/60 px-4 py-2 text-[0.78rem] tracking-[0.12em] uppercase text-snow hover:bg-snow hover:text-navy transition-colors">
+              <a href={l.href} class="whitespace-nowrap border border-ice/60 px-4 py-2 text-[0.78rem] tracking-[0.12em] uppercase text-snow hover:bg-snow hover:text-navy transition-colors">
                 {l.label}
               </a>
             ) : (
-              <a href={l.href} class="text-[0.78rem] tracking-[0.12em] uppercase text-muted hover:text-snow transition-colors">
+              <a href={l.href} class="whitespace-nowrap text-[0.78rem] tracking-[0.12em] uppercase text-muted hover:text-snow transition-colors">
                 {l.label}
               </a>
             )}
